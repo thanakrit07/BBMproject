@@ -1,15 +1,9 @@
 package object;
 
-import sharedObject.IRenderable;
-
-public abstract class Gameobject implements IRenderable{
-	protected double x,y,w,h;
-	protected int z;
-	protected boolean visble;
-	public Gameobject(double x, double y, double w, double h) {
+public abstract class Gameobject {
+	protected double x,y;
+	public Gameobject(double x, double y) {
 		this.x=x;
-		this.y=y;
-		this.w=w;
-		this.h=h;			
+		this.y=y;		
 	}	
 }

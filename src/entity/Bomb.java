@@ -7,18 +7,11 @@ import javafx.scene.paint.Color;
 public class Bomb extends Gameobject{
 	private boolean exploded;
 	private int bombrange;
-	public Bomb(double x,double y,double w,double h,int bombrange) {
-		super(x,y,w,h);
+	public Bomb(double x,double y,int bombrange) {
+		super(x,y);
 		this.exploded = false;
 		this.bombrange=bombrange;
 		
-	}
-
-	@Override
-	public void draw(GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		gc.setFill(Color.ANTIQUEWHITE);
-		gc.fillOval(x, y, 60, 60);
 	}
 	public void drawEffectBomb(GraphicsContext gc) {
 		gc.setFill(Color.AQUA);
@@ -34,9 +27,4 @@ public class Bomb extends Gameobject{
 		return 0;
 	}
 
-	@Override
-	public boolean isVisible() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

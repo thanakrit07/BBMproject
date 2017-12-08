@@ -4,71 +4,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entity.Bomb;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import object.Gameobject;
 import sharedObject.Hitbox;
 
 public abstract class Hero extends Gameobject {
 
-	protected int speed;
+	protected double speed = 5;
 	protected int direction = 0;
 	protected int bombrange;
 	protected List<Bomb> bombList = new ArrayList<Bomb>();
 	protected List<Hitbox> lhb = new ArrayList<Hitbox>();
 	protected boolean alive;
-	protected Rectangle unit;
+	protected Hitbox bounds;
 
 	public Hero(double x, double y) {
-		super(x, y, 60, 60);
+		super(x, y);
 		this.alive = true;
-		unit = new Rectangle(x, y, 60, 60);
 	}
-
-
-	protected  void moveX() {
+	protected void moveX() {
 		if (direction == 1) {
-			if (!collosion()) {
-				this.x += speed;
-				this.unit.setX(this.x);
+			bounds.setLayoutX(bounds.getLayoutX() + speed);
+			if (collosion()) {
+				bounds.setLayoutX(bounds.getLayoutX() - speed);
 			}
-			else {
-				this.x = this.x-speed-0.1;
-				this.unit.setX(this.x);
-			}
-			
-		} 
-		else if(direction == 3){
-			if (!collosion()) {
-				this.x -= speed;
-				this.unit.setX(this.x);
-			}
-			else {
-				this.x =this.x+ speed+0.1;
-				this.unit.setX(this.x);
+
+		} else if (direction == 3) {
+			bounds.setLayoutX(bounds.getLayoutX() - speed);
+			if (collosion()) {
+				bounds.setLayoutX(bounds.getLayoutX() + speed);
+
 			}
 		}
 	}
+
 	protected void moveY() {
 		if (direction == 0) {
-			
-			if (!collosion()){
-				this.y -= speed;
-			}			
-			else
-				this.y = this.y+speed+0.1;
+			bounds.setLayoutY(bounds.getLayoutY() - speed);
+			if (collosion()) {
+				bounds.setLayoutY(bounds.getLayoutY() + speed);
+			}
 		} else if (direction == 2) {
-			if (!collosion())
-				this.y += speed;
-			else
-				this.y = this.y-speed-0.1;
+			bounds.setLayoutY(bounds.getLayoutY() + speed);
+			if (collosion()) {
+				bounds.setLayoutY(bounds.getLayoutY() - speed);
+			}
 		}
-		this.unit.setY(this.y);
 	}
 
 	protected boolean collosion() {
 		boolean hit = false;
 		for (Hitbox h : lhb) {
-			if (h.CollosionWith(unit)) {
+			if (h.CollosionWith(bounds)) {
 				hit = true;
 			}
 		}
@@ -76,7 +67,7 @@ public abstract class Hero extends Gameobject {
 	}
 
 	protected void DropBomb() {
-		Bomb bomb = new Bomb(this.x, this.y, 60, 60, this.bombrange);
+		Bomb bomb = new Bomb(this.x, this.y, this.bombrange);
 		// bomb.setVisible(true);
 		this.bombList.add(bomb);
 	}
@@ -84,9 +75,15 @@ public abstract class Hero extends Gameobject {
 	public int getZ() {
 		return 0;
 	}
-	public List<Hitbox> getlhitbox(){
+
+	public List<Hitbox> getlhitbox() {
 		return this.lhb;
 	}
 
-	protected abstract void update();
+	public Hitbox getHerobox() {
+		return this.bounds;
+	}
+
+	// protected abstract void update();
+
 }
