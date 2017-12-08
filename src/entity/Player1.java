@@ -10,44 +10,44 @@ import sharedObject.Hitbox;
 import entity.Bomb;
 import input.KeyInput;
 
-public class Player1 extends Hero{
+public class Player1 extends Hero {
 	public Scene scene;
+
 	public Player1(double x, double y) {
 		super(x, y);
-		this.direction=1;
-		this.bombrange=1;
-		this.speed=3;
-		this.alive=true;
-		bounds =new Hitbox(x,y,60,60);
+		this.direction = 1;
+		this.bombrange = 1;
+		this.speed = 5;
+		this.alive = true;
+		bounds = new Hitbox(x, y, 60, 60);
 		bounds.setFill(Color.BLUE);
 		bounds.setVisible(alive);
-		
+
 	}
 
 	public void update() {
 		// TODO Auto-generated method stub
-		
+
 		if (KeyInput.getKeyPressed(KeyCode.W)) {
 			System.out.println("P1 moving");
-			this.direction =0;
+			this.direction = 0;
 			moveY();
 		}
-		else if (KeyInput.getKeyPressed(KeyCode.D)) {
+		if (KeyInput.getKeyPressed(KeyCode.D)) {
 			System.out.println("P1 moving");
-			this.direction =1;
+			this.direction = 1;
 			moveX();
 		}
-		else if (KeyInput.getKeyPressed(KeyCode.S)) {
+		if (KeyInput.getKeyPressed(KeyCode.S)) {
 			System.out.println("P1 moving");
-			this.direction =2;
+			this.direction = 2;
 			moveY();
 		}
-		else if (KeyInput.getKeyPressed(KeyCode.A)) {
+		if (KeyInput.getKeyPressed(KeyCode.A)) {
 			System.out.println("P1 moving");
-			this.direction =3;
+			this.direction = 3;
 			moveX();
 		}
-		
 
 		if (KeyInput.getKeyPressed(KeyCode.SPACE)) {
 			System.out.println("P1 bomb");

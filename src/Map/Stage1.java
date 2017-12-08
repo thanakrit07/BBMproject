@@ -28,28 +28,28 @@ public class Stage1 implements AllScene {
 
 	public Stage1() {
 		root = new Group();
-		scene = new Scene(root, 1080, 920);
-		Canvas s1 = new Canvas(1080, 920);
+		scene = new Scene(root, 1080, 960);
+		Canvas s1 = new Canvas(1080, 960);
 		GraphicsContext gc = s1.getGraphicsContext2D();
 		gc.setFill(Color.AQUAMARINE);
-		gc.fillRect(0, 0, 1080, 920);
+		gc.fillRect(0, 0, 1080, 960);
 		root.getChildren().add(s1);
 		s1.requestFocus();
 		System.out.println("Create BG");
 		
 		
 		// Create Hero
-		Player1 p1 = new Player1(50, 50);
-		Player2 p2 = new Player2(960, 800);
+		Player1 p1 = new Player1(30, 30);
+		Player2 p2 = new Player2(990, 870);
 
 		//Create Border
 		Hitbox bd1 = new Hitbox(0,0,1080,30);
 		bd1.setFill(Color.SADDLEBROWN);
-		Hitbox bd2 = new Hitbox(0,0,30,920);
+		Hitbox bd2 = new Hitbox(0,0,30,960);
 		bd2.setFill(Color.SADDLEBROWN);
-		Hitbox bd3 = new Hitbox(1050,0,30,920);
+		Hitbox bd3 = new Hitbox(1050,0,30,960);
 		bd3.setFill(Color.SADDLEBROWN);
-		Hitbox bd4 = new Hitbox(0,890,1080,30);
+		Hitbox bd4 = new Hitbox(0,930,1080,30);
 		bd4.setFill(Color.SADDLEBROWN);
 		
 		List<Hitbox> lbd = new ArrayList<Hitbox>();
@@ -70,11 +70,33 @@ public class Stage1 implements AllScene {
 		System.out.println("Create Hero");
 		
 		// Create Wall
-		Wall w1 = new Wall(500, 500);
-		lh.add(w1.getHitbox());
-		p1.getlhitbox().addAll(lh);
-		p2.getlhitbox().addAll(lh);
-		root.getChildren().addAll(lh);
+		
+		int[][] field = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0}};
+		for(int i=0;i<14;i++) {
+			for(int j=0;j<17;j++) {
+				if (field[i][j]==1) {
+//					System.out.println(""+(30+(j*60))+(30+(i+60)));
+					Wall w =new Wall(30+(j*60),30+(i*60));
+					p1.getlhitbox().add(w.getHitbox());
+					p2.getlhitbox().add(w.getHitbox());
+					root.getChildren().add(w.getHitbox());
+					
+				}
+			}
+		}		
 		System.out.println("Create Wall");
 		
 		scene.setOnKeyPressed((KeyEvent event) -> {
