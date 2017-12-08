@@ -68,6 +68,7 @@ public abstract class Hero extends Gameobject {
 
 	protected void DropBomb() {
 		Bomb bomb = new Bomb(this.x, this.y, this.bombrange);
+		bomb.startBomb();
 //		bomb.setVisible(true);
 		this.bombList.add(bomb);
 	}

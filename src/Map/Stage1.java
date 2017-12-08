@@ -24,13 +24,15 @@ import sharedObject.Hitbox;
 public class Stage1 implements AllScene {
 	private Scene scene;
 	private Group root;
+	private Canvas s1;
+	private GraphicsContext gc;
 	private List<Hitbox> lh = new ArrayList<Hitbox>();
 
 	public Stage1() {
 		root = new Group();
 		scene = new Scene(root, 1080, 920);
-		Canvas s1 = new Canvas(1080, 920);
-		GraphicsContext gc = s1.getGraphicsContext2D();
+		s1 = new Canvas(1080, 920);
+		gc = s1.getGraphicsContext2D();
 		gc.setFill(Color.AQUAMARINE);
 		gc.fillRect(0, 0, 1080, 920);
 		root.getChildren().add(s1);
@@ -91,9 +93,15 @@ public class Stage1 implements AllScene {
 			public void handle(long now) {
 				p1.update();
 				p2.update();
+				update();
+				
 			}
 		};
 		animation.start();
+	}
+	
+	public void update() {
+		
 	}
 
 	@Override
