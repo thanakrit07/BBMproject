@@ -1,17 +1,20 @@
 package entity;
 
 import object.Gameobject;
+import sharedObject.Hitbox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Bomb extends Gameobject{
 	private boolean exploded;
 	private int bombrange;
+	private Hitbox bomb;
 	public Bomb(double x,double y,int bombrange) {
 		super(x,y);
 		this.exploded = false;
 		this.bombrange=bombrange;
-		
+		bomb =new Hitbox(x,y,60,60);
+		bomb.setFill(Color.GRAY);
 	}
 	public void drawEffectBomb(GraphicsContext gc) {
 		gc.setFill(Color.AQUA);

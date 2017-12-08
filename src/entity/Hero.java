@@ -68,12 +68,8 @@ public abstract class Hero extends Gameobject {
 
 	protected void DropBomb() {
 		Bomb bomb = new Bomb(this.x, this.y, this.bombrange);
-		// bomb.setVisible(true);
+//		bomb.setVisible(true);
 		this.bombList.add(bomb);
-	}
-
-	public int getZ() {
-		return 0;
 	}
 
 	public List<Hitbox> getlhitbox() {
@@ -83,7 +79,9 @@ public abstract class Hero extends Gameobject {
 	public Hitbox getHerobox() {
 		return this.bounds;
 	}
-
-	// protected abstract void update();
+	public List<Bomb> getbomblist(){
+		return this.bombList;
+	}
+	protected abstract void update();
 
 }

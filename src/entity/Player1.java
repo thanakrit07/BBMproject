@@ -16,7 +16,7 @@ public class Player1 extends Hero{
 		super(x, y);
 		this.direction=1;
 		this.bombrange=1;
-		this.speed=5;
+		this.speed=3;
 		this.alive=true;
 		bounds =new Hitbox(x,y,60,60);
 		bounds.setFill(Color.BLUE);
@@ -26,26 +26,31 @@ public class Player1 extends Hero{
 
 	public void update() {
 		// TODO Auto-generated method stub
-		System.out.println("P1 moving");
-		if (KeyInput.getKeyPressed(KeyCode.W)) {			
+		
+		if (KeyInput.getKeyPressed(KeyCode.W)) {
+			System.out.println("P1 moving");
 			this.direction =0;
 			moveY();
 		}
 		else if (KeyInput.getKeyPressed(KeyCode.D)) {
+			System.out.println("P1 moving");
 			this.direction =1;
 			moveX();
 		}
-		else if (KeyInput.getKeyPressed(KeyCode.S)) {		
+		else if (KeyInput.getKeyPressed(KeyCode.S)) {
+			System.out.println("P1 moving");
 			this.direction =2;
 			moveY();
 		}
 		else if (KeyInput.getKeyPressed(KeyCode.A)) {
+			System.out.println("P1 moving");
 			this.direction =3;
 			moveX();
 		}
 		
 
 		if (KeyInput.getKeyPressed(KeyCode.SPACE)) {
+			System.out.println("P1 bomb");
 			if (!KeyInput.setkeyPressed.contains(KeyCode.SPACE)) {
 				DropBomb();
 				KeyInput.setkeyPressed.add(KeyCode.SPACE);

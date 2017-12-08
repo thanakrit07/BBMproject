@@ -15,9 +15,9 @@ public class Player2 extends Hero{
 		super(x, y);
 		this.direction=1;
 		this.bombrange=1;
-		this.speed=5;
+		this.speed=3;
 		this.alive=true;
-		this.scene=scene;
+		
 		bounds = new Hitbox(x,y,60,60);
 		bounds.setFill(Color.BLUE);
 		bounds.setVisible(alive);
