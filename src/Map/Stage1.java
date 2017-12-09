@@ -30,8 +30,8 @@ public class Stage1 implements AllScene {
 
 	public Stage1() {
 		root = new Group();
-		scene = new Scene(root, 1080, 920);
-		s1 = new Canvas(1080, 920);
+		scene = new Scene(root, 1080, 960);
+		s1 = new Canvas(1080, 960);
 		gc = s1.getGraphicsContext2D();
 		gc.setFill(Color.AQUAMARINE);
 		gc.fillRect(0, 0, 1080, 960);
