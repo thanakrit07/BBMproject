@@ -2,6 +2,7 @@ package entity;
 
 import input.KeyInput;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -19,7 +20,7 @@ public class Player2 extends Hero {
 		this.speed = 5;
 		this.alive = true;
 
-		bounds = new Hitbox(x, y, 55, 55);
+		bounds = new Hitbox(x, y, 60, 60);
 		bounds.setFill(Color.BLUE);
 		bounds.setVisible(alive);
 	}
@@ -43,14 +44,15 @@ public class Player2 extends Hero {
 			this.direction = 3;
 			moveX();
 		}
-
+	}
+	public void updateBomb(Group root,int[][] field) {
 		if (KeyInput.getKeyPressed(KeyCode.SPACE)) {
+			System.out.println("P1 bomb");
 			if (!KeyInput.setkeyPressed.contains(KeyCode.SPACE)) {
-				DropBomb();
+				DropBomb(root,field);			
 				KeyInput.setkeyPressed.add(KeyCode.SPACE);
 			}
 		}
-
 	}
 
 }
