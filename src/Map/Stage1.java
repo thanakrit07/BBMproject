@@ -1,6 +1,7 @@
 package Map;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -27,18 +28,17 @@ public class Stage1 implements AllScene {
 	private Canvas s1;
 	private GraphicsContext gc;
 	private List<Hitbox> lh = new ArrayList<Hitbox>();
-
+	public static int[][] field;
 	public Stage1() {
 		root = new Group();
-		scene = new Scene(root, 1080, 920);
-		s1 = new Canvas(1080, 920);
+		scene = new Scene(root, 1080, 960);
+		s1 = new Canvas(1080, 960);
 		gc = s1.getGraphicsContext2D();
 		gc.setFill(Color.AQUAMARINE);
 		gc.fillRect(0, 0, 1080, 960);
 		root.getChildren().add(s1);
 		s1.requestFocus();
-		System.out.println("Create BG");
-		
+		System.out.println("Create BG");		
 		
 		// Create Hero
 		Player1 p1 = new Player1(30, 30);
@@ -73,7 +73,7 @@ public class Stage1 implements AllScene {
 		
 		// Create Wall
 		
-		int[][] field = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		field = new int[][] {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
 				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
@@ -86,16 +86,24 @@ public class Stage1 implements AllScene {
 				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
 				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-				{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0}};
-		for(int i=0;i<14;i++) {
+				{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0},
+				{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
+		for(int i=0;i<=14;i++) {
 			for(int j=0;j<17;j++) {
 				if (field[i][j]==1) {
 //					System.out.println(""+(30+(j*60))+(30+(i+60)));
 					Wall w =new Wall(30+(j*60),30+(i*60));
 					p1.getlhitbox().add(w.getHitbox());
 					p2.getlhitbox().add(w.getHitbox());
+					Image floor = new Image(ClassLoader.getSystemResource("wall.png").toString());
+					gc.drawImage(floor,30+(j*60), 30+(i*60),60,60);
 					root.getChildren().add(w.getHitbox());
-					
+				}else if(field[i][j]==0 && (i+j)%2==0) {
+					Image floor = new Image(ClassLoader.getSystemResource("floor1.png").toString());
+					gc.drawImage(floor,30+(j*60), 30+(i*60),60,60);
+				}else if(field[i][j]==0 && (i+j)%2==1) {
+					Image floor = new Image(ClassLoader.getSystemResource("floor2.png").toString());
+					gc.drawImage(floor,30+(j*60), 30+(i*60),60,60);
 				}
 			}
 		}		
@@ -114,9 +122,9 @@ public class Stage1 implements AllScene {
 		AnimationTimer animation = new AnimationTimer() {
 			public void handle(long now) {
 				p1.update();
-				p2.update();
+				p1.updateBomb(root, field);
+				p2.update();				
 				update();
-				
 			}
 		};
 		animation.start();

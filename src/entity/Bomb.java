@@ -5,6 +5,11 @@ import sharedObject.Hitbox;
 
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.application.Platform;
+import javafx.scene.Group;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -12,13 +17,13 @@ public class Bomb extends Gameobject{
 	private boolean exploded;
 	private int bombrange;
 	private Hitbox bomb;
-	protected Thread thread;
+
 	private double x;
 	private double y;
-	private boolean up;
-	private boolean down;
-	private boolean left;
-	private boolean right;
+	private boolean up = true;
+	private boolean down = true;
+	private boolean left = true;
+	private boolean right = true;
 	public Bomb(double x,double y,int bombrange) {
 		super(x,y);
 		this.x = x;
@@ -28,44 +33,88 @@ public class Bomb extends Gameobject{
 		bomb =new Hitbox(x,y,60,60);
 		bomb.setFill(Color.GRAY);
 	}
-//	public void drawEffectBomb(GraphicsContext gc) {
-//		gc.setFill(Color.AQUA);
-//		gc.fillRect(x + 60, y, 60 * bombrange, 60);
-//		gc.fillRect(x - (60 * bombrange), y, 60 * bombrange, 60);
-//		gc.fillRect(x, y - (60 * bombrange), 60, 60 * bombrange);
-//		gc.fillRect(x, y + 60, 60, 60 * bombrange);
-//	}
+	
 	public boolean IsExploded() {
 		return this.exploded;
 	}
-	public int getZ() {
-		return 0;
-	}
-	public void startBomb() {
-		thread = new Thread(() -> {
+	public void startBomb(Group root ,int[][] field) {
+		
+		Thread thread = new Thread(() -> {
+			this.bomb.setVisible(true);
 			try {
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			this.bomb.setVisible(false);
 			this.exploded = true;
-			bomb.setFill(Color.WHITE);
-			for (int i=1;i<=bombrange;i++) {
-				
+			
+			int indexj =(int)(this.x-30)/60 ;
+			int indexi = (int)(this.y-30)/60 ;
+			List<Hitbox> lrec = new ArrayList<Hitbox>();
+			for (int i=1; i <= bombrange;i++) {
 				//check wall
-				
-				Rectangle u = new Rectangle(x,y+(i*60),60.0,60.0);
-				u.setFill(Color.YELLOW);
-				Rectangle d = new Rectangle(x,y-(i*60),60.0,60.0);
-				d.setFill(Color.YELLOW);
-				Rectangle l = new Rectangle(x-(i*60),y,60.0,60.0);
-				l.setFill(Color.YELLOW);
-				Rectangle r = new Rectangle(x+(i*60),y,60.0,60.0);
-				r.setFill(Color.YELLOW);
-				
+				if(up==true && indexi-i>=0 && field[indexi-(i)][indexj]!=1) {
+					Hitbox u = new Hitbox(x,y+(i*60),60.0,60.0);
+					u.setFill(Color.YELLOW);
+					lrec.add(u);
+				}else {
+					up = false;
+				}
+				if(down==true && indexi+i<=14 && field[indexi+(i)][indexj]!=1) {
+					Hitbox d = new Hitbox(x,y-(i*60),60.0,60.0);
+					d.setFill(Color.YELLOW);
+					lrec.add(d);
+				}else {
+					down = false;
+				}
+				if(left==true && indexj-i>=0 && field[indexi][indexj-i]!=1) {
+					Hitbox l = new Hitbox(x-(i*60),y,60.0,60.0);
+					l.setFill(Color.YELLOW);
+					lrec.add(l);
+				}else {
+					left = false;
+				}
+				if(right==true && indexj+i<=17 && field[indexi][indexj+i]!=1) {
+					Hitbox r = new Hitbox(x+(i*60),y,60.0,60.0);
+					r.setFill(Color.YELLOW);
+					lrec.add(r);
+				}else {
+					right = false;
+				}							
 			}
-		});
+			Platform.runLater(new Runnable() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					for(Hitbox rec: lrec) {
+						rec.setVisible(true);
+						root.getChildren().add(rec);
+					}	
+				}				
+			});
+			try {
+				Thread.sleep(1250);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					for(Hitbox rec: lrec) {
+						rec.setVisible(false);
+					}					
+				}		
+			});
+
+		});thread.start();
+	}
+	public Hitbox getUnitbox() {
+		return this.bomb;
 	}
 
 }

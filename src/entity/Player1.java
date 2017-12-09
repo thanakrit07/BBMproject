@@ -1,6 +1,7 @@
 package entity;
 
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
@@ -11,7 +12,6 @@ import entity.Bomb;
 import input.KeyInput;
 
 public class Player1 extends Hero {
-	public Scene scene;
 
 	public Player1(double x, double y) {
 		super(x, y);
@@ -22,12 +22,11 @@ public class Player1 extends Hero {
 		bounds = new Hitbox(x, y, 60, 60);
 		bounds.setFill(Color.BLUE);
 		bounds.setVisible(alive);
-
+		
 	}
 
 	public void update() {
 		// TODO Auto-generated method stub
-
 		if (KeyInput.getKeyPressed(KeyCode.W)) {
 			System.out.println("P1 moving");
 			this.direction = 0;
@@ -49,14 +48,17 @@ public class Player1 extends Hero {
 			moveX();
 		}
 
+
+
+	}
+	public void updateBomb(Group root,int[][] field) {
 		if (KeyInput.getKeyPressed(KeyCode.SPACE)) {
 			System.out.println("P1 bomb");
 			if (!KeyInput.setkeyPressed.contains(KeyCode.SPACE)) {
-				DropBomb();
+				DropBomb(root,field);			
 				KeyInput.setkeyPressed.add(KeyCode.SPACE);
 			}
 		}
-
 	}
 
 }

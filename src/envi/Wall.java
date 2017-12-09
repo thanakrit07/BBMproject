@@ -9,8 +9,8 @@ public class Wall extends Envi{
 	public Wall(double x, double y) {
 		super(x, y);
 		this.hitbox= new Hitbox(x,y,60,60);
-		hitbox.setFill(Color.BLACK);
-		hitbox.setVisible(true);
+		hitbox.setFill(Color.BLANCHEDALMOND);
+		hitbox.setVisible(false);
 	}
 
 

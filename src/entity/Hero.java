@@ -6,6 +6,7 @@ import java.util.List;
 import entity.Bomb;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -21,10 +22,10 @@ public abstract class Hero extends Gameobject {
 	protected List<Hitbox> lhb = new ArrayList<Hitbox>();
 	protected boolean alive;
 	protected Hitbox bounds;
-
+	
 	public Hero(double x, double y) {
 		super(x, y);
-		this.alive = true;
+		this.alive = true;		
 	}
 	protected void moveX() {
 		if (direction == 1) {
@@ -65,12 +66,29 @@ public abstract class Hero extends Gameobject {
 		}
 		return hit;
 	}
-
-	protected void DropBomb() {
-		Bomb bomb = new Bomb(this.x, this.y, this.bombrange);
-		bomb.startBomb();
+	
+	protected void DropBomb(Group root,int[][] field) {
+		Bomb bomb;
+		if (direction==0) {
+			bomb = new Bomb(Math.floor(bounds.getLayoutX()/60)*60+30, Math.ceil(bounds.getLayoutY()/60)*60+30, this.bombrange);
+			root.getChildren().add(bomb.getUnitbox());
+			bomb.startBomb(root,field);
+		}else if(direction==1){
+			bomb = new Bomb(Math.floor(bounds.getLayoutX()/60)*60+30, Math.ceil(bounds.getLayoutY()/60)*60+30, this.bombrange);
+			root.getChildren().add(bomb.getUnitbox());
+			bomb.startBomb(root,field);
+		}else if(direction==2){
+			bomb = new Bomb(Math.floor(bounds.getLayoutX()/60)*60+30, Math.floor(bounds.getLayoutY()/60)*60+30, this.bombrange);
+			root.getChildren().add(bomb.getUnitbox());
+			bomb.startBomb(root,field);
+		}else if(direction==3){
+			bomb = new Bomb(Math.ceil(bounds.getLayoutX()/60)*60+30, Math.ceil(bounds.getLayoutY()/60)*60+30, this.bombrange);
+			root.getChildren().add(bomb.getUnitbox());
+			bomb.startBomb(root,field);
+		}		
 //		bomb.setVisible(true);
-		this.bombList.add(bomb);
+//		this.bombList.add(bomb);
+
 	}
 
 	public List<Hitbox> getlhitbox() {
