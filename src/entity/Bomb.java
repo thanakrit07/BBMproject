@@ -17,6 +17,7 @@ public class Bomb extends Gameobject{
 	private boolean exploded;
 	private int bombrange;
 	private Hitbox bomb;
+	List<Hitbox> lrec;
 
 	private double x;
 	private double y;
@@ -24,6 +25,10 @@ public class Bomb extends Gameobject{
 	private boolean down = true;
 	private boolean left = true;
 	private boolean right = true;
+	
+//	private Player1 p1
+//	private Hitbox p2 = Player2.getHerobox();
+	
 	public Bomb(double x,double y,int bombrange) {
 		super(x,y);
 		this.x = x;
@@ -37,7 +42,7 @@ public class Bomb extends Gameobject{
 	public boolean IsExploded() {
 		return this.exploded;
 	}
-	public void startBomb(Group root ,int[][] field) {
+	public void startBomb(Group root ,int[][] field,Player1 p1,Player2 p2) {
 		
 		Thread thread = new Thread(() -> {
 			this.bomb.setVisible(true);
@@ -48,22 +53,27 @@ public class Bomb extends Gameobject{
 				e.printStackTrace();
 			}
 			this.bomb.setVisible(false);
+			this.bomb=null;
+			
 			this.exploded = true;
 			
 			int indexj =(int)(this.x-30)/60 ;
 			int indexi = (int)(this.y-30)/60 ;
-			List<Hitbox> lrec = new ArrayList<Hitbox>();
+			lrec = new ArrayList<Hitbox>();
+			Hitbox c = new Hitbox(x,y,60.0,60.0);
+			c.setFill(Color.WHITE);
+			lrec.add(c);
 			for (int i=1; i <= bombrange;i++) {
 				//check wall
 				if(up==true && indexi-i>=0 && field[indexi-(i)][indexj]!=1) {
-					Hitbox u = new Hitbox(x,y+(i*60),60.0,60.0);
+					Hitbox u = new Hitbox(x,y-(i*60),60.0,60.0);
 					u.setFill(Color.YELLOW);
 					lrec.add(u);
 				}else {
 					up = false;
 				}
 				if(down==true && indexi+i<=14 && field[indexi+(i)][indexj]!=1) {
-					Hitbox d = new Hitbox(x,y-(i*60),60.0,60.0);
+					Hitbox d = new Hitbox(x,y+(i*60),60.0,60.0);
 					d.setFill(Color.YELLOW);
 					lrec.add(d);
 				}else {
@@ -76,7 +86,7 @@ public class Bomb extends Gameobject{
 				}else {
 					left = false;
 				}
-				if(right==true && indexj+i<=17 && field[indexi][indexj+i]!=1) {
+				if(right==true && indexj+i<17 && field[indexi][indexj+i]!=1) {
 					Hitbox r = new Hitbox(x+(i*60),y,60.0,60.0);
 					r.setFill(Color.YELLOW);
 					lrec.add(r);
@@ -92,6 +102,12 @@ public class Bomb extends Gameobject{
 					for(Hitbox rec: lrec) {
 						rec.setVisible(true);
 						root.getChildren().add(rec);
+						if (rec.CollosionWith(p1.getHerobox())) {
+							p1.setDead();
+						}
+						if (rec.CollosionWith(p2.getHerobox())) {
+							p2.setDead();
+						}
 					}	
 				}				
 			});
