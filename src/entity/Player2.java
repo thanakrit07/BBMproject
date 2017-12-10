@@ -19,7 +19,7 @@ public class Player2 extends Hero {
 	public Player2(double x, double y) {
 		super(x, y);
 		this.direction = 3;
-		this.bombrange = 1;
+		this.bombrange = 3;
 		this.speed = 5;
 		this.alive = true;
 

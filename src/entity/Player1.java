@@ -20,7 +20,7 @@ import input.KeyInput;
 public class Player1 extends Hero {
 	protected static int countBomb = 3;
 	protected static boolean alive;
-	private ImageRef imref ;
+//	private ImageRef imref ;
 	private AnimationTimer animationwalk;
 	public Player1(double x, double y) {
 		super(x, y);
@@ -32,8 +32,8 @@ public class Player1 extends Hero {
 		bounds = new Hitbox(x, y, 60, 60);
 		bounds.setFill(Color.BLUE);
 		bounds.setVisible(alive);		
-		imref = new ImageRef();
-		bounds.setFill(new ImagePattern(imref.getWhiteBomber().get(1+3)));
+//		imref = new ImageRef();
+		bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(1+3)));
 		animationwalk = new AnimationTimer(){
 			final long startNanoTime = System.nanoTime();
 			@Override
@@ -46,11 +46,11 @@ public class Player1 extends Hero {
 				else if(direction==3)ck=9;
 				
 				if(t>0 && t<=0.15) {
-					bounds.setFill(new ImagePattern(imref.getWhiteBomber().get(0+ck)));	
+					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(0+ck)));	
 				}else if(t>0.15 && t<=0.3) {
-					bounds.setFill(new ImagePattern(imref.getWhiteBomber().get(1+ck)));
+					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(1+ck)));
 				}else if(t>0.3 && t<=0.45) {
-					bounds.setFill(new ImagePattern(imref.getWhiteBomber().get(2+ck)));
+					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(2+ck)));
 				}				
 			}			
 		};

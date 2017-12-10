@@ -27,9 +27,8 @@ public class GameScreen implements AllScene {
 		scene = new Scene(root, width, height);
 		Canvas bg = new Canvas(width, height);
 		GraphicsContext gc = bg.getGraphicsContext2D();
-//		gc.setFill(Color.BURLYWOOD);
-//		gc.fillRect(0, 0, SceneManager.SCENE_WIDTH, SceneManager.SCENE_HEIGHT);
 		root.getChildren().add(bg);
+		
 		// addInput();
 		
 		//Select Stage
@@ -44,7 +43,7 @@ public class GameScreen implements AllScene {
 				if(event.getCode().equals(KeyCode.DIGIT1)) {
 					
 					SceneManager.gotoSceneOf(s1.getScene());
-					
+					s1.AnimationStart();
 				}
 				else if(event.getCode().equals(KeyCode.ESCAPE)){
 					Platform.exit();
@@ -85,9 +84,6 @@ public class GameScreen implements AllScene {
 	// gc.strokeRect(0, 0, 1080, 920);
 	// gc.setLineWidth(20);
 	// }
-	public void getMapObject() {
-
-	}
 
 	@Override
 	public Scene getScene() {

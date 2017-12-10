@@ -20,15 +20,16 @@ public abstract class Hero extends Gameobject {
 	protected int bombrange;
 	protected List<Bomb> bombList = new ArrayList<Bomb>();
 	protected List<Hitbox> lhb = new ArrayList<Hitbox>();
-//	protected static boolean alive;
+	// protected static boolean alive;
 	protected Hitbox bounds;
-	
-	protected int countBomb = 3;
-	
+
+	protected int countBomb = 1;
+
 	public Hero(double x, double y) {
 		super(x, y);
-//		this.alive = true;		
+		// this.alive = true;
 	}
+
 	protected void moveX() {
 		if (direction == 1) {
 			bounds.setLayoutX(bounds.getLayoutX() + speed);
@@ -68,27 +69,43 @@ public abstract class Hero extends Gameobject {
 		}
 		return hit;
 	}
-	
-	protected void DropBomb(Group root,int[][] field,Player1 p1,Player2 p2) {
-		if (direction==0) {			
-			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX()/60)*60+30, Math.ceil(bounds.getBoundsInParent().getMinY()/60)*60-30, this.bombrange);
+
+	protected void DropBomb(Group root, int[][] field, Player1 p1, Player2 p2) {
+		if (direction == 0) {
+			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
+			Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
 			root.getChildren().add(bomb.getUnitbox());
-			bomb.startBomb(root,field,p1,p2);
-		}else if(direction==1){
-			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX()/60)*60+30, Math.ceil(bounds.getBoundsInParent().getMinY()/60)*60-30, this.bombrange);
+			bomb.startBomb(root, field, p1, p2);
+		} else if (direction == 1) {
+			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
+					Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
 			root.getChildren().add(bomb.getUnitbox());
-			bomb.startBomb(root,field,p1,p2);
-		}else if(direction==2){
-			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX()/60)*60+30, Math.floor(bounds.getBoundsInParent().getMinY()/60)*60+30, this.bombrange);
+			bomb.startBomb(root, field, p1, p2);
+		} else if (direction == 2) {
+			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
+					Math.floor(bounds.getBoundsInParent().getMinY() / 60) * 60 + 30, this.bombrange);
 			root.getChildren().add(bomb.getUnitbox());
-			bomb.startBomb(root,field,p1,p2);
-		}else if(direction==3){
-			Bomb bomb = new Bomb(Math.ceil(bounds.getBoundsInParent().getMinX()/60)*60-30, Math.ceil(bounds.getBoundsInParent().getMinY()/60)*60-30, this.bombrange);
+			bomb.startBomb(root, field, p1, p2);
+		} else if (direction == 3) {
+			Bomb bomb = new Bomb(Math.ceil(bounds.getBoundsInParent().getMinX() / 60) * 60 - 30,
+					Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
 			root.getChildren().add(bomb.getUnitbox());
 			System.out.println("dropLEFT");
-			bomb.startBomb(root,field,p1,p2);
+			bomb.startBomb(root, field, p1, p2);
 		}
 
+	}
+
+	public void increaseBombrange() {
+		this.bombrange++;
+	}
+
+	public void increaseSpeed() {
+		this.speed++;
+	}
+
+	public void increaseBombnumber() {
+		this.countBomb++;
 	}
 
 	public List<Hitbox> getlhitbox() {
@@ -98,15 +115,17 @@ public abstract class Hero extends Gameobject {
 	public Hitbox getHerobox() {
 		return bounds;
 	}
-	public List<Bomb> getbomblist(){
+
+	public List<Bomb> getbomblist() {
 		return this.bombList;
 	}
+
 	protected abstract void update();
-	
+
 	protected void clearBomb() {
 		this.countBomb--;
 	}
-	
+
 	public abstract boolean isAlive();
 
 }

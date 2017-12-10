@@ -7,8 +7,11 @@ import javafx.scene.image.Image;
 
 public class ImageRef {
 	private static List<Image> WhiteBomber = new ArrayList<Image>();
-	
-	public ImageRef(){
+	private static List<Image> bomb1 =  new ArrayList<Image>();
+//	public ImageRef(){
+//		
+//	}
+	public static List<Image> getWhiteBomber(){
 		Image up1 = new Image(ClassLoader.getSystemResource("forward1.png").toString());
 		Image up2 = new Image(ClassLoader.getSystemResource("forward2.png").toString());
 		Image up3 = new Image(ClassLoader.getSystemResource("forward3.png").toString());
@@ -33,10 +36,18 @@ public class ImageRef {
 		WhiteBomber.add(left1);
 		WhiteBomber.add(left2);
 		WhiteBomber.add(left3);
-		
-	}
-	public static List<Image> getWhiteBomber(){
 		return WhiteBomber;
+	}
+	public static List<Image> getBomb1(){
+		Image b1 = new Image(ClassLoader.getSystemResource("bomb1_1.png").toString());
+		Image b2 = new Image(ClassLoader.getSystemResource("bomb1_2.png").toString());
+		Image b3 = new Image(ClassLoader.getSystemResource("bomb1_3.png").toString());
+		Image b4 = new Image(ClassLoader.getSystemResource("efbomb1.png").toString());
+		bomb1.add(b1);
+		bomb1.add(b2);
+		bomb1.add(b3);
+		bomb1.add(b4);
+		return bomb1;
 	}
 }
 
