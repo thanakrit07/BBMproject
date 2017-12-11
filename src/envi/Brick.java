@@ -40,7 +40,6 @@ public class Brick extends Envi{
 			item.getHitbox().setVisible(true);
 			root.getChildren().add(item.getHitbox());
 			Stage1.getItemList().add(item);
-		}else System.out.println("None"
-				+ "");
+		}else System.out.println("None");
 	}
 }

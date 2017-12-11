@@ -14,6 +14,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import scenemanager.SceneManager;
 import sharedObject.AllScene;
+
+import com.sun.javafx.tk.FontLoader;
+import com.sun.javafx.tk.Toolkit;
+
 import Map.GameScreen;
 
 public class MainMenu implements AllScene {
@@ -41,7 +45,7 @@ public class MainMenu implements AllScene {
 		gc.setFill(Color.WHITE);
 		gc.setFont(MENU_FONT);
 		gc.fillText("Press Enter to start", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT * 3 / 4);
-
+		
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event) {
 				if (event.getCode().equals(KeyCode.ENTER)) {

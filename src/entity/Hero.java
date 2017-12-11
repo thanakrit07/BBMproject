@@ -8,19 +8,22 @@ import javafx.scene.Group;
 import object.Gameobject;
 import sharedObject.Hitbox;
 
-public abstract class Hero extends Gameobject {
+public abstract class Hero implements Gameobject {
 
-	protected static double speed = 5;
+	protected double speed;
 	protected int direction;
 	protected int bombrange;
 	protected List<Bomb> bombList = new ArrayList<Bomb>();
 	protected List<Hitbox> lhb = new ArrayList<Hitbox>();
 	protected Hitbox bounds;
+	
+	protected double x,y;
 
 	protected int countBomb = 1;
 
 	public Hero(double x, double y) {
-		super(x, y);
+		this.x = x;
+		this.y= y;
 	}
 
 	protected void moveX() {
@@ -92,8 +95,8 @@ public abstract class Hero extends Gameobject {
 		this.bombrange++;
 	}
 
-	public static void increaseSpeed() {
-		speed++;
+	public void increaseSpeed() {
+		this.speed++;
 	}
 
 	public void increaseBombnumber() {

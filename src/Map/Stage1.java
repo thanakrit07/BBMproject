@@ -123,7 +123,6 @@ public class Stage1 implements AllScene {
 
 		scene.setOnKeyPressed((KeyEvent event) -> {
 			KeyInput.setKeyPressed(event.getCode(), true);
-			// System.out.println("Pressed");
 
 		});
 

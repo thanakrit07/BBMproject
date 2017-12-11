@@ -1,6 +1,5 @@
 package sharedObject;
 
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
@@ -8,7 +7,7 @@ public class Hitbox extends Rectangle{
 	public Hitbox(double x, double y, double w, double h) {
 		super(x, y, w, h);
 	}
-	// check collostion
+	// check collosion
 
 	public boolean CollosionWith(Rectangle other) {
 		boolean collosion = false;

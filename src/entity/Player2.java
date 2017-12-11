@@ -15,7 +15,7 @@ public class Player2 extends Hero {
 		super(x, y);
 		this.direction = 3;
 		this.bombrange = 1;
-		this.speed = 3;
+		speed = 3;
 		alive = true;
 
 		bounds = new Hitbox(x, y, 60, 60);
@@ -46,7 +46,6 @@ public class Player2 extends Hero {
 	public void updateBomb(Group root, Player1 p1, Player2 p2) {
 
 		if (KeyInput.getKeyPressed(KeyCode.ENTER)) {
-//			System.out.println("P2 bomb");
 			if (!KeyInput.setkeyPressed.contains(KeyCode.ENTER)) {
 				if (countBomb>0) {
 					DropBomb(root, p1,p2);					
@@ -75,6 +74,12 @@ public class Player2 extends Hero {
 	public boolean isAlive() {
 		// TODO Auto-generated method stub
 		return alive;
+	}
+
+	@Override
+	public Hitbox getHitbox() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

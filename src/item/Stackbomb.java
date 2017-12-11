@@ -3,8 +3,9 @@ package item;
 import entity.Hero;
 import object.Gameobject;
 import sharedObject.Hitbox;
+import item.Item;
 
-public class Stackbomb extends Gameobject implements Item{
+public class Stackbomb extends Item{
 	private Hitbox item;
 	private boolean kept = false;
 	public Stackbomb(double x, double y) {
@@ -12,7 +13,6 @@ public class Stackbomb extends Gameobject implements Item{
 		item = new Hitbox(x,y,60,60);
 	}
 
-	@Override
 	public void IsKeptBy(Hero hero) {
 		if(!kept&&item.CollosionWith(hero.getHerobox())) {
 			hero.increaseBombnumber();

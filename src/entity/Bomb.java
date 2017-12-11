@@ -13,7 +13,7 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 
-public class Bomb extends Gameobject{
+public class Bomb implements Gameobject{
 	private boolean exploded;
 	private int bombrange;
 	private Hitbox bomb;
@@ -27,7 +27,6 @@ public class Bomb extends Gameobject{
 	private boolean right = true;
 	
 	public Bomb(double x,double y,int bombrange) {
-		super(x,y);
 		this.x = x;
 		this.y = y;
 		this.exploded = false;
@@ -59,6 +58,7 @@ public class Bomb extends Gameobject{
 			
 			this.exploded = true;
 			
+			//draw effected bomb
 			int indexj =(int)(this.x-30)/60 ;
 			int indexi = (int)(this.y-30)/60 ;
 			lrec = new ArrayList<Hitbox>();
@@ -68,14 +68,13 @@ public class Bomb extends Gameobject{
 			int[][] field = Stage1.getField();
 			for (int i=1; i <= bombrange;i++) {
 			
-				
-				//check wall
 				if(up==true && indexi-i>=0 && field[indexi-(i)][indexj]!=1) {
-					Hitbox u = new Hitbox(x,y-(i*60),60.0,60.0);
+					Hitbox u;
 					if(i==bombrange) {
-						
+						u = new Hitbox(x,y-(i*60)+5,60.0,55.0);
 						u.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("U_Headeffbomb.png").toString())));
 					}else {
+						u = new Hitbox(x,y-(i*60),60.0,60.0);
 						u.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("V_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(u);
@@ -88,11 +87,12 @@ public class Bomb extends Gameobject{
 					up = false;
 				}
 				if(down==true && indexi+i<=14 && field[indexi+(i)][indexj]!=1) {
-					Hitbox d = new Hitbox(x,y+(i*60),60.0,60.0);
+					Hitbox d;
 					if(i==bombrange) {
-						
+						d = new Hitbox(x,y+(i*60),60.0,55.0);
 						d.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("D_Headeffbomb.png").toString())));
 					}else {
+						d = new Hitbox(x,y+(i*60),60.0,60.0);
 						d.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("V_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(d);
@@ -105,11 +105,12 @@ public class Bomb extends Gameobject{
 					down = false;
 				}
 				if(left==true && indexj-i>=0 && field[indexi][indexj-i]!=1) {
-					Hitbox l = new Hitbox(x-(i*60),y,60.0,60.0);
+					Hitbox l;
 					if(i==bombrange) {
-						
+						l = new Hitbox(x-(i*60)+5,y,55.0,60.0);
 						l.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("L_Headeffbomb.png").toString())));
 					}else {
+						l = new Hitbox(x-(i*60),y,60.0,60.0);
 						l.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("H_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(l);
@@ -122,11 +123,12 @@ public class Bomb extends Gameobject{
 					left = false;
 				}
 				if(right==true && indexj+i<17 && field[indexi][indexj+i]!=1) {
-					Hitbox r = new Hitbox(x+(i*60),y,60.0,60.0);
+					Hitbox r;
 					if(i==bombrange) {
-						
+						r = new Hitbox(x+(i*60),y,55.0,60.0);						
 						r.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("R_Headeffbomb.png").toString())));
 					}else {
+						r = new Hitbox(x+(i*60),y,60.0,60.0);
 						r.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("H_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(r);
@@ -139,6 +141,8 @@ public class Bomb extends Gameobject{
 					right = false;
 				}							
 			}
+			
+			//kill player
 			Platform.runLater(new Runnable() {
 
 				@Override
@@ -162,6 +166,8 @@ public class Bomb extends Gameobject{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			//destroy brick & kill player
 			Platform.runLater(new Runnable() {
 				@Override
 				public void run() {
@@ -195,7 +201,7 @@ public class Bomb extends Gameobject{
 			bomb.setLayoutX(bomb.getLayoutX()+1);
 		}
 	}
-	public Hitbox getUnitbox() {
+	public Hitbox getHitbox() {
 		return this.bomb;
 	}
 

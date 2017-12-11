@@ -4,7 +4,7 @@ import entity.Hero;
 import object.Gameobject;
 import sharedObject.Hitbox;
 
-public class Boost extends Gameobject implements Item{
+public class Boost extends Item{
 	private Hitbox item;
 	private boolean kept = false;
 	

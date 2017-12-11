@@ -4,7 +4,7 @@ import entity.Hero;
 import object.Gameobject;
 import sharedObject.Hitbox;
 
-public class Upgradebomb extends Gameobject implements Item{
+public class Upgradebomb extends Item{
 	private Hitbox item;
 	private boolean kept = false;
 	public Upgradebomb(double x, double y) {
