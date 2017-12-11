@@ -14,8 +14,6 @@ public class Wall extends Envi{
 		hitbox.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("wall.png").toString())));
 		hitbox.setVisible(true);
 	}
-
-
 	public Hitbox getHitbox() {
 		return hitbox;
 	}

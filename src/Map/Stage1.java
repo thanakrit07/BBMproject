@@ -7,6 +7,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
@@ -50,7 +51,6 @@ public class Stage1 implements AllScene {
 		scene = new Scene(root, 1080, 960);
 		s1 = new Canvas(1080, 960);
 		gc = s1.getGraphicsContext2D();
-		gc.setFill(Color.AQUAMARINE);
 		gc.fillRect(0, 0, 1080, 960);
 		root.getChildren().add(s1);
 		s1.requestFocus();
@@ -62,13 +62,13 @@ public class Stage1 implements AllScene {
 
 		// Create Border
 		Hitbox bd1 = new Hitbox(0, 0, 1080, 30);
-		bd1.setFill(Color.SADDLEBROWN);
-		Hitbox bd2 = new Hitbox(0, 0, 30, 960);
-		bd2.setFill(Color.SADDLEBROWN);
-		Hitbox bd3 = new Hitbox(1050, 0, 30, 960);
-		bd3.setFill(Color.SADDLEBROWN);
+		bd1.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("bordertop.png").toString())));
+		Hitbox bd2 = new Hitbox(0, 30, 30, 930);
+		bd2.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("borderleft.png").toString())));
+		Hitbox bd3 = new Hitbox(1050, 30, 30, 930);
+		bd3.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("borderright.png").toString())));
 		Hitbox bd4 = new Hitbox(0, 930, 1080, 30);
-		bd4.setFill(Color.SADDLEBROWN);
+		bd4.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("borderbot.png").toString())));
 
 		List<Hitbox> lbd = new ArrayList<Hitbox>();
 		lbd.add(bd1);
@@ -87,21 +87,21 @@ public class Stage1 implements AllScene {
 
 		// Create Wall
 
-		field = new int[][] { { 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		field = new int[][] { { 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-				{ 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-				{ 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 2, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+				{ 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
 				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 1, 2, 1, 0, 1, 0, 1, 0, 1, 2, 1, 0, 1, 0, 1, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0 },
+				{ 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-				{ 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 2, 2 },
+				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1, 2 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 2, 2, 2 },
+				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1, 2, 1, 2, 1, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0 } };
 		for (int i = 0; i < 15; i++) {
 			for (int j = 0; j < 17; j++) {
 				if (field[i][j] == 1) {

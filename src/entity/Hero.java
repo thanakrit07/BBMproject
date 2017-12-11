@@ -16,23 +16,21 @@ import sharedObject.Hitbox;
 
 public abstract class Hero extends Gameobject {
 
-	protected double speed = 5;
+	protected int speed;
 	protected int direction;
 	protected int bombrange;
 	protected List<Bomb> bombList = new ArrayList<Bomb>();
 	protected List<Hitbox> lhb = new ArrayList<Hitbox>();
 	// protected static boolean alive;
 	protected Hitbox bounds;
-
 	protected int countBomb = 1;
-
 	public Hero(double x, double y) {
 		super(x, y);
 		// this.alive = true;
 	}
 
 	protected void moveX() {
-		if (direction == 1) {
+		if (direction == 1) {	
 			bounds.setLayoutX(bounds.getLayoutX() + speed);
 			if (collosion()) {
 				bounds.setLayoutX(bounds.getLayoutX() - speed);
@@ -48,9 +46,12 @@ public abstract class Hero extends Gameobject {
 	}
 
 	protected void moveY() {
+		
 		if (direction == 0) {
+			System.out.println("moveY");
 			bounds.setLayoutY(bounds.getLayoutY() - speed);
 			if (collosion()) {
+				System.out.println("Hit");
 				bounds.setLayoutY(bounds.getLayoutY() + speed);
 			}
 		} else if (direction == 2) {
@@ -63,10 +64,12 @@ public abstract class Hero extends Gameobject {
 
 	protected boolean collosion() {
 		boolean hit = false;
+		System.out.println(lhb.size());
 		for (Hitbox h : lhb) {
 			if (h.CollosionWith(bounds)) {
 				hit = true;
 			}
+			System.out.println(bounds.getLayoutX());
 		}
 		return hit;
 	}
@@ -119,7 +122,6 @@ public abstract class Hero extends Gameobject {
 	public List<Bomb> getbomblist() {
 		return this.bombList;
 	}
-
 	protected void clearBomb() {
 		this.countBomb--;
 	}

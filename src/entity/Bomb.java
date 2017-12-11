@@ -201,12 +201,6 @@ public class Bomb extends Gameobject{
 
 		});thread.start();
 	}
-	public void pushByHero(Hero hero) {
-		while(true) {
-			bomb.setLayoutX(bomb.getLayoutX()+1);
-			bomb.setLayoutX(bomb.getLayoutX()+1);
-		}
-	}
 	public Hitbox getUnitbox() {
 		return this.bomb;
 	}

@@ -1,8 +1,8 @@
 package item;
 
-import com.sun.prism.paint.Color;
-
 import entity.Hero;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 import object.Gameobject;
 import sharedObject.Hitbox;
 
@@ -12,6 +12,7 @@ public class Upgradebomb extends Gameobject implements Item{
 	public Upgradebomb(double x, double y) {
 		super(x, y);
 		item = new Hitbox(x,y,60,60);
+		item.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("upgradebomb.png").toString())));
 	}
 
 	@Override

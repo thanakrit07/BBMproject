@@ -41,31 +41,22 @@ public class Player1 extends Hero {
 			final long startNanoTime = System.nanoTime();
 			@Override
 			public void handle(long currentNanoTime) {
-				double t = ((currentNanoTime - startNanoTime) / 1000000000.0) % 0.45;
+				double t = ((currentNanoTime - startNanoTime) / 1000000000.0) % 0.60;
 				int ck=0;
 				if(direction==0)ck=0;
-				else if(direction==1)ck=3;
-				else if(direction==2)ck=11;
-				else if(direction==3)ck=14;
+				else if(direction==1)ck=4;
+				else if(direction==2)ck=8;
+				else if(direction==3)ck=12;
 				
-				if(t>0 && t<=0.1) {					
+				if(t>0 && t<=0.15) {					
 					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(0+ck)));
-				
-				}else if(t>0.1 && t<=0.2) {
+				}else if(t>0.15 && t<=0.30) {
 					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(1+ck)));
-				}else if(t>0.2 && t<=0.3) {
+				}else if(t>0.30 && t<=0.45) {
 					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(2+ck)));
-				}else if(t>0.3 && t<=0.4) {
+				}else if(t>0.45 && t<=0.60) {
 					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(3+ck)));
-				}else if(t>0.4 && t<=0.5) {
-					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(4+ck)));
-				}else if(t>0.5 && t<=0.6) {
-					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(5+ck)));
-				}else if(t>0.6 && t<=0.7) {
-					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(6+ck)));
-				}else if(t>0.7 && t<=0.8) {
-					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(7+ck)));
-				}				
+				}
 			}			
 		};
 		
