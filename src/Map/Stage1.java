@@ -24,6 +24,7 @@ import java.util.List;
 import entity.Player1;
 import entity.Player2;
 import envi.Envi;
+import envi.Brick;
 import envi.Wall;
 
 import input.KeyInput;
@@ -33,9 +34,9 @@ public class Stage1 implements AllScene {
 	private Scene scene;
 	private Group root;
 	private Canvas s1;
-	private GraphicsContext gc;
-	private List<Envi> listenvi = new ArrayList<Envi>();
-	
+
+	private static GraphicsContext gc;
+	public static List<Hitbox> lbrick = new ArrayList<Hitbox>();
 	private Player1 p1;
 	private Player2 p2;
 	public static int[][] field;
@@ -83,7 +84,7 @@ public class Stage1 implements AllScene {
 
 		// Create Wall
 
-		field = new int[][] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		field = new int[][] { { 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
 				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
@@ -102,7 +103,6 @@ public class Stage1 implements AllScene {
 			for (int j = 0; j < 17; j++) {
 				if (field[i][j] == 1) {
 					Wall w = new Wall(30 + (j * 60), 30 + (i * 60));
-					listenvi.add(w);
 					p1.getlhitbox().add(w.getHitbox());
 					p2.getlhitbox().add(w.getHitbox());
 					root.getChildren().add(w.getHitbox());
@@ -112,6 +112,13 @@ public class Stage1 implements AllScene {
 				} else if (field[i][j] == 0 && (i + j) % 2 == 1) {
 					Image floor = new Image(ClassLoader.getSystemResource("floor2.png").toString());
 					gc.drawImage(floor, 30 + (j * 60), 30 + (i * 60), 60, 60);
+				} else if (field[i][j] == 2) {
+					Brick b = new Brick(30 + (j* 60), 30 + (i * 60));
+					lbrick.add(b.getHitbox());
+					p1.getlhitbox().add(b.getHitbox());
+					p2.getlhitbox().add(b.getHitbox());
+					root.getChildren().add(b.getHitbox());
+					
 				}
 			}
 		}
@@ -132,9 +139,10 @@ public class Stage1 implements AllScene {
 
 			public void handle(long currentNanoTime) {
 				p1.update();
-				p1.updateBomb(root, field, p1, p2,listenvi);
+				p1.updateBomb(root, field, lbrick, p1, p2);
 				p2.update();
-				p2.updateBomb(root, field, p1, p2,listenvi);
+				p2.updateBomb(root, field, lbrick, p1, p2);
+
 				update();
 			}
 		};
@@ -148,6 +156,7 @@ public class Stage1 implements AllScene {
 			gc.fillRect(0, 0, 1080, 960);
 			cs.setOpacity(0.8);
 			gc.setFill(Color.WHITE);
+			gc.setStroke(Color.BLACK);
 			gc.setFont(new Font("Monospace", 200));
 			gc.setTextAlign(TextAlignment.CENTER);
 			Platform.runLater(new Runnable() {
@@ -160,10 +169,19 @@ public class Stage1 implements AllScene {
 			try {
 				gc.fillText("1", 1080 / 2, 960 / 2);				
 				Thread.sleep(1000);
+				gc.setFill(Color.BLACK);
+				gc.fillText("1", 1080 / 2, 960 / 2);
+				gc.setFill(Color.WHITE);
 				gc.fillText("2", 1080 / 2, 960 / 2);
 				Thread.sleep(1000);
+				gc.setFill(Color.BLACK);
+				gc.fillText("2", 1080 / 2, 960 / 2);
+				gc.setFill(Color.WHITE);
 				gc.fillText("3", 1080 / 2, 960 / 2);
 				Thread.sleep(1000);
+				gc.setFill(Color.BLACK);
+				gc.fillText("3", 1080 / 2, 960 / 2);
+				gc.setFill(Color.WHITE);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -203,33 +221,20 @@ public class Stage1 implements AllScene {
 			}
 		}
 	}
-
-	// public void bombKill(List<Hitbox> lrec1,List<Hitbox> lrec2) {
-	// if (lrec1!=null) {
-	// int c1 = lrec1.size();
-	// for (int i=0;i<c1;i++) {
-	// if (lrec1.get(0).CollosionWith(p1.getHerobox())) {
-	// System.out.println("p1 dead");
-	// p1.setDead();
-	// p1.getHerobox().setVisible(false);
-	// }
-	// if (lrec1.get(0).CollosionWith(p2.getHerobox())) {
-	// System.out.println("p2 dead");
-	// p2.setDead();
-	// p2.getHerobox().setVisible(false);
-	// }
-	// lrec1.remove(0);
-	// }
-	// }
-	// if (lrec2!=null) {
-	// int c2 = lrec2.size();
-	// for (int i=0;i<c2;i++) {
-	// if (lrec2.get(0).CollosionWith(p1.getHerobox())) p1.setDead();
-	// if (lrec2.get(0).CollosionWith(p2.getHerobox())) p2.setDead();
-	// lrec2.remove(0);
-	// }
-	// }
-	// }
+	
+	public static List<Hitbox> getBrick(){
+		return lbrick;
+	}
+	
+	public static void drawFloor(int i, int j) {
+		if ((i + j) % 2 == 0) {
+			Image floor = new Image(ClassLoader.getSystemResource("floor1.png").toString());
+			gc.drawImage(floor, 30 + (j * 60), 30 + (i * 60), 60, 60);
+		} else {
+			Image floor = new Image(ClassLoader.getSystemResource("floor2.png").toString());
+			gc.drawImage(floor, 30 + (j * 60), 30 + (i * 60), 60, 60);
+		}
+	}
 
 	@Override
 	public Scene getScene() {

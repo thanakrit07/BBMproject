@@ -1,5 +1,9 @@
 package envi;
 
+import com.sun.prism.paint.Color;
+
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 import sharedObject.Hitbox;
 
 public class Brick extends Envi{
@@ -7,6 +11,7 @@ public class Brick extends Envi{
 	public Brick(double x,double y) {
 		super(x,y);
 		this.hitbox= new Hitbox(x,y,60,60);
+		hitbox.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("wall.png").toString())));
 		hitbox.setVisible(false);
 	}
 	

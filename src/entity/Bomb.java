@@ -8,6 +8,7 @@ import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
+import Map.Stage1;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.canvas.GraphicsContext;
@@ -45,7 +46,7 @@ public class Bomb extends Gameobject{
 	public boolean IsExploded() {
 		return this.exploded;
 	}
-	public void startBomb(Group root ,int[][] field,Player1 p1,Player2 p2) {
+	public void startBomb(Group root ,int[][] field, List<Hitbox> lbrick,Player1 p1,Player2 p2) {
 		
 		Thread thread = new Thread(() -> {
 			root.getChildren().add(bomb);
@@ -84,6 +85,11 @@ public class Bomb extends Gameobject{
 						u.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("V_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(u);
+					if (field[indexi-i][indexj]==2) {
+						field[indexi-i][indexj]=0;
+						Stage1.drawFloor(indexi-i,indexj);
+						up = false;
+					}
 				}else {
 					up = false;
 				}
@@ -96,6 +102,11 @@ public class Bomb extends Gameobject{
 						d.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("V_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(d);
+					if (field[indexi+i][indexj]==2) {
+						field[indexi+i][indexj]=0;
+						Stage1.drawFloor(indexi+i, indexj);
+						down = false;
+					}
 				}else {
 					down = false;
 				}
@@ -108,6 +119,11 @@ public class Bomb extends Gameobject{
 						l.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("H_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(l);
+					if (field[indexi][indexj-i]==2) {
+						field[indexi][indexj-i]=0;
+						Stage1.drawFloor(indexi, indexj-i);
+						left = false;
+					}
 				}else {
 					left = false;
 				}
@@ -120,6 +136,11 @@ public class Bomb extends Gameobject{
 						r.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("H_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(r);
+					if (field[indexi][indexj+i]==2) {
+						field[indexi][indexj+i]=0;
+						Stage1.drawFloor(indexi, indexj+i);
+						right = false;
+					}
 				}else {
 					right = false;
 				}							
@@ -152,6 +173,13 @@ public class Bomb extends Gameobject{
 				public void run() {
 					// TODO Auto-generated method stub
 					for(Hitbox rec: lrec) {
+						for (int i=lbrick.size()-1;i>=0;i--) {
+							if (rec.CollosionWith(lbrick.get(i))) {
+								p1.getlhitbox().remove(lbrick.get(i));
+								p2.getlhitbox().remove(lbrick.get(i));
+								lbrick.remove(i);
+							}
+						}
 						rec.setVisible(false);					
 					}					
 				}		
