@@ -6,6 +6,7 @@ import sharedObject.Hitbox;
 
 public class Boost extends Gameobject implements Item{
 	private Hitbox item;
+	private boolean kept = false;
 	
 	public Boost(double x,double y) {
 		super(x,y);
@@ -13,9 +14,18 @@ public class Boost extends Gameobject implements Item{
 	}
 	
 	public void IsKeptBy(Hero hero) {
-		if(item.CollosionWith(hero.getHerobox())) {
+		if(!kept) {
 			hero.increaseSpeed();
 			item.setVisible(false);
+			kept = true;
 		}
+	}
+
+	public Hitbox getHitbox() {
+		return item;
+	}
+	
+	public boolean isKept() {
+		return kept;
 	}
 }

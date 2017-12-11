@@ -20,8 +20,8 @@ public class Player2 extends Hero {
 	public Player2(double x, double y) {
 		super(x, y);
 		this.direction = 3;
-		this.bombrange = 3;
-		this.speed = 5;
+		this.bombrange = 1;
+		this.speed = 3;
 		this.alive = true;
 
 		bounds = new Hitbox(x, y, 60, 60);
@@ -49,13 +49,13 @@ public class Player2 extends Hero {
 			moveX();
 		}
 	}
-	public void updateBomb(Group root, int[][] field, List<Hitbox> lbrick,Player1 p1,Player2 p2) {
+	public void updateBomb(Group root, Player1 p1, Player2 p2) {
 
 		if (KeyInput.getKeyPressed(KeyCode.ENTER)) {
 //			System.out.println("P2 bomb");
 			if (!KeyInput.setkeyPressed.contains(KeyCode.ENTER)) {
 				if (countBomb>0) {
-					DropBomb(root, field, lbrick,p1,p2);					
+					DropBomb(root, p1,p2);					
 
 					Thread thread = new Thread(() -> {
 						countBomb--;
