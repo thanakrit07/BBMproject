@@ -84,12 +84,12 @@ public class Player1 extends Hero {
 
 	}
 
-	public void updateBomb(Group root, int[][] field,Player1 p1,Player2 p2) {
+	public void updateBomb(Group root, int[][] field, List<Hitbox> lbrick,Player1 p1,Player2 p2) {
 		if (KeyInput.getKeyPressed(KeyCode.SPACE)) {
 //			System.out.println("P1 bomb");
 			if (!KeyInput.setkeyPressed.contains(KeyCode.SPACE)) {
 				if (countBomb>0) {
-					DropBomb(root, field,p1,p2);					
+					DropBomb(root, field, lbrick,p1,p2);					
 					Thread thread = new Thread(() -> {
 						countBomb--;
 						try {
