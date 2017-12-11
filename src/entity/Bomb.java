@@ -71,10 +71,10 @@ public class Bomb implements Gameobject{
 				if(up==true && indexi-i>=0 && field[indexi-(i)][indexj]!=1) {
 					Hitbox u;
 					if(i==bombrange) {
-						u = new Hitbox(x,y-(i*60)+5,60.0,55.0);
+						u = new Hitbox(x+6,y-(i*60)+5,48.0,55.0);
 						u.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("U_Headeffbomb.png").toString())));
 					}else {
-						u = new Hitbox(x,y-(i*60),60.0,60.0);
+						u = new Hitbox(x+6,y-(i*60),48.0,60.0);
 						u.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("V_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(u);
@@ -89,10 +89,10 @@ public class Bomb implements Gameobject{
 				if(down==true && indexi+i<=14 && field[indexi+(i)][indexj]!=1) {
 					Hitbox d;
 					if(i==bombrange) {
-						d = new Hitbox(x,y+(i*60),60.0,55.0);
+						d = new Hitbox(x+6,y+(i*60),48.0,55.0);
 						d.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("D_Headeffbomb.png").toString())));
 					}else {
-						d = new Hitbox(x,y+(i*60),60.0,60.0);
+						d = new Hitbox(x+6,y+(i*60),48.0,60.0);
 						d.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("V_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(d);
@@ -107,10 +107,10 @@ public class Bomb implements Gameobject{
 				if(left==true && indexj-i>=0 && field[indexi][indexj-i]!=1) {
 					Hitbox l;
 					if(i==bombrange) {
-						l = new Hitbox(x-(i*60)+5,y,55.0,60.0);
+						l = new Hitbox(x-(i*60)+5,y+6,55.0,48.0);
 						l.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("L_Headeffbomb.png").toString())));
 					}else {
-						l = new Hitbox(x-(i*60),y,60.0,60.0);
+						l = new Hitbox(x-(i*60),y+6,60.0,48.0);
 						l.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("H_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(l);
@@ -125,10 +125,10 @@ public class Bomb implements Gameobject{
 				if(right==true && indexj+i<17 && field[indexi][indexj+i]!=1) {
 					Hitbox r;
 					if(i==bombrange) {
-						r = new Hitbox(x+(i*60),y,55.0,60.0);						
+						r = new Hitbox(x+(i*60),y+6,55.0,48.0);						
 						r.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("R_Headeffbomb.png").toString())));
 					}else {
-						r = new Hitbox(x+(i*60),y,60.0,60.0);
+						r = new Hitbox(x+(i*60),y+6,60.0,48.0);
 						r.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("H_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(r);
