@@ -22,12 +22,10 @@ public class Stackbomb extends Item{
 		
 	}
 	
-	@Override
 	public Hitbox getHitbox() {
 		return item;
 	}
 	
-	@Override
 	public boolean isKept() {
 		return kept;
 	}

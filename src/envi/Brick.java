@@ -27,19 +27,19 @@ public class Brick extends Envi{
 			Item item = new Boost(hitbox.getBoundsInParent().getMinX(),hitbox.getBoundsInParent().getMinY());
 			item.getHitbox().setVisible(true);
 			root.getChildren().add(item.getHitbox());									
-			Stage1.getItemList().add(item);
+			Stage1.litem.add(item);
 		}else if (it==1) {
 			System.out.println("Stackbomb");
 			Item item = new Stackbomb(hitbox.getBoundsInParent().getMinX(),hitbox.getBoundsInParent().getMinY());
 			item.getHitbox().setVisible(true);
 			root.getChildren().add(item.getHitbox());
-			Stage1.getItemList().add(item);
+			Stage1.litem.add(item);
 		}else if (it==2) {
 			System.out.println("Upgradebomb");
 			Item item = new Upgradebomb(hitbox.getBoundsInParent().getMinX(),hitbox.getBoundsInParent().getMinY());
 			item.getHitbox().setVisible(true);
 			root.getChildren().add(item.getHitbox());
-			Stage1.getItemList().add(item);
+			Stage1.litem.add(item);
 		}else System.out.println("None");
 	}
 }

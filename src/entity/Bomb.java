@@ -65,7 +65,7 @@ public class Bomb implements Gameobject{
 			Hitbox c = new Hitbox(x,y,60.0,60.0);
 			c.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("mideffbomb.png").toString())));
 			lrec.add(c);
-			int[][] field = Stage1.getField();
+			int[][] field = Stage1.field;
 			for (int i=1; i <= bombrange;i++) {
 			
 				if(up==true && indexi-i>=0 && field[indexi-(i)][indexj]!=1) {
@@ -172,7 +172,7 @@ public class Bomb implements Gameobject{
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					List<Brick> lbrick = Stage1.getBrick();
+					List<Brick> lbrick = Stage1.lbrick;
 					for(Hitbox rec: lrec) {
 						for (int i=lbrick.size()-1;i>=0;i--) {
 							if (rec.CollosionWith(lbrick.get(i).getHitbox())) {
