@@ -70,31 +70,27 @@ public abstract class Hero extends Gameobject {
 		}
 		return hit;
 	}
-	protected void DropBomb(Group root, int[][] field, List<Hitbox> lbrick, Player1 p1, Player2 p2) {
+	protected void DropBomb(Group root, Player1 p1, Player2 p2) {
 		if (direction == 0) {
 			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
 			Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
-			root.getChildren().add(bomb.getUnitbox());
-			bomb.startBomb(root, field, lbrick, p1, p2);
+			bomb.startBomb(root, p1, p2);
 
 		} else if (direction == 1) {
 			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
-					Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
-			root.getChildren().add(bomb.getUnitbox());
-			bomb.startBomb(root, field, lbrick, p1, p2);
+			Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
+			bomb.startBomb(root, p1, p2);
 
 		} else if (direction == 2) {
 			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
 			Math.floor(bounds.getBoundsInParent().getMinY() / 60) * 60 + 30, this.bombrange);
-			root.getChildren().add(bomb.getUnitbox());
-			bomb.startBomb(root, field, lbrick, p1, p2);
+			bomb.startBomb(root, p1, p2);
 
 		} else if (direction == 3) {
 			Bomb bomb = new Bomb(Math.ceil(bounds.getBoundsInParent().getMinX() / 60) * 60 - 30,
 				Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
-			root.getChildren().add(bomb.getUnitbox());
 			System.out.println("dropLEFT");
-			bomb.startBomb(root, field, lbrick, p1, p2);
+			bomb.startBomb(root, p1, p2);
 		}
 
 	}

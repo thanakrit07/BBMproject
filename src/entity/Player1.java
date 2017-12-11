@@ -14,9 +14,11 @@ import java.util.List;
 
 import com.sun.scenario.effect.ImageData;
 
+import Map.Stage1;
 import entity.Bomb;
 import envi.Envi;
 import input.KeyInput;
+import item.Item;
 
 public class Player1 extends Hero {
 //	protected static int countBomb = 3;
@@ -27,7 +29,7 @@ public class Player1 extends Hero {
 		super(x, y);
 		this.direction = 1;
 		this.bombrange = 1;
-		this.speed = 5;
+		this.speed = 3;
 		this.alive = true;
 
 		bounds = new Hitbox(x, y, 60, 60);
@@ -82,13 +84,13 @@ public class Player1 extends Hero {
 		}
 		if(KeyInput.keyPressed.isEmpty())animationwalk.stop();;		
 	}
-	public void updateBomb(Group root, int[][] field, List<Hitbox> lbrick,Player1 p1,Player2 p2) {
+	public void updateBomb(Group root, Player1 p1, Player2 p2) {
 
 		if (KeyInput.getKeyPressed(KeyCode.SPACE)) {
 //			System.out.println("P1 bomb");
 			if (!KeyInput.setkeyPressed.contains(KeyCode.SPACE)) {
 				if (countBomb>0) {
-					DropBomb(root, field, lbrick,p1,p2);					
+					DropBomb(root,p1,p2);					
 
 					Thread thread = new Thread(() -> {
 						countBomb--;

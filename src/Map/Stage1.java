@@ -28,6 +28,7 @@ import envi.Brick;
 import envi.Wall;
 
 import input.KeyInput;
+import item.Item;
 import sharedObject.Hitbox;
 
 public class Stage1 implements AllScene {
@@ -36,7 +37,8 @@ public class Stage1 implements AllScene {
 	private Canvas s1;
 
 	private static GraphicsContext gc;
-	public static List<Hitbox> lbrick = new ArrayList<Hitbox>();
+	public static List<Brick> lbrick = new ArrayList<Brick>();
+	public static List<Item> litem = new ArrayList<Item>();
 	private Player1 p1;
 	private Player2 p2;
 	public static int[][] field;
@@ -114,7 +116,7 @@ public class Stage1 implements AllScene {
 					gc.drawImage(floor, 30 + (j * 60), 30 + (i * 60), 60, 60);
 				} else if (field[i][j] == 2) {
 					Brick b = new Brick(30 + (j* 60), 30 + (i * 60));
-					lbrick.add(b.getHitbox());
+					lbrick.add(b);
 					p1.getlhitbox().add(b.getHitbox());
 					p2.getlhitbox().add(b.getHitbox());
 					root.getChildren().add(b.getHitbox());
@@ -139,10 +141,14 @@ public class Stage1 implements AllScene {
 
 			public void handle(long currentNanoTime) {
 				p1.update();
-				p1.updateBomb(root, field, lbrick, p1, p2);
+				p1.updateBomb(root, p1, p2);
 				p2.update();
-				p2.updateBomb(root, field, lbrick, p1, p2);
-
+				p2.updateBomb(root, p1, p2);
+				for (int i=litem.size()-1;i>=0;i--) {
+					if (litem.get(i).getHitbox().CollosionWith(p1.getHerobox())) litem.get(i).IsKeptBy(p1);
+					else if (litem.get(i).getHitbox().CollosionWith(p2.getHerobox())) litem.get(i).IsKeptBy(p2);
+					if (litem.get(i).isKept()) litem.remove(i);
+				}
 				update();
 			}
 		};
@@ -222,7 +228,7 @@ public class Stage1 implements AllScene {
 		}
 	}
 	
-	public static List<Hitbox> getBrick(){
+	public static List<Brick> getBrick(){
 		return lbrick;
 	}
 	
@@ -241,6 +247,14 @@ public class Stage1 implements AllScene {
 		// TODO Auto-generated method stub
 		return this.scene;
 
+	}
+	
+	public static int[][] getField(){
+		return field;
+	}
+	
+	public static List<Item> getItemList(){
+		return litem;
 	}
 
 }

@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Map.Stage1;
+import envi.Brick;
+import item.Boost;
+import item.Item;
+import item.Stackbomb;
+import item.Upgradebomb;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.canvas.GraphicsContext;
@@ -46,10 +51,9 @@ public class Bomb extends Gameobject{
 	public boolean IsExploded() {
 		return this.exploded;
 	}
-	public void startBomb(Group root ,int[][] field, List<Hitbox> lbrick,Player1 p1,Player2 p2) {
-		
+	public void startBomb(Group root , Player1 p1,Player2 p2) {
+		root.getChildren().add(bomb);		
 		Thread thread = new Thread(() -> {
-			root.getChildren().add(bomb);
 			this.bomb.setVisible(true);
 			try {
 				Thread.sleep(1000);
@@ -72,6 +76,7 @@ public class Bomb extends Gameobject{
 			Hitbox c = new Hitbox(x,y,60.0,60.0);
 			c.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("mideffbomb.png").toString())));
 			lrec.add(c);
+			int[][] field = Stage1.getField();
 			for (int i=1; i <= bombrange;i++) {
 			
 				
@@ -172,15 +177,23 @@ public class Bomb extends Gameobject{
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
+					List<Brick> lbrick = Stage1.getBrick();
 					for(Hitbox rec: lrec) {
 						for (int i=lbrick.size()-1;i>=0;i--) {
-							if (rec.CollosionWith(lbrick.get(i))) {
-								p1.getlhitbox().remove(lbrick.get(i));
-								p2.getlhitbox().remove(lbrick.get(i));
+							if (rec.CollosionWith(lbrick.get(i).getHitbox())) {
+								p1.getlhitbox().remove(lbrick.get(i).getHitbox());
+								p2.getlhitbox().remove(lbrick.get(i).getHitbox());
+								lbrick.get(i).destroyed(root);
 								lbrick.remove(i);
 							}
 						}
-						rec.setVisible(false);					
+						if (rec.CollosionWith(p1.getHerobox())) {
+							p1.setDead();
+						}
+						if (rec.CollosionWith(p2.getHerobox())) {
+							p2.setDead();
+						}
+						rec.setVisible(false);
 					}					
 				}		
 			});
