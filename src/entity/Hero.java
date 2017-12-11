@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entity.Bomb;
+import envi.Envi;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -70,32 +71,31 @@ public abstract class Hero extends Gameobject {
 		return hit;
 	}
 
-	protected void DropBomb(Group root, int[][] field, Player1 p1, Player2 p2) {
+	protected void DropBomb(Group root, int[][] field, Player1 p1, Player2 p2,List<Envi> listenvi) {
 		if (direction == 0) {
 			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
 			Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
-			root.getChildren().add(bomb.getUnitbox());
+			
 			bomb.startBomb(root, field, p1, p2);
 		} else if (direction == 1) {
 			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
-					Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
-			root.getChildren().add(bomb.getUnitbox());
+			Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
+			
 			bomb.startBomb(root, field, p1, p2);
 		} else if (direction == 2) {
 			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
-					Math.floor(bounds.getBoundsInParent().getMinY() / 60) * 60 + 30, this.bombrange);
-			root.getChildren().add(bomb.getUnitbox());
+			Math.floor(bounds.getBoundsInParent().getMinY() / 60) * 60 + 30, this.bombrange);
+		
 			bomb.startBomb(root, field, p1, p2);
 		} else if (direction == 3) {
 			Bomb bomb = new Bomb(Math.ceil(bounds.getBoundsInParent().getMinX() / 60) * 60 - 30,
-					Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
-			root.getChildren().add(bomb.getUnitbox());
-			System.out.println("dropLEFT");
+			Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
 			bomb.startBomb(root, field, p1, p2);
 		}
 
 	}
-
+	protected abstract void update();
+	
 	public void increaseBombrange() {
 		this.bombrange++;
 	}
@@ -120,7 +120,6 @@ public abstract class Hero extends Gameobject {
 		return this.bombList;
 	}
 
-	protected abstract void update();
 
 	protected void clearBomb() {
 		this.countBomb--;

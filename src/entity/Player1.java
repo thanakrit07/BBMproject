@@ -15,10 +15,11 @@ import java.util.List;
 import com.sun.scenario.effect.ImageData;
 
 import entity.Bomb;
+import envi.Envi;
 import input.KeyInput;
 
 public class Player1 extends Hero {
-	protected static int countBomb = 3;
+//	protected static int countBomb = 3;
 	protected static boolean alive;
 //	private ImageRef imref ;
 	private AnimationTimer animationwalk;
@@ -46,7 +47,8 @@ public class Player1 extends Hero {
 				else if(direction==3)ck=9;
 				
 				if(t>0 && t<=0.15) {
-					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(0+ck)));	
+					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(0+ck)));
+				
 				}else if(t>0.15 && t<=0.3) {
 					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(1+ck)));
 				}else if(t>0.3 && t<=0.45) {
@@ -56,7 +58,6 @@ public class Player1 extends Hero {
 		};
 		
 	}
-
 	public void update() {
 		// TODO Auto-generated method stub
 		if (KeyInput.getKeyPressed(KeyCode.W)) {
@@ -79,17 +80,15 @@ public class Player1 extends Hero {
 			this.direction = 3;
 			moveX();
 		}
-		if(KeyInput.keyPressed.isEmpty())animationwalk.stop();;
-		
-
+		if(KeyInput.keyPressed.isEmpty())animationwalk.stop();;		
 	}
 
-	public void updateBomb(Group root, int[][] field,Player1 p1,Player2 p2) {
+	public void updateBomb(Group root, int[][] field,Player1 p1,Player2 p2,List<Envi> listenvi) {
 		if (KeyInput.getKeyPressed(KeyCode.SPACE)) {
 //			System.out.println("P1 bomb");
 			if (!KeyInput.setkeyPressed.contains(KeyCode.SPACE)) {
 				if (countBomb>0) {
-					DropBomb(root, field,p1,p2);					
+					DropBomb(root, field,p1,p2,listenvi);					
 					Thread thread = new Thread(() -> {
 						countBomb--;
 						try {

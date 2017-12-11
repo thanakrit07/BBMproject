@@ -10,10 +10,11 @@ import sharedObject.Hitbox;
 import java.util.List;
 
 import entity.Bomb;
+import envi.Envi;
 import input.KeyInput;
 
 public class Player2 extends Hero {
-	protected static int countBomb = 3;
+//	protected static int countBomb = 3;
 	protected static boolean alive;
 
 	public Player2(double x, double y) {
@@ -49,12 +50,12 @@ public class Player2 extends Hero {
 		}
 	}
 
-	public void updateBomb(Group root, int[][] field,Player1 p1,Player2 p2) {
+	public void updateBomb(Group root, int[][] field,Player1 p1,Player2 p2,List<Envi> listenvi) {
 		if (KeyInput.getKeyPressed(KeyCode.ENTER)) {
 //			System.out.println("P2 bomb");
 			if (!KeyInput.setkeyPressed.contains(KeyCode.ENTER)) {
 				if (countBomb>0) {
-					DropBomb(root, field,p1,p2);					
+					DropBomb(root, field,p1,p2,listenvi);					
 					Thread thread = new Thread(() -> {
 						countBomb--;
 						try {

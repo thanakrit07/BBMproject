@@ -23,6 +23,7 @@ import java.util.List;
 
 import entity.Player1;
 import entity.Player2;
+import envi.Envi;
 import envi.Wall;
 
 import input.KeyInput;
@@ -33,7 +34,8 @@ public class Stage1 implements AllScene {
 	private Group root;
 	private Canvas s1;
 	private GraphicsContext gc;
-	private List<Hitbox> lh = new ArrayList<Hitbox>();
+	private List<Envi> listenvi = new ArrayList<Envi>();
+	
 	private Player1 p1;
 	private Player2 p2;
 	public static int[][] field;
@@ -100,6 +102,7 @@ public class Stage1 implements AllScene {
 			for (int j = 0; j < 17; j++) {
 				if (field[i][j] == 1) {
 					Wall w = new Wall(30 + (j * 60), 30 + (i * 60));
+					listenvi.add(w);
 					p1.getlhitbox().add(w.getHitbox());
 					p2.getlhitbox().add(w.getHitbox());
 					root.getChildren().add(w.getHitbox());
@@ -129,9 +132,9 @@ public class Stage1 implements AllScene {
 
 			public void handle(long currentNanoTime) {
 				p1.update();
-				p1.updateBomb(root, field, p1, p2);
+				p1.updateBomb(root, field, p1, p2,listenvi);
 				p2.update();
-				p2.updateBomb(root, field, p1, p2);
+				p2.updateBomb(root, field, p1, p2,listenvi);
 				update();
 			}
 		};

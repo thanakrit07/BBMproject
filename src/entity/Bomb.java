@@ -48,6 +48,7 @@ public class Bomb extends Gameobject{
 	public void startBomb(Group root ,int[][] field,Player1 p1,Player2 p2) {
 		
 		Thread thread = new Thread(() -> {
+			root.getChildren().add(bomb);
 			this.bomb.setVisible(true);
 			try {
 				Thread.sleep(1000);
@@ -157,6 +158,12 @@ public class Bomb extends Gameobject{
 			});
 
 		});thread.start();
+	}
+	public void pushByHero(Hero hero) {
+		while(true) {
+			bomb.setLayoutX(bomb.getLayoutX()+1);
+			bomb.setLayoutX(bomb.getLayoutX()+1);
+		}
 	}
 	public Hitbox getUnitbox() {
 		return this.bomb;
