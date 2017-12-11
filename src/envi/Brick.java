@@ -18,4 +18,8 @@ public class Brick extends Envi{
 	public Hitbox getHitbox() {
 		return hitbox;
 	}
+	
+	public void destroyedByBomb() {
+		
+	}
 }

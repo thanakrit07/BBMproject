@@ -47,9 +47,8 @@ public class Bomb extends Gameobject{
 		return this.exploded;
 	}
 	public void startBomb(Group root ,int[][] field, List<Hitbox> lbrick,Player1 p1,Player2 p2) {
-		
+		root.getChildren().add(bomb);	
 		Thread thread = new Thread(() -> {
-			root.getChildren().add(bomb);
 			this.bomb.setVisible(true);
 			try {
 				Thread.sleep(1000);

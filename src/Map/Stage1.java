@@ -41,6 +41,7 @@ public class Stage1 implements AllScene {
 	private Player2 p2;
 	public static int[][] field;
 	private AnimationTimer animation;
+	
 
 	public Stage1() {
 		root = new Group();
