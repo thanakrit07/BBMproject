@@ -3,25 +3,17 @@ package entity;
 import object.Gameobject;
 import sharedObject.Hitbox;
 import sharedObject.ImageRef;
-import javafx.scene.shape.Rectangle;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import Map.Stage1;
 import envi.Brick;
-import item.Boost;
-import item.Item;
-import item.Stackbomb;
-import item.Upgradebomb;
 import javafx.application.Platform;
 import javafx.scene.Group;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 
-public class Bomb extends Gameobject{
+public class Bomb implements Gameobject{
 	private boolean exploded;
 	private int bombrange;
 	private Hitbox bomb;
@@ -34,11 +26,7 @@ public class Bomb extends Gameobject{
 	private boolean left = true;
 	private boolean right = true;
 	
-//	private Player1 p1
-//	private Hitbox p2 = Player2.getHerobox();
-	
 	public Bomb(double x,double y,int bombrange) {
-		super(x,y);
 		this.x = x;
 		this.y = y;
 		this.exploded = false;
@@ -51,7 +39,6 @@ public class Bomb extends Gameobject{
 	public boolean IsExploded() {
 		return this.exploded;
 	}
-
 	public void startBomb(Group root , Player1 p1,Player2 p2) {
 		root.getChildren().add(bomb);		
 		Thread thread = new Thread(() -> {
@@ -71,23 +58,23 @@ public class Bomb extends Gameobject{
 			
 			this.exploded = true;
 			
+			//draw effected bomb
 			int indexj =(int)(this.x-30)/60 ;
 			int indexi = (int)(this.y-30)/60 ;
 			lrec = new ArrayList<Hitbox>();
 			Hitbox c = new Hitbox(x,y,60.0,60.0);
 			c.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("mideffbomb.png").toString())));
 			lrec.add(c);
-			int[][] field = Stage1.getField();
+			int[][] field = Stage1.field;
 			for (int i=1; i <= bombrange;i++) {
 			
-				
-				//check wall
 				if(up==true && indexi-i>=0 && field[indexi-(i)][indexj]!=1) {
-					Hitbox u = new Hitbox(x,y-(i*60),60.0,60.0);
+					Hitbox u;
 					if(i==bombrange) {
-						
+						u = new Hitbox(x+6,y-(i*60)+5,48.0,55.0);
 						u.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("U_Headeffbomb.png").toString())));
 					}else {
+						u = new Hitbox(x+6,y-(i*60),48.0,60.0);
 						u.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("V_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(u);
@@ -100,11 +87,12 @@ public class Bomb extends Gameobject{
 					up = false;
 				}
 				if(down==true && indexi+i<=14 && field[indexi+(i)][indexj]!=1) {
-					Hitbox d = new Hitbox(x,y+(i*60),60.0,60.0);
+					Hitbox d;
 					if(i==bombrange) {
-						
+						d = new Hitbox(x+6,y+(i*60),48.0,55.0);
 						d.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("D_Headeffbomb.png").toString())));
 					}else {
+						d = new Hitbox(x+6,y+(i*60),48.0,60.0);
 						d.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("V_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(d);
@@ -117,11 +105,12 @@ public class Bomb extends Gameobject{
 					down = false;
 				}
 				if(left==true && indexj-i>=0 && field[indexi][indexj-i]!=1) {
-					Hitbox l = new Hitbox(x-(i*60),y,60.0,60.0);
+					Hitbox l;
 					if(i==bombrange) {
-						
+						l = new Hitbox(x-(i*60)+5,y+6,55.0,48.0);
 						l.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("L_Headeffbomb.png").toString())));
 					}else {
+						l = new Hitbox(x-(i*60),y+6,60.0,48.0);
 						l.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("H_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(l);
@@ -134,11 +123,12 @@ public class Bomb extends Gameobject{
 					left = false;
 				}
 				if(right==true && indexj+i<17 && field[indexi][indexj+i]!=1) {
-					Hitbox r = new Hitbox(x+(i*60),y,60.0,60.0);
+					Hitbox r;
 					if(i==bombrange) {
-						
+						r = new Hitbox(x+(i*60),y+6,55.0,48.0);						
 						r.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("R_Headeffbomb.png").toString())));
 					}else {
+						r = new Hitbox(x+(i*60),y+6,60.0,48.0);
 						r.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("H_Bodyeffbomb.png").toString())));
 					}
 					lrec.add(r);
@@ -151,6 +141,8 @@ public class Bomb extends Gameobject{
 					right = false;
 				}							
 			}
+			
+			//kill player
 			Platform.runLater(new Runnable() {
 
 				@Override
@@ -160,10 +152,10 @@ public class Bomb extends Gameobject{
 						rec.setVisible(true);
 						root.getChildren().add(rec);
 						if (rec.CollosionWith(p1.getHerobox())) {
-							p1.setDead();
+							Player1.setDead();
 						}
 						if (rec.CollosionWith(p2.getHerobox())) {
-							p2.setDead();
+							Player2.setDead();
 						}
 					}	
 				}				
@@ -174,11 +166,13 @@ public class Bomb extends Gameobject{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			//destroy brick & kill player
 			Platform.runLater(new Runnable() {
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					List<Brick> lbrick = Stage1.getBrick();
+					List<Brick> lbrick = Stage1.lbrick;
 					for(Hitbox rec: lrec) {
 						for (int i=lbrick.size()-1;i>=0;i--) {
 							if (rec.CollosionWith(lbrick.get(i).getHitbox())) {
@@ -189,10 +183,10 @@ public class Bomb extends Gameobject{
 							}
 						}
 						if (rec.CollosionWith(p1.getHerobox())) {
-							p1.setDead();
+							Player1.setDead();
 						}
 						if (rec.CollosionWith(p2.getHerobox())) {
-							p2.setDead();
+							Player2.setDead();
 						}
 						rec.setVisible(false);
 					}					
@@ -201,7 +195,13 @@ public class Bomb extends Gameobject{
 
 		});thread.start();
 	}
-	public Hitbox getUnitbox() {
+	public void pushByHero(Hero hero) {
+		while(true) {
+			bomb.setLayoutX(bomb.getLayoutX()+1);
+			bomb.setLayoutX(bomb.getLayoutX()+1);
+		}
+	}
+	public Hitbox getHitbox() {
 		return this.bomb;
 	}
 

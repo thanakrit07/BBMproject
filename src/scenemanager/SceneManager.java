@@ -1,10 +1,6 @@
 package scenemanager;
 
-import Map.GameScreen;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import menu.MainMenu;
 
@@ -17,7 +13,7 @@ public class SceneManager {
 		MainMenu mm= new MainMenu();
 		mainMenuScene = mm.getScene();
 		primaryStage = stage;
-		primaryStage.setTitle("BBM");
+		primaryStage.setTitle("Bomber Man !!!");
 		primaryStage.show();
 	}
 

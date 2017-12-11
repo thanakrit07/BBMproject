@@ -6,7 +6,7 @@ import javafx.scene.paint.ImagePattern;
 import object.Gameobject;
 import sharedObject.Hitbox;
 
-public class Boost extends Gameobject implements Item{
+public class Boost extends Item{
 	private Hitbox item;
 	private boolean kept = false;
 	public Boost(double x,double y) {
@@ -15,6 +15,7 @@ public class Boost extends Gameobject implements Item{
 		item.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("boost.png").toString())));
 	}
 	
+	@Override
 	public void IsKeptBy(Hero hero) {
 		if(!kept&&item.CollosionWith(hero.getHerobox())) {
 			hero.increaseSpeed();
@@ -23,10 +24,12 @@ public class Boost extends Gameobject implements Item{
 		}
 	}
 
+	@Override
 	public Hitbox getHitbox() {
 		return item;
 	}
 	
+	@Override
 	public boolean isKept() {
 		return kept;
 	}

@@ -4,28 +4,22 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import sharedObject.Hitbox;
 import sharedObject.ImageRef;
 
-import java.util.List;
-
-import entity.Bomb;
-import envi.Envi;
 import input.KeyInput;
 
 public class Player2 extends Hero {
-//	protected static int countBomb = 3;
 	protected static boolean alive;
 	private AnimationTimer animationwalk;
 	public Player2(double x, double y) {
 		super(x, y);
 		this.direction = 3;
 		this.bombrange = 1;
-		this.speed = 3;
-		this.alive = true;
+		speed = 3;
+		alive = true;
 
 		bounds = new Hitbox(x, y, 60, 60);
 		bounds.setFill(Color.AQUA);
@@ -82,7 +76,6 @@ public class Player2 extends Hero {
 	public void updateBomb(Group root, Player1 p1, Player2 p2) {
 
 		if (KeyInput.getKeyPressed(KeyCode.ENTER)) {
-//			System.out.println("P2 bomb");
 			if (!KeyInput.setkeyPressed.contains(KeyCode.ENTER)) {
 				if (countBomb>0) {
 					DropBomb(root, p1,p2);					
@@ -110,7 +103,13 @@ public class Player2 extends Hero {
 	@Override
 	public boolean isAlive() {
 		// TODO Auto-generated method stub
-		return this.alive;
+		return alive;
+	}
+
+	@Override
+	public Hitbox getHitbox() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

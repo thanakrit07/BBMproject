@@ -6,7 +6,7 @@ import javafx.scene.paint.ImagePattern;
 import object.Gameobject;
 import sharedObject.Hitbox;
 
-public class Upgradebomb extends Gameobject implements Item{
+public class Upgradebomb extends Item{
 	private Hitbox item;
 	private boolean kept = false;
 	public Upgradebomb(double x, double y) {
@@ -25,10 +25,12 @@ public class Upgradebomb extends Gameobject implements Item{
 		}
 	}
 
+	@Override
 	public Hitbox getHitbox() {
 		return item;
 	}
 	
+	@Override
 	public boolean isKept() {
 		return kept;
 	}

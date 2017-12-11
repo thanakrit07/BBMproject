@@ -1,20 +1,19 @@
 package Map;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
+import menu.MainMenu;
+import scenemanager.SceneManager;
 import sharedObject.AllScene;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -24,7 +23,6 @@ import java.util.List;
 
 import entity.Player1;
 import entity.Player2;
-import envi.Envi;
 import envi.Brick;
 import envi.Wall;
 
@@ -128,8 +126,14 @@ public class Stage1 implements AllScene {
 		System.out.println("Create Wall");
 
 		scene.setOnKeyPressed((KeyEvent event) -> {
-			KeyInput.setKeyPressed(event.getCode(), true);
-			// System.out.println("Pressed");
+			if(event.getCode().equals(KeyCode.M)) {
+				SceneManager.gotoSceneOf((new MainMenu()).getScene());
+			}else if(event.getCode().equals(KeyCode.ESCAPE)){
+				Platform.exit();
+			}else {
+				KeyInput.setKeyPressed(event.getCode(), true);				
+			}
+
 
 		});
 
@@ -174,21 +178,23 @@ public class Stage1 implements AllScene {
 				
 			});
 			try {
-				gc.fillText("1", 1080 / 2, 960 / 2);				
+				gc.fillText("3", 1080 / 2, 960 / 2);				
+				Thread.sleep(1000);
+				gc.setFill(Color.BLACK);
+				gc.fillText("3", 1080 / 2, 960 / 2);
+				gc.setFill(Color.WHITE);
+				gc.fillText("2", 1080 / 2, 960 / 2);
+				Thread.sleep(1000);
+				gc.setFill(Color.BLACK);
+				gc.fillText("2", 1080 / 2, 960 / 2);
+				gc.setFill(Color.WHITE);
+				gc.fillText("1", 1080 / 2, 960 / 2);
 				Thread.sleep(1000);
 				gc.setFill(Color.BLACK);
 				gc.fillText("1", 1080 / 2, 960 / 2);
 				gc.setFill(Color.WHITE);
-				gc.fillText("2", 1080 / 2, 960 / 2);
+				gc.fillText("START", 1080 / 2, 960 / 2);
 				Thread.sleep(1000);
-				gc.setFill(Color.BLACK);
-				gc.fillText("2", 1080 / 2, 960 / 2);
-				gc.setFill(Color.WHITE);
-				gc.fillText("3", 1080 / 2, 960 / 2);
-				Thread.sleep(1000);
-				gc.setFill(Color.BLACK);
-				gc.fillText("3", 1080 / 2, 960 / 2);
-				gc.setFill(Color.WHITE);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -216,21 +222,19 @@ public class Stage1 implements AllScene {
 			c.setOpacity(0.8);
 			gc.setTextAlign(TextAlignment.CENTER);
 			gc.setFill(Color.WHITE);
+			gc.setFont(new Font("Monoscpace", 40));
+			gc.fillText("Go to Main Menu Press M\nExit Press Esc", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT * 3 / 4);
 			gc.setFont(new Font("Monospace", 80));
-			// gc.fillText("Game End", 500, 500);
+			gc.fillText("GAME OVER", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 4);
 			root.getChildren().add(c);
 			if (!p1.isAlive() && p2.isAlive()) {
-				gc.fillText("Player2 is the winner!!", 1080 / 2, 960 / 2);
+				gc.fillText("Player2 is the winner!!", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 2);
 			} else if (p1.isAlive() && !p2.isAlive()) {
-				gc.fillText("Player1 is the winner!!", 1080 / 2, 960 / 2);
+				gc.fillText("Player1 is the winner!!", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 2);
 			} else if (!p1.isAlive() && !p2.isAlive()) {
-				gc.fillText("You both dead :(", 1080 / 2, 960 / 2);
+				gc.fillText("You both dead :(", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 2);
 			}
 		}
-	}
-	
-	public static List<Brick> getBrick(){
-		return lbrick;
 	}
 	
 	public static void drawFloor(int i, int j) {
@@ -248,14 +252,6 @@ public class Stage1 implements AllScene {
 		// TODO Auto-generated method stub
 		return this.scene;
 
-	}
-	
-	public static int[][] getField(){
-		return field;
-	}
-	
-	public static List<Item> getItemList(){
-		return litem;
 	}
 
 }

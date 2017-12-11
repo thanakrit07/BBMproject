@@ -3,10 +3,11 @@ package item;
 import entity.Hero;
 import object.Gameobject;
 import sharedObject.Hitbox;
-import javafx.scene.image.*;
+import item.Item;
+import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 
-public class Stackbomb extends Gameobject implements Item{
+public class Stackbomb extends Item{
 	private Hitbox item;
 	private boolean kept = false;
 	public Stackbomb(double x, double y) {
@@ -15,7 +16,6 @@ public class Stackbomb extends Gameobject implements Item{
 		item.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("stackbomb.png").toString())));
 	}
 
-	@Override
 	public void IsKeptBy(Hero hero) {
 		if(!kept&&item.CollosionWith(hero.getHerobox())) {
 			hero.increaseBombnumber();

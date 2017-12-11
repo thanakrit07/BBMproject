@@ -1,16 +1,14 @@
 package envi;
 
-import com.sun.prism.paint.Color;
-
 import Map.Stage1;
 import item.Boost;
 import item.Item;
 import item.Stackbomb;
 import item.Upgradebomb;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import sharedObject.Hitbox;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 
 public class Brick extends Envi{
 	private Hitbox hitbox;
@@ -27,18 +25,18 @@ public class Brick extends Envi{
 	public void destroyed(Group root) {
 		this.hitbox.setVisible(false);
 		int it = (int) Math.floor(Math.random() * 10);
-			System.out.println("Stackbomb");
 		if (it==1||it==5||it==9||it==3) {	
+			System.out.println("Stackbomb");
 			Item item = new Stackbomb(hitbox.getBoundsInParent().getMinX(),hitbox.getBoundsInParent().getMinY());
 			item.getHitbox().setVisible(true);
 			root.getChildren().add(item.getHitbox());
-			Stage1.getItemList().add(item);
+			Stage1.litem.add(item);
 		}else if (it==2||it==6||it==10||it==4) {
 			System.out.println("Upgradebomb");
 			Item item = new Upgradebomb(hitbox.getBoundsInParent().getMinX(),hitbox.getBoundsInParent().getMinY());
 			item.getHitbox().setVisible(true);
 			root.getChildren().add(item.getHitbox());
-			Stage1.getItemList().add(item);
+			Stage1.litem.add(item);
 		}
 //		else if (it==0||it==4||it==8) {
 //			System.out.println("Boost");
@@ -48,5 +46,6 @@ public class Brick extends Envi{
 //			Stage1.getItemList().add(item);
 //		} 
 		else System.out.println("None"+ "");
+		
 	}
 }
