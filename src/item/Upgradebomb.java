@@ -1,7 +1,5 @@
 package item;
 
-import com.sun.prism.paint.Color;
-
 import entity.Hero;
 import object.Gameobject;
 import sharedObject.Hitbox;
@@ -24,10 +22,12 @@ public class Upgradebomb extends Gameobject implements Item{
 		}
 	}
 
+	@Override
 	public Hitbox getHitbox() {
 		return item;
 	}
 	
+	@Override
 	public boolean isKept() {
 		return kept;
 	}

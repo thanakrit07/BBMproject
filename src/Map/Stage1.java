@@ -1,19 +1,14 @@
 package Map;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import sharedObject.AllScene;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -23,7 +18,6 @@ import java.util.List;
 
 import entity.Player1;
 import entity.Player2;
-import envi.Envi;
 import envi.Brick;
 import envi.Wall;
 

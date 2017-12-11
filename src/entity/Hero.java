@@ -4,31 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entity.Bomb;
-import envi.Envi;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import object.Gameobject;
 import sharedObject.Hitbox;
 
 public abstract class Hero extends Gameobject {
 
-	protected double speed = 5;
+	protected static double speed = 5;
 	protected int direction;
 	protected int bombrange;
 	protected List<Bomb> bombList = new ArrayList<Bomb>();
 	protected List<Hitbox> lhb = new ArrayList<Hitbox>();
-	// protected static boolean alive;
 	protected Hitbox bounds;
 
 	protected int countBomb = 1;
 
 	public Hero(double x, double y) {
 		super(x, y);
-		// this.alive = true;
 	}
 
 	protected void moveX() {
@@ -100,8 +92,8 @@ public abstract class Hero extends Gameobject {
 		this.bombrange++;
 	}
 
-	public void increaseSpeed() {
-		this.speed++;
+	public static void increaseSpeed() {
+		speed++;
 	}
 
 	public void increaseBombnumber() {

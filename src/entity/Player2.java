@@ -3,18 +3,12 @@ package entity;
 import javafx.scene.Group;
 
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import sharedObject.Hitbox;
 
-import java.util.List;
-
-import entity.Bomb;
-import envi.Envi;
 import input.KeyInput;
 
 public class Player2 extends Hero {
-//	protected static int countBomb = 3;
 	protected static boolean alive;
 
 	public Player2(double x, double y) {
@@ -22,7 +16,7 @@ public class Player2 extends Hero {
 		this.direction = 3;
 		this.bombrange = 1;
 		this.speed = 3;
-		this.alive = true;
+		alive = true;
 
 		bounds = new Hitbox(x, y, 60, 60);
 		bounds.setFill(Color.AQUA);
@@ -80,7 +74,7 @@ public class Player2 extends Hero {
 	@Override
 	public boolean isAlive() {
 		// TODO Auto-generated method stub
-		return this.alive;
+		return alive;
 	}
 
 }

@@ -13,6 +13,7 @@ public class Boost extends Gameobject implements Item{
 		item = new Hitbox(x,y,60,60);
 	}
 	
+	@Override
 	public void IsKeptBy(Hero hero) {
 		if(!kept) {
 			hero.increaseSpeed();
@@ -21,10 +22,12 @@ public class Boost extends Gameobject implements Item{
 		}
 	}
 
+	@Override
 	public Hitbox getHitbox() {
 		return item;
 	}
 	
+	@Override
 	public boolean isKept() {
 		return kept;
 	}

@@ -22,10 +22,12 @@ public class Stackbomb extends Gameobject implements Item{
 		
 	}
 	
+	@Override
 	public Hitbox getHitbox() {
 		return item;
 	}
 	
+	@Override
 	public boolean isKept() {
 		return kept;
 	}

@@ -2,40 +2,27 @@ package entity;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import sharedObject.Hitbox;
 import sharedObject.ImageRef;
 
-import java.util.List;
-
-import com.sun.scenario.effect.ImageData;
-
-import Map.Stage1;
-import entity.Bomb;
-import envi.Envi;
 import input.KeyInput;
-import item.Item;
 
 public class Player1 extends Hero {
-//	protected static int countBomb = 3;
 	protected static boolean alive;
-//	private ImageRef imref ;
 	private AnimationTimer animationwalk;
 	public Player1(double x, double y) {
 		super(x, y);
 		this.direction = 1;
 		this.bombrange = 1;
 		this.speed = 3;
-		this.alive = true;
+		alive = true;
 
 		bounds = new Hitbox(x, y, 60, 60);
 		bounds.setFill(Color.BLUE);
 		bounds.setVisible(alive);		
-//		imref = new ImageRef();
 		bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(1+3)));
 		animationwalk = new AnimationTimer(){
 			final long startNanoTime = System.nanoTime();
@@ -117,8 +104,7 @@ public class Player1 extends Hero {
 
 	@Override
 	public boolean isAlive() {
-		// TODO Auto-generated method stub
-		return this.alive;
+		return alive;
 	}
 
 }

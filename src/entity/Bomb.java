@@ -3,22 +3,14 @@ package entity;
 import object.Gameobject;
 import sharedObject.Hitbox;
 import sharedObject.ImageRef;
-import javafx.scene.shape.Rectangle;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import Map.Stage1;
 import envi.Brick;
-import item.Boost;
-import item.Item;
-import item.Stackbomb;
-import item.Upgradebomb;
 import javafx.application.Platform;
 import javafx.scene.Group;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 
 public class Bomb extends Gameobject{
@@ -33,9 +25,6 @@ public class Bomb extends Gameobject{
 	private boolean down = true;
 	private boolean left = true;
 	private boolean right = true;
-	
-//	private Player1 p1
-//	private Hitbox p2 = Player2.getHerobox();
 	
 	public Bomb(double x,double y,int bombrange) {
 		super(x,y);
@@ -159,10 +148,10 @@ public class Bomb extends Gameobject{
 						rec.setVisible(true);
 						root.getChildren().add(rec);
 						if (rec.CollosionWith(p1.getHerobox())) {
-							p1.setDead();
+							Player1.setDead();
 						}
 						if (rec.CollosionWith(p2.getHerobox())) {
-							p2.setDead();
+							Player2.setDead();
 						}
 					}	
 				}				
@@ -188,10 +177,10 @@ public class Bomb extends Gameobject{
 							}
 						}
 						if (rec.CollosionWith(p1.getHerobox())) {
-							p1.setDead();
+							Player1.setDead();
 						}
 						if (rec.CollosionWith(p2.getHerobox())) {
-							p2.setDead();
+							Player2.setDead();
 						}
 						rec.setVisible(false);
 					}					

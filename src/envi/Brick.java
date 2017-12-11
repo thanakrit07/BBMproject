@@ -1,14 +1,10 @@
 package envi;
 
-import com.sun.prism.paint.Color;
-
 import Map.Stage1;
 import item.Boost;
 import item.Item;
 import item.Stackbomb;
 import item.Upgradebomb;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import sharedObject.Hitbox;
 import javafx.scene.Group;
 
