@@ -62,32 +62,32 @@ public abstract class Hero extends Gameobject {
 		}
 		return hit;
 	}
+
 	protected void DropBomb(Group root, Player1 p1, Player2 p2) {
 		if (direction == 0) {
 			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
-			Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
+					Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
 			bomb.startBomb(root, p1, p2);
-
 		} else if (direction == 1) {
 			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
-			Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
+					Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
 			bomb.startBomb(root, p1, p2);
 
 		} else if (direction == 2) {
 			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
-			Math.floor(bounds.getBoundsInParent().getMinY() / 60) * 60 + 30, this.bombrange);
+					Math.floor(bounds.getBoundsInParent().getMinY() / 60) * 60 + 30, this.bombrange);
 			bomb.startBomb(root, p1, p2);
 
 		} else if (direction == 3) {
 			Bomb bomb = new Bomb(Math.ceil(bounds.getBoundsInParent().getMinX() / 60) * 60 - 30,
-				Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
-			System.out.println("dropLEFT");
+					Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
 			bomb.startBomb(root, p1, p2);
 		}
 
 	}
+
 	protected abstract void update();
-	
+
 	public void increaseBombrange() {
 		this.bombrange++;
 	}
@@ -111,7 +111,6 @@ public abstract class Hero extends Gameobject {
 	public List<Bomb> getbomblist() {
 		return this.bombList;
 	}
-
 
 	protected void clearBomb() {
 		this.countBomb--;

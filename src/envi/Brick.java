@@ -18,8 +18,7 @@ public class Brick extends Envi{
 	
 	public Hitbox getHitbox() {
 		return hitbox;
-	}
-	
+	}	
 	public void destroyed(Group root) {
 		this.hitbox.setVisible(false);
 		int it = (int) Math.floor(Math.random() * 4);

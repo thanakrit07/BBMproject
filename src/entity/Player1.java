@@ -32,16 +32,26 @@ public class Player1 extends Hero {
 				int ck=0;
 				if(direction==0)ck=0;
 				else if(direction==1)ck=3;
-				else if(direction==2)ck=6;
-				else if(direction==3)ck=9;
+				else if(direction==2)ck=11;
+				else if(direction==3)ck=14;
 				
-				if(t>0 && t<=0.15) {
+				if(t>0 && t<=0.1) {					
 					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(0+ck)));
 				
-				}else if(t>0.15 && t<=0.3) {
+				}else if(t>0.1 && t<=0.2) {
 					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(1+ck)));
-				}else if(t>0.3 && t<=0.45) {
+				}else if(t>0.2 && t<=0.3) {
 					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(2+ck)));
+				}else if(t>0.3 && t<=0.4) {
+					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(3+ck)));
+				}else if(t>0.4 && t<=0.5) {
+					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(4+ck)));
+				}else if(t>0.5 && t<=0.6) {
+					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(5+ck)));
+				}else if(t>0.6 && t<=0.7) {
+					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(6+ck)));
+				}else if(t>0.7 && t<=0.8) {
+					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(7+ck)));
 				}				
 			}			
 		};
@@ -69,10 +79,9 @@ public class Player1 extends Hero {
 			this.direction = 3;
 			moveX();
 		}
-		if(KeyInput.keyPressed.isEmpty())animationwalk.stop();;		
+		if(KeyInput.keyPressed.isEmpty())animationwalk.stop();		
 	}
 	public void updateBomb(Group root, Player1 p1, Player2 p2) {
-
 		if (KeyInput.getKeyPressed(KeyCode.SPACE)) {
 //			System.out.println("P1 bomb");
 			if (!KeyInput.setkeyPressed.contains(KeyCode.SPACE)) {
