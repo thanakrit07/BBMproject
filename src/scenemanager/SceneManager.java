@@ -1,8 +1,8 @@
 package scenemanager;
 
+import Map.MainMenu;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import menu.MainMenu;
 
 public class SceneManager {
 	private static Stage primaryStage;

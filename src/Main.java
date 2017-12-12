@@ -14,9 +14,7 @@ public class Main extends Application {
 		ImageRef imref = new ImageRef();
 		stage.setResizable(false);
 		stage.sizeToScene();	
-		SceneManager sm = new SceneManager(stage);
-		sm.gotoMainMenu();
-				
+		SceneManager sm = new SceneManager(stage);				
 		SceneManager.gotoMainMenu();
 
 	SceneManager.gotoMainMenu();		

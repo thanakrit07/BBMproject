@@ -25,6 +25,7 @@ public class Player2 extends Hero {
 		bounds.setFill(Color.AQUA);
 		bounds.setVisible(alive);
 		bounds.setFill(ImageRef.getRedBomber().get(1+12));
+
 		animationwalk = new AnimationTimer(){
 			final long startNanoTime = System.nanoTime();
 			@Override

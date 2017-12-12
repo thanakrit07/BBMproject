@@ -42,7 +42,7 @@ public class GameScreen implements AllScene {
 		
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
 			public void handle(KeyEvent event) {
-				if(event.getCode().equals(KeyCode.NUMPAD1)) {
+				if(event.getCode().equals(KeyCode.DIGIT1)) {
 					
 					SceneManager.gotoSceneOf(s1.getScene());
 					s1.AnimationStart();

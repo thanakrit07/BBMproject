@@ -1,4 +1,4 @@
-package menu;
+package Map;
 
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -18,13 +18,10 @@ import sharedObject.AllScene;
 import com.sun.javafx.tk.FontLoader;
 import com.sun.javafx.tk.Toolkit;
 
-import Map.GameScreen;
-
 public class MainMenu implements AllScene {
 	private Scene scene;
 	private Group root;
 	private Image startgame;
-	private static final Font TITLE_FONT = new Font("Monospace", 80);
 	private static final Font MENU_FONT = new Font("Monospace", 60);
 
 	public MainMenu() {
@@ -32,8 +29,6 @@ public class MainMenu implements AllScene {
 		scene = new Scene(root, SceneManager.SCENE_WIDTH, SceneManager.SCENE_HEIGHT);
 		Canvas bg = new Canvas(SceneManager.SCENE_WIDTH, SceneManager.SCENE_HEIGHT);
 		GraphicsContext gc = bg.getGraphicsContext2D();
-		gc.setFill(Color.ANTIQUEWHITE);
-		gc.fillRect(0, 0, SceneManager.SCENE_WIDTH, SceneManager.SCENE_HEIGHT);
 		root.getChildren().add(bg);
 
 		// load picture
@@ -51,7 +46,6 @@ public class MainMenu implements AllScene {
 				if (event.getCode().equals(KeyCode.ENTER)) {
 					GameScreen gs = new GameScreen(1080, 840);
 					SceneManager.gotoSceneOf(gs.getScene());
-					// GameMain.newGame();
 
 				} else if (event.getCode().equals(KeyCode.ESCAPE)) {
 					Platform.exit();
@@ -65,9 +59,5 @@ public class MainMenu implements AllScene {
 		// TODO Auto-generated method stub
 		return this.scene;
 	}
-
-	// private void addKeyEventHandler() {
-	// //TODO Fill Cod
-	// }
 
 }
