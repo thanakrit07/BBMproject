@@ -3,6 +3,6 @@ package sharedObject;
 import javafx.scene.Scene;
 
 public interface AllScene {
-	Scene getScene();
+	public Scene getScene();
 	
 }

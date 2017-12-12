@@ -11,9 +11,7 @@ public class Main extends Application {
 	public void start(Stage stage) {
 		stage.setResizable(false);
 		stage.sizeToScene();	
-		SceneManager sm = new SceneManager(stage);
-		sm.gotoMainMenu();
-				
+		SceneManager sm = new SceneManager(stage);				
 		SceneManager.gotoMainMenu();
 
 	SceneManager.gotoMainMenu();		

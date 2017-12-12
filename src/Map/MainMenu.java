@@ -1,4 +1,4 @@
-package menu;
+package Map;
 
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -17,8 +17,6 @@ import sharedObject.AllScene;
 
 import com.sun.javafx.tk.FontLoader;
 import com.sun.javafx.tk.Toolkit;
-
-import Map.GameScreen;
 
 public class MainMenu implements AllScene {
 	private Scene scene;

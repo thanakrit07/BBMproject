@@ -9,7 +9,6 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-import menu.MainMenu;
 import scenemanager.SceneManager;
 import sharedObject.AllScene;
 import javafx.animation.AnimationTimer;

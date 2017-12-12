@@ -24,7 +24,7 @@ public class Player2 extends Hero {
 		bounds = new Hitbox(x, y, 60, 60);
 		bounds.setFill(Color.AQUA);
 		bounds.setVisible(alive);
-		bounds.setFill(new ImagePattern(ImageRef.getRedBomber().get(1+3)));
+		bounds.setFill(new ImagePattern(ImageRef.getRedBomber().get(1+12)));
 		animationwalk = new AnimationTimer(){
 			final long startNanoTime = System.nanoTime();
 			@Override
