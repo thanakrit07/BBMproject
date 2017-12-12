@@ -1,35 +1,34 @@
 package item;
 
 import entity.Hero;
-import object.Gameobject;
 import sharedObject.Hitbox;
 import sharedObject.ImageRef;
-import item.Item;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 
-public class Stackbomb extends Item{
+public class Degradebomb extends Item{
 	private Hitbox item;
 	private boolean kept = false;
-	public Stackbomb(double x, double y) {
+	public Degradebomb(double x, double y) {
 		super(x, y);
 		item = new Hitbox(x,y,60,60);
-		item.setFill(ImageRef.getItem().get(4));
+		item.setFill(ImageRef.getItem().get(3));
 	}
 
+	@Override
 	public void IsKeptBy(Hero hero) {
+		// TODO Auto-generated method stub
 		if(!kept&&item.CollosionWith(hero.getHerobox())) {
-			hero.increaseBombnumber();
+			hero.decreaseBombrage();
 			item.setVisible(false);
 			kept = true;
 		}
-		
 	}
-	
+
+	@Override
 	public Hitbox getHitbox() {
 		return item;
 	}
 	
+	@Override
 	public boolean isKept() {
 		return kept;
 	}

@@ -16,16 +16,18 @@ public abstract class Hero implements Gameobject {
 	protected List<Bomb> bombList = new ArrayList<Bomb>();
 	protected List<Hitbox> lhb = new ArrayList<Hitbox>();
 	protected Hitbox bounds;
-	
-	protected double x,y;
+
+	protected double x, y;
 
 	protected int countBomb = 1;
+
 	public Hero(double x, double y) {
 		this.x = x;
-		this.y= y;
+		this.y = y;
 	}
+
 	protected void moveX() {
-		if (direction == 1) {	
+		if (direction == 1) {
 			bounds.setLayoutX(bounds.getLayoutX() + speed);
 			if (collosion()) {
 				bounds.setLayoutX(bounds.getLayoutX() - speed);
@@ -41,7 +43,7 @@ public abstract class Hero implements Gameobject {
 	}
 
 	protected void moveY() {
-		
+
 		if (direction == 0) {
 			bounds.setLayoutY(bounds.getLayoutY() - speed);
 			if (collosion()) {
@@ -94,19 +96,39 @@ public abstract class Hero implements Gameobject {
 	public void increaseBombrange() {
 		this.bombrange++;
 	}
+	public void decreaseBombrage() {
+		if(this.bombrange>1) {
+			this.bombrange--;
+		}
+	}
 
 	public void increaseSpeed() {
-		if (this.speed<6) {
-			this.speed++;			
-		}else if (this.speed==6) {
+		if (this.speed < 6) {
+			this.speed++;
+		} else if (this.speed == 6) {
 			this.speed = 7.5;
-		}else if (this.speed==7.5) {
+		} else if (this.speed == 7.5) {
 			this.speed = 10;
+		}
+	}
+
+	public void decreaseSpeed() {
+		if (this.speed == 10) {
+			this.speed = 7.5;
+		} else if (this.speed == 7.5) {
+			this.speed = 6;
+		}else if (this.speed>2 || this.speed<=6 ) {
+			this.speed--;
 		}
 	}
 
 	public void increaseBombnumber() {
 		this.countBomb++;
+	}
+	public void decreaseBombnumber() {
+		if(countBomb>1) {
+			this.countBomb--;
+		}		
 	}
 
 	public List<Hitbox> getlhitbox() {
@@ -120,6 +142,7 @@ public abstract class Hero implements Gameobject {
 	public List<Bomb> getbomblist() {
 		return this.bombList;
 	}
+
 	protected void clearBomb() {
 		this.countBomb--;
 	}

@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import object.Gameobject;
 import sharedObject.Hitbox;
+import sharedObject.ImageRef;
 
 public class Upgradebomb extends Item{
 	private Hitbox item;
@@ -12,7 +13,7 @@ public class Upgradebomb extends Item{
 	public Upgradebomb(double x, double y) {
 		super(x, y);
 		item = new Hitbox(x,y,60,60);
-		item.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("upgradebomb.png").toString())));
+		item.setFill(ImageRef.getItem().get(2));
 	}
 
 	@Override

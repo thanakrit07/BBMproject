@@ -34,6 +34,7 @@ public class Stage1 implements AllScene {
 	private Scene scene;
 	private Group root;
 	private Canvas s1;
+	public static boolean isGameRunning;
 
 	private static GraphicsContext gc;
 	public static List<Brick> lbrick = new ArrayList<Brick>();
@@ -54,21 +55,22 @@ public class Stage1 implements AllScene {
 		root.getChildren().add(s1);
 		s1.requestFocus();
 		System.out.println("Create BG");
+		isGameRunning = true;
 
-		// Create Hero
+//---------------------------------------------- Create Hero-----------------------------------------------------
 		p1 = new Player1(30, 30);
 		p2 = new Player2(990, 630);
 
-		// Create Border
+//---------------------------------------------- Create Border---------------------------------------------------
 		Hitbox bd1 = new Hitbox(0, 0, 1080, 30);
 		bd1.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("bordertop.png").toString())));
-		Hitbox bd2 = new Hitbox(0, 30, 30, 930);
+		Hitbox bd2 = new Hitbox(0, 30, 30, 810);
 		bd2.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("borderleft.png").toString())));
 		Hitbox bd3 = new Hitbox(1050, 30, 30, 690);
 		bd3.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("borderright.png").toString())));
 		Hitbox bd4 = new Hitbox(0, 690, 1080, 30);
 		bd4.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("borderbot.png").toString())));
-
+		
 		List<Hitbox> lbd = new ArrayList<Hitbox>();
 		lbd.add(bd1);
 		lbd.add(bd2);
@@ -79,29 +81,37 @@ public class Stage1 implements AllScene {
 		p2.getlhitbox().addAll(lbd);
 		root.getChildren().addAll(lbd);
 
-		// add Hero
+// ---------------------------------------------------add Hero-----------------------------------------------------
 		root.getChildren().add(p1.getHerobox());
 		root.getChildren().add(p2.getHerobox());
 		System.out.println("Create Hero");
+		
+// --------------------------------------------------Create Wall---------------------------------------------------
 
-		// Create Wall
-
-		field = new int[][] { { 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-				{ 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 2, 1, 2, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-				{ 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-				{ 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2 },
-				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 0, 0 },
+		field = new int[][] { { 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 },
+				{ 0, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2 },
+				{ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 },
+				{ 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2 },
+				{ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 },
+				{ 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2 },
+				{ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 },
+				{ 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2 },
+				{ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 },
+				{ 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 0 },
+				{ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },
 //				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1, 2 },
 //				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 2, 2, 2 },
 //				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1, 2, 1, 2, 1, 0 },
 //				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0 } 
 				};
+		for (int i=0;i<11;i++) {
+			for (int j=0;j<17;j++) {
+				if (field[i][j]==2) {
+					field[i][j] = ((int) Math.floor(Math.random() * 101)) % 2 * 2;
+				}
+			}
+		}
+		
 		for (int i = 0; i < 11; i++) {
 			for (int j = 0; j < 17; j++) {
 				if (field[i][j] == 1) {
@@ -126,7 +136,7 @@ public class Stage1 implements AllScene {
 			}
 		}
 		System.out.println("Create Wall");
-
+//----------------------------------------------------addEventHandler-----------------------------------------
 		scene.setOnKeyPressed((KeyEvent event) -> {
 			if(event.getCode().equals(KeyCode.M)) {
 				SceneManager.gotoSceneOf((new MainMenu()).getScene());
@@ -142,7 +152,7 @@ public class Stage1 implements AllScene {
 		scene.setOnKeyReleased((KeyEvent event) -> {
 			KeyInput.setKeyPressed(event.getCode(), false);
 		});
-
+//--------------------------------------------------------------------------------------------------
 		animation = new AnimationTimer() {
 			final long startNanoTime = System.nanoTime();
 
@@ -216,6 +226,7 @@ public class Stage1 implements AllScene {
 
 	public void update() {
 		if (!p1.isAlive() || !p2.isAlive()) {
+			isGameRunning=false;
 			animation.stop();
 			Canvas c = new Canvas(1080, 960);
 			GraphicsContext gc = c.getGraphicsContext2D();
@@ -254,6 +265,8 @@ public class Stage1 implements AllScene {
 		// TODO Auto-generated method stub
 		return this.scene;
 
+	}
+	public void updateItem() {
 	}
 
 }

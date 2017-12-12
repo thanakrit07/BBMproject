@@ -4,17 +4,16 @@ import entity.Hero;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Shape;
-import object.Gameobject;
 import sharedObject.Hitbox;
 import sharedObject.ImageRef;
 
-public class Boost extends Item{
+public class Deboost extends Item{
 	private Hitbox item;
 	private boolean kept = false;
-	public Boost(double x,double y) {
+	public Deboost(double x,double y) {
 		super(x,y);
 		item = new Hitbox(x,y,60,60);
-		item.setFill(ImageRef.getItem().get(0));
+		item.setFill(ImageRef.getItem().get(1));
 	}
 	
 	@Override
@@ -28,7 +27,7 @@ public class Boost extends Item{
 				collosion = true;	
 			}
 			if (collosion) {
-				hero.increaseSpeed();
+				hero.decreaseSpeed();
 				item.setVisible(false);
 				kept = true;				
 			}

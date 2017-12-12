@@ -38,7 +38,7 @@ public class MainMenu implements AllScene {
 
 		// load picture
 		startgame = new Image(ClassLoader.getSystemResource("startgame.png").toString());
-		gc.drawImage(startgame, 0, 0, 1080, 960);
+		gc.drawImage(startgame, 0, 0, 1080, 840);
 
 		// write text
 		gc.setTextAlign(TextAlignment.CENTER);
@@ -49,7 +49,7 @@ public class MainMenu implements AllScene {
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event) {
 				if (event.getCode().equals(KeyCode.ENTER)) {
-					GameScreen gs = new GameScreen(1080, 960);
+					GameScreen gs = new GameScreen(1080, 840);
 					SceneManager.gotoSceneOf(gs.getScene());
 					// GameMain.newGame();
 

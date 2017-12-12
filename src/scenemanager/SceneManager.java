@@ -8,7 +8,7 @@ public class SceneManager {
 	private static Stage primaryStage;
 	private static Scene mainMenuScene;
 	public static final int SCENE_WIDTH = 1080;
-	public static final int SCENE_HEIGHT = 960;
+	public static final int SCENE_HEIGHT = 840;
 	public SceneManager(Stage stage) {
 		MainMenu mm= new MainMenu();
 		mainMenuScene = mm.getScene();

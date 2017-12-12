@@ -21,7 +21,7 @@ public class Player1 extends Hero {
 
 		bounds = new Hitbox(x, y, 60, 60);
 		bounds.setVisible(alive);		
-		bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(1+3)));
+		bounds.setFill(ImageRef.getWhiteBomber().get(1+3));
 		animationwalk = new AnimationTimer(){
 			final long startNanoTime = System.nanoTime();
 			@Override
@@ -34,13 +34,13 @@ public class Player1 extends Hero {
 				else if(direction==3)ck=12;
 				
 				if(t<=0.15) {					
-					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(0+ck)));
+					bounds.setFill(ImageRef.getWhiteBomber().get(0+ck));
 				}else if(t>0.15 && t<=0.30) {
-					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(1+ck)));
+					bounds.setFill(ImageRef.getWhiteBomber().get(1+ck));
 				}else if(t>0.30 && t<=0.45) {
-					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(2+ck)));
+					bounds.setFill(ImageRef.getWhiteBomber().get(2+ck));
 				}else if(t>0.45 && t<=0.60) {
-					bounds.setFill(new ImagePattern(ImageRef.getWhiteBomber().get(3+ck)));
+					bounds.setFill(ImageRef.getWhiteBomber().get(3+ck));
 				}
 			}			
 		};

@@ -4,97 +4,127 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 
 public class ImageRef {
-	private static List<Image> WhiteBomber = new ArrayList<Image>();
-	private static List<Image> RedBomber = new ArrayList<Image>();
-	private static List<Image> bomb1 =  new ArrayList<Image>();
-//	public ImageRef(){
-//		
-//	}
-	public static List<Image> getWhiteBomber(){
-		Image u1 = new Image(ClassLoader.getSystemResource("U_1.png").toString());
-		Image u2 = new Image(ClassLoader.getSystemResource("U_2.png").toString());
-		Image u3 = new Image(ClassLoader.getSystemResource("U_3.png").toString());
-		Image u4 = new Image(ClassLoader.getSystemResource("U_4.png").toString());
-		Image r1 = new Image(ClassLoader.getSystemResource("R_1.png").toString());
-		Image r2 = new Image(ClassLoader.getSystemResource("R_2.png").toString());
-		Image r3 = new Image(ClassLoader.getSystemResource("R_3.png").toString());
-		Image r4 = new Image(ClassLoader.getSystemResource("R_4.png").toString());
-		Image d1 = new Image(ClassLoader.getSystemResource("D_1.png").toString());
-		Image d2 = new Image(ClassLoader.getSystemResource("D_2.png").toString());
-		Image d3 = new Image(ClassLoader.getSystemResource("D_3.png").toString());
-		Image d4 = new Image(ClassLoader.getSystemResource("D_4.png").toString());
-		Image l1 = new Image(ClassLoader.getSystemResource("L_1.png").toString());
-		Image l2 = new Image(ClassLoader.getSystemResource("L_2.png").toString());
-		Image l3 = new Image(ClassLoader.getSystemResource("L_3.png").toString());
-		Image l4 = new Image(ClassLoader.getSystemResource("L_4.png").toString());	
-		WhiteBomber.add(u1);
-		WhiteBomber.add(u2);
-		WhiteBomber.add(u3);
-		WhiteBomber.add(u4);
-		WhiteBomber.add(r1);
-		WhiteBomber.add(r2);
-		WhiteBomber.add(r3);
-		WhiteBomber.add(r4);
-		WhiteBomber.add(d1);
-		WhiteBomber.add(d2);
-		WhiteBomber.add(d3);
-		WhiteBomber.add(d4);
-		WhiteBomber.add(l1);
-		WhiteBomber.add(l2);
-		WhiteBomber.add(l3);
-		WhiteBomber.add(l4);
+	private static List<ImagePattern> WhiteBomber = new ArrayList<ImagePattern>();
+	private static List<ImagePattern> RedBomber = new ArrayList<ImagePattern>();
+	private static List<ImagePattern> bomb1 =  new ArrayList<ImagePattern>();
+	private static List<ImagePattern> item = new ArrayList<ImagePattern>();
+	public ImageRef(){
+		ImagePattern wu1 = new ImagePattern(new Image(ClassLoader.getSystemResource("U_1.png").toString()));
+		ImagePattern wu2 = new ImagePattern(new Image(ClassLoader.getSystemResource("U_2.png").toString()));
+		ImagePattern wu3 = new ImagePattern(new Image(ClassLoader.getSystemResource("U_3.png").toString()));
+		ImagePattern wu4 = new ImagePattern(new Image(ClassLoader.getSystemResource("U_4.png").toString()));
+		ImagePattern wr1 = new ImagePattern(new Image(ClassLoader.getSystemResource("R_1.png").toString()));
+		ImagePattern wr2 = new ImagePattern(new Image(ClassLoader.getSystemResource("R_2.png").toString()));
+		ImagePattern wr3 = new ImagePattern(new Image(ClassLoader.getSystemResource("R_3.png").toString()));
+		ImagePattern wr4 = new ImagePattern(new Image(ClassLoader.getSystemResource("R_4.png").toString()));
+		ImagePattern wd1 = new ImagePattern(new Image(ClassLoader.getSystemResource("D_1.png").toString()));
+		ImagePattern wd2 = new ImagePattern(new Image(ClassLoader.getSystemResource("D_2.png").toString()));
+		ImagePattern wd3 = new ImagePattern(new Image(ClassLoader.getSystemResource("D_3.png").toString()));
+		ImagePattern wd4 = new ImagePattern(new Image(ClassLoader.getSystemResource("D_4.png").toString()));
+		ImagePattern wl1 = new ImagePattern(new Image(ClassLoader.getSystemResource("L_1.png").toString()));
+		ImagePattern wl2 = new ImagePattern(new Image(ClassLoader.getSystemResource("L_2.png").toString()));
+		ImagePattern wl3 = new ImagePattern(new Image(ClassLoader.getSystemResource("L_3.png").toString()));
+		ImagePattern wl4 = new ImagePattern(new Image(ClassLoader.getSystemResource("L_4.png").toString()));	
+		WhiteBomber.add(wu1);
+		WhiteBomber.add(wu2);
+		WhiteBomber.add(wu3);
+		WhiteBomber.add(wu4);
+		WhiteBomber.add(wr1);
+		WhiteBomber.add(wr2);
+		WhiteBomber.add(wr3);
+		WhiteBomber.add(wr4);
+		WhiteBomber.add(wd1);
+		WhiteBomber.add(wd2);
+		WhiteBomber.add(wd3);
+		WhiteBomber.add(wd4);
+		WhiteBomber.add(wl1);
+		WhiteBomber.add(wl2);
+		WhiteBomber.add(wl3);
+		WhiteBomber.add(wl4);
+//--------------------------------------------RedBomber---------------------------------------------
+		ImagePattern ru1 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedU_1.png").toString()));
+		ImagePattern ru2 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedU_2.png").toString()));
+		ImagePattern ru3 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedU_3.png").toString()));
+		ImagePattern ru4 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedU_4.png").toString()));
+		ImagePattern rr1 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedR_1.png").toString()));
+		ImagePattern rr2 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedR_2.png").toString()));
+		ImagePattern rr3 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedR_3.png").toString()));
+		ImagePattern rr4 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedR_4.png").toString()));
+		ImagePattern rd1 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedD_1.png").toString()));
+		ImagePattern rd2 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedD_2.png").toString()));
+		ImagePattern rd3 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedD_3.png").toString()));
+		ImagePattern rd4 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedD_4.png").toString()));
+		ImagePattern rl1 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedL_1.png").toString()));
+		ImagePattern rl2 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedL_2.png").toString()));
+		ImagePattern rl3 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedL_3.png").toString()));
+		ImagePattern rl4 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedL_4.png").toString()));	
+		RedBomber.add(ru1);
+		RedBomber.add(ru2);
+		RedBomber.add(ru3);
+		RedBomber.add(ru4);
+		RedBomber.add(rr1);
+		RedBomber.add(rr2);
+		RedBomber.add(rr3);
+		RedBomber.add(rr4);
+		RedBomber.add(rd1);
+		RedBomber.add(rd2);
+		RedBomber.add(rd3);
+		RedBomber.add(rd4);
+		RedBomber.add(rl1);
+		RedBomber.add(rl2);
+		RedBomber.add(rl3);
+		RedBomber.add(rl4);
+		
+//------------------------------------------Bomb-----------------------------------------------------------------------
+		ImagePattern b1 = new ImagePattern(new Image(ClassLoader.getSystemResource("bomb1_1.png").toString()));
+		ImagePattern b2 = new ImagePattern(new Image(ClassLoader.getSystemResource("bomb1_2.png").toString()));
+		ImagePattern b3 = new ImagePattern(new Image(ClassLoader.getSystemResource("bomb1_3.png").toString()));
+		ImagePattern effu = new ImagePattern(new Image(ClassLoader.getSystemResource("U_Headeffbomb.png").toString()));
+		ImagePattern effr = new ImagePattern(new Image(ClassLoader.getSystemResource("R_Headeffbomb.png").toString()));
+		ImagePattern effd = new ImagePattern(new Image(ClassLoader.getSystemResource("D_Headeffbomb.png").toString()));
+		ImagePattern effl = new ImagePattern(new Image(ClassLoader.getSystemResource("L_Headeffbomb.png").toString()));
+		ImagePattern effh = new ImagePattern(new Image(ClassLoader.getSystemResource("H_bodyeffbomb.png").toString()));
+		ImagePattern effv = new ImagePattern(new Image(ClassLoader.getSystemResource("V_bodyeffbomb.png").toString()));
+		ImagePattern effm = new ImagePattern(new Image(ClassLoader.getSystemResource("mideffbomb.png").toString()));
+		bomb1.add(b1);//index0
+		bomb1.add(b2);//index1
+		bomb1.add(b3);//index2
+		bomb1.add(effu);//index3
+		bomb1.add(effr);//index4
+		bomb1.add(effd);//index5
+		bomb1.add(effl);//index6
+		bomb1.add(effh);//index7
+		bomb1.add(effv);//index8
+		bomb1.add(effm);//index9
+
+//----------------------------------------Item-----------------------------------------------
+		ImagePattern item1 = new ImagePattern(new Image(ClassLoader.getSystemResource("boost.png").toString()));
+		ImagePattern item2 = new ImagePattern(new Image(ClassLoader.getSystemResource("Deboost.png").toString()));
+		ImagePattern item3 = new ImagePattern(new Image(ClassLoader.getSystemResource("upgradebomb.png").toString()));
+		ImagePattern item4 = new ImagePattern(new Image(ClassLoader.getSystemResource("Degradebomb.png").toString()));
+		ImagePattern item5 = new ImagePattern(new Image(ClassLoader.getSystemResource("stackbomb.png").toString()));
+		ImagePattern item6 = new ImagePattern(new Image(ClassLoader.getSystemResource("Debomb.png").toString()));
+		item.add(item1);
+		item.add(item2);
+		item.add(item3);
+		item.add(item4);
+		item.add(item5);
+		item.add(item6);		
+	}
+	public static List<ImagePattern> getWhiteBomber(){	
 		return WhiteBomber;
 	}
-	public static List<Image> getRedBomber(){
-		Image u1 = new Image(ClassLoader.getSystemResource("RedU_1.png").toString());
-		Image u2 = new Image(ClassLoader.getSystemResource("RedU_2.png").toString());
-		Image u3 = new Image(ClassLoader.getSystemResource("RedU_3.png").toString());
-		Image u4 = new Image(ClassLoader.getSystemResource("RedU_4.png").toString());
-		Image r1 = new Image(ClassLoader.getSystemResource("RedR_1.png").toString());
-		Image r2 = new Image(ClassLoader.getSystemResource("RedR_2.png").toString());
-		Image r3 = new Image(ClassLoader.getSystemResource("RedR_3.png").toString());
-		Image r4 = new Image(ClassLoader.getSystemResource("RedR_4.png").toString());
-		Image d1 = new Image(ClassLoader.getSystemResource("RedD_1.png").toString());
-		Image d2 = new Image(ClassLoader.getSystemResource("RedD_2.png").toString());
-		Image d3 = new Image(ClassLoader.getSystemResource("RedD_3.png").toString());
-		Image d4 = new Image(ClassLoader.getSystemResource("RedD_4.png").toString());
-		Image l1 = new Image(ClassLoader.getSystemResource("RedL_1.png").toString());
-		Image l2 = new Image(ClassLoader.getSystemResource("RedL_2.png").toString());
-		Image l3 = new Image(ClassLoader.getSystemResource("RedL_3.png").toString());
-		Image l4 = new Image(ClassLoader.getSystemResource("RedL_4.png").toString());	
-		RedBomber.add(u1);
-		RedBomber.add(u2);
-		RedBomber.add(u3);
-		RedBomber.add(u4);
-		RedBomber.add(r1);
-		RedBomber.add(r2);
-		RedBomber.add(r3);
-		RedBomber.add(r4);
-		RedBomber.add(d1);
-		RedBomber.add(d2);
-		RedBomber.add(d3);
-		RedBomber.add(d4);
-		RedBomber.add(l1);
-		RedBomber.add(l2);
-		RedBomber.add(l3);
-		RedBomber.add(l4);
+	public static List<ImagePattern> getRedBomber(){
 		return RedBomber;
 	}
-	public static List<Image> getBomb1(){
-		Image b1 = new Image(ClassLoader.getSystemResource("bomb1_1.png").toString());
-		Image b2 = new Image(ClassLoader.getSystemResource("bomb1_2.png").toString());
-		Image b3 = new Image(ClassLoader.getSystemResource("bomb1_3.png").toString());
-		Image effu = new Image(ClassLoader.getSystemResource("U_Headeffbomb.png").toString());
-		Image effl = new Image(ClassLoader.getSystemResource("L_bodyeffbomb.png").toString());
-		Image effh = new Image(ClassLoader.getSystemResource("H_bodyeffbomb.png").toString());
-		Image eff = new Image(ClassLoader.getSystemResource("H_bodyeffbomb.png").toString());
-		
-		bomb1.add(b1);
-		bomb1.add(b2);
-		bomb1.add(b3);
+	public static List<ImagePattern> getBomb1(){
 		return bomb1;
+	}
+	public static List<ImagePattern> getItem(){
+		return item;
 	}
 }
 

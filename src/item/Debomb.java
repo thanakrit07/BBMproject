@@ -1,25 +1,21 @@
 package item;
 
 import entity.Hero;
-import object.Gameobject;
 import sharedObject.Hitbox;
 import sharedObject.ImageRef;
-import item.Item;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 
-public class Stackbomb extends Item{
+public class Debomb extends Item{
 	private Hitbox item;
 	private boolean kept = false;
-	public Stackbomb(double x, double y) {
+	public Debomb(double x, double y) {
 		super(x, y);
 		item = new Hitbox(x,y,60,60);
-		item.setFill(ImageRef.getItem().get(4));
+		item.setFill(ImageRef.getItem().get(5));
 	}
 
 	public void IsKeptBy(Hero hero) {
 		if(!kept&&item.CollosionWith(hero.getHerobox())) {
-			hero.increaseBombnumber();
+			hero.decreaseBombnumber();
 			item.setVisible(false);
 			kept = true;
 		}
@@ -32,5 +28,5 @@ public class Stackbomb extends Item{
 	
 	public boolean isKept() {
 		return kept;
-	}
+	}	
 }
