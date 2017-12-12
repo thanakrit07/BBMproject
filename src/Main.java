@@ -13,12 +13,10 @@ public class Main extends Application {
 		stage.sizeToScene();	
 		SceneManager sm = new SceneManager(stage);
 		sm.gotoMainMenu();
-		AnimationTimer animation = new AnimationTimer() {
-			public void handle(long now) {
-			}
-		};
-		animation.start();		
+				
 		SceneManager.gotoMainMenu();
+
+	SceneManager.gotoMainMenu();		
 	}
 	public void stop(Stage stage) {
 

@@ -45,7 +45,6 @@ public abstract class Hero implements Gameobject {
 		if (direction == 0) {
 			bounds.setLayoutY(bounds.getLayoutY() - speed);
 			if (collosion()) {
-				
 				bounds.setLayoutY(bounds.getLayoutY() + speed);
 			}
 		} else if (direction == 2) {
@@ -58,13 +57,11 @@ public abstract class Hero implements Gameobject {
 
 	protected boolean collosion() {
 		boolean hit = false;
-
 		for (Hitbox h : lhb) {
 			if (h.CollosionWith(bounds)) {
 				hit = true;
 				break;
 			}
-			System.out.println(bounds.getLayoutX()+", "+bounds.getLayoutY());
 		}
 		return hit;
 	}
