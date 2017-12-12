@@ -24,7 +24,6 @@ public abstract class Hero implements Gameobject {
 		this.x = x;
 		this.y= y;
 	}
-
 	protected void moveX() {
 		if (direction == 1) {	
 			bounds.setLayoutX(bounds.getLayoutX() + speed);
@@ -44,10 +43,9 @@ public abstract class Hero implements Gameobject {
 	protected void moveY() {
 		
 		if (direction == 0) {
-			System.out.println("moveY");
 			bounds.setLayoutY(bounds.getLayoutY() - speed);
 			if (collosion()) {
-				System.out.println("Hit");
+				
 				bounds.setLayoutY(bounds.getLayoutY() + speed);
 			}
 		} else if (direction == 2) {
@@ -60,12 +58,13 @@ public abstract class Hero implements Gameobject {
 
 	protected boolean collosion() {
 		boolean hit = false;
-		System.out.println(lhb.size());
+
 		for (Hitbox h : lhb) {
 			if (h.CollosionWith(bounds)) {
 				hit = true;
+				break;
 			}
-			System.out.println(bounds.getLayoutX());
+			System.out.println(bounds.getLayoutX()+", "+bounds.getLayoutY());
 		}
 		return hit;
 	}
@@ -100,7 +99,13 @@ public abstract class Hero implements Gameobject {
 	}
 
 	public void increaseSpeed() {
-		this.speed++;
+		if (this.speed<6) {
+			this.speed++;			
+		}else if (this.speed==6) {
+			this.speed = 7.5;
+		}else if (this.speed==7.5) {
+			this.speed = 10;
+		}
 	}
 
 	public void increaseBombnumber() {

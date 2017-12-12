@@ -3,6 +3,7 @@ package item;
 import entity.Hero;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Shape;
 import object.Gameobject;
 import sharedObject.Hitbox;
 
@@ -17,10 +18,19 @@ public class Boost extends Item{
 	
 	@Override
 	public void IsKeptBy(Hero hero) {
-		if(!kept&&item.CollosionWith(hero.getHerobox())) {
-			hero.increaseSpeed();
-			item.setVisible(false);
-			kept = true;
+		if(!kept) {
+			boolean collosion = false;
+			Shape intersect = Shape.intersect(item,hero.getHerobox());
+			double checkW = intersect.getBoundsInLocal().getWidth();
+			double checkH = intersect.getBoundsInLocal().getHeight();
+			if (checkW == 60 && checkH == 60) {
+				collosion = true;	
+			}
+			if (collosion) {
+				hero.increaseSpeed();
+				item.setVisible(false);
+				kept = true;				
+			}
 		}
 	}
 

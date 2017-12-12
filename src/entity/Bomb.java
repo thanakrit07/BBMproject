@@ -17,7 +17,8 @@ public class Bomb implements Gameobject{
 	private boolean exploded;
 	private int bombrange;
 	private Hitbox bomb;
-	List<Hitbox> lrec;
+	private List<Hitbox> lrec;
+	private Thread thread;
 
 	private double x;
 	private double y;
@@ -41,14 +42,14 @@ public class Bomb implements Gameobject{
 	}
 	public void startBomb(Group root , Player1 p1,Player2 p2) {
 		root.getChildren().add(bomb);		
-		Thread thread = new Thread(() -> {
+		thread = new Thread(() -> {
 			this.bomb.setVisible(true);
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(700);
 				bomb.setFill(new ImagePattern(ImageRef.getBomb1().get(1)));
-				Thread.sleep(1000);
+				Thread.sleep(700);
 				bomb.setFill(new ImagePattern(ImageRef.getBomb1().get(2)));
-				Thread.sleep(1000);
+				Thread.sleep(700);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -192,7 +193,8 @@ public class Bomb implements Gameobject{
 					}					
 				}		
 			});
-
+			thread.interrupt();
+			
 		});thread.start();
 	}
 	public void pushByHero(Hero hero) {

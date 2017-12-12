@@ -31,20 +31,20 @@ public class Brick extends Envi{
 			item.getHitbox().setVisible(true);
 			root.getChildren().add(item.getHitbox());
 			Stage1.litem.add(item);
-		}else if (it==2||it==6||it==10||it==4) {
+		}else if (it==2||it==6||it==10||it==1) {
 			System.out.println("Upgradebomb");
 			Item item = new Upgradebomb(hitbox.getBoundsInParent().getMinX(),hitbox.getBoundsInParent().getMinY());
 			item.getHitbox().setVisible(true);
 			root.getChildren().add(item.getHitbox());
 			Stage1.litem.add(item);
 		}
-//		else if (it==0||it==4||it==8) {
-//			System.out.println("Boost");
-//			Item item = new Boost(hitbox.getBoundsInParent().getMinX(),hitbox.getBoundsInParent().getMinY());
-//			item.getHitbox().setVisible(true);
-//			root.getChildren().add(item.getHitbox());									
-//			Stage1.getItemList().add(item);
-//		} 
+		else if (it==0||it==4||it==8) {
+			System.out.println("Boost");
+			Item item = new Boost(hitbox.getBoundsInParent().getMinX(),hitbox.getBoundsInParent().getMinY());
+			item.getHitbox().setVisible(true);
+			root.getChildren().add(item.getHitbox());									
+			Stage1.litem.add(item);
+		} 
 		else System.out.println("None"+ "");
 		
 	}

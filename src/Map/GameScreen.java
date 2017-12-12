@@ -8,6 +8,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import sharedObject.AllScene;
 import scenemanager.SceneManager;
 
@@ -26,6 +27,8 @@ public class GameScreen implements AllScene {
 		scene = new Scene(root, width, height);
 		Canvas bg = new Canvas(width, height);
 		GraphicsContext gc = bg.getGraphicsContext2D();
+		gc.setFill(Color.BLACK);
+		gc.fillRect(0, 0, width, height);
 		root.getChildren().add(bg);
 		
 		// addInput();
@@ -39,7 +42,7 @@ public class GameScreen implements AllScene {
 		
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
 			public void handle(KeyEvent event) {
-				if(event.getCode().equals(KeyCode.DIGIT1)) {
+				if(event.getCode().equals(KeyCode.NUMPAD1)) {
 					
 					SceneManager.gotoSceneOf(s1.getScene());
 					s1.AnimationStart();

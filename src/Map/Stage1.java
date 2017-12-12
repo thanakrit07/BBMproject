@@ -46,26 +46,27 @@ public class Stage1 implements AllScene {
 
 	public Stage1() {
 		root = new Group();
-		scene = new Scene(root, 1080, 960);
-		s1 = new Canvas(1080, 960);
+		scene = new Scene(root, 1080, 840);
+		s1 = new Canvas(1080, 840);
 		gc = s1.getGraphicsContext2D();
-		gc.fillRect(0, 0, 1080, 960);
+		gc.setFill(Color.BLACK);
+		gc.fillRect(0, 0, 1080, 720);
 		root.getChildren().add(s1);
 		s1.requestFocus();
 		System.out.println("Create BG");
 
 		// Create Hero
 		p1 = new Player1(30, 30);
-		p2 = new Player2(990, 870);
+		p2 = new Player2(990, 630);
 
 		// Create Border
 		Hitbox bd1 = new Hitbox(0, 0, 1080, 30);
 		bd1.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("bordertop.png").toString())));
 		Hitbox bd2 = new Hitbox(0, 30, 30, 930);
 		bd2.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("borderleft.png").toString())));
-		Hitbox bd3 = new Hitbox(1050, 30, 30, 930);
+		Hitbox bd3 = new Hitbox(1050, 30, 30, 690);
 		bd3.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("borderright.png").toString())));
-		Hitbox bd4 = new Hitbox(0, 930, 1080, 30);
+		Hitbox bd4 = new Hitbox(0, 690, 1080, 30);
 		bd4.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("borderbot.png").toString())));
 
 		List<Hitbox> lbd = new ArrayList<Hitbox>();
@@ -93,14 +94,15 @@ public class Stage1 implements AllScene {
 				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
 				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-				{ 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 2, 2 },
-				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1, 2 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 2, 2, 2 },
-				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1, 2, 1, 2, 1, 0 },
-				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0 } };
-		for (int i = 0; i < 15; i++) {
+				{ 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2 },
+				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1, 0 },
+				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 0, 0 },
+//				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1, 2 },
+//				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 2, 2, 2 },
+//				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1, 2, 1, 2, 1, 0 },
+//				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0 } 
+				};
+		for (int i = 0; i < 11; i++) {
 			for (int j = 0; j < 17; j++) {
 				if (field[i][j] == 1) {
 					Wall w = new Wall(30 + (j * 60), 30 + (i * 60));

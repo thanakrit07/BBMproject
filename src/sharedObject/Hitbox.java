@@ -14,8 +14,8 @@ public class Hitbox extends Rectangle{
 		Shape intersect = Shape.intersect(this,other);
 		double checkW = intersect.getBoundsInLocal().getWidth();
 		double checkH = intersect.getBoundsInLocal().getHeight();
-//		System.out.println(checkW);
-//		System.out.println(checkH);
+		System.out.println(checkW);
+		System.out.println(checkH);
 		if (checkW != -1 || checkH != -1) {
 			collosion = true;
 			

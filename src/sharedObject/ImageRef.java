@@ -86,11 +86,14 @@ public class ImageRef {
 		Image b1 = new Image(ClassLoader.getSystemResource("bomb1_1.png").toString());
 		Image b2 = new Image(ClassLoader.getSystemResource("bomb1_2.png").toString());
 		Image b3 = new Image(ClassLoader.getSystemResource("bomb1_3.png").toString());
-		Image b4 = new Image(ClassLoader.getSystemResource("efbomb1.png").toString());
+		Image effu = new Image(ClassLoader.getSystemResource("U_Headeffbomb.png").toString());
+		Image effl = new Image(ClassLoader.getSystemResource("L_bodyeffbomb.png").toString());
+		Image effh = new Image(ClassLoader.getSystemResource("H_bodyeffbomb.png").toString());
+		Image eff = new Image(ClassLoader.getSystemResource("H_bodyeffbomb.png").toString());
+		
 		bomb1.add(b1);
 		bomb1.add(b2);
 		bomb1.add(b3);
-		bomb1.add(b4);
 		return bomb1;
 	}
 }

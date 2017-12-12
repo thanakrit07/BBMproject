@@ -15,5 +15,6 @@ public class Wall extends Envi{
 	public Hitbox getHitbox() {
 		return hitbox;
 	}
+	
 
 }
