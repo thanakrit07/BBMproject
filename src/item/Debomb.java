@@ -14,7 +14,7 @@ public class Debomb extends Item{
 	}
 
 	public void IsKeptBy(Hero hero) {
-		if(!kept&&item.CollosionWith(hero.getHerobox())) {
+		if(!kept) {
 			hero.decreaseBombnumber();
 			item.setVisible(false);
 			kept = true;
