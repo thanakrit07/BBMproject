@@ -32,4 +32,10 @@ public class Degradebomb extends Item{
 	public boolean isKept() {
 		return kept;
 	}
+
+	@Override
+	public void setKept(boolean k) {
+		// TODO Auto-generated method stub
+		this.kept = k;
+	}
 }

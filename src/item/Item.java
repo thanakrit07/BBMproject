@@ -15,4 +15,5 @@ public abstract class Item implements Gameobject {
 	public abstract void IsKeptBy(Hero hero) ;
 	public abstract Hitbox getHitbox();
 	public abstract boolean isKept();
+	public abstract void setKept(boolean k);
 }

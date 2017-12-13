@@ -10,6 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import sharedObject.AllScene;
+import sharedObject.ImageRef;
 import scenemanager.SceneManager;
 
 import java.util.ArrayList;
@@ -27,8 +28,9 @@ public class GameScreen implements AllScene {
 		scene = new Scene(root, width, height);
 		Canvas bg = new Canvas(width, height);
 		GraphicsContext gc = bg.getGraphicsContext2D();
-		gc.setFill(Color.BLACK);
-		gc.fillRect(0, 0, width, height);
+		gc.drawImage(ImageRef.getGamescreen(), 0, 0,width, height);
+//		gc.setFill(Color.BLACK);
+//		gc.fillRect(0, 0, width, height);
 		root.getChildren().add(bg);
 		
 		// addInput();

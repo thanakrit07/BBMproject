@@ -29,7 +29,7 @@ public class Brick extends Envi {
 
 	public void destroyed(Group root) {
 		this.hitbox.setVisible(false);
-		int it = ((int) Math.floor(Math.random() * 101)) % 17;
+		int it = ((int) Math.floor(Math.random() * 202)) % 20;
 		if (it == 1 || it == 7 || it == 10) {
 			System.out.println("Stackbomb");
 			Item item = new Stackbomb(hitbox.getBoundsInParent().getMinX(), hitbox.getBoundsInParent().getMinY());

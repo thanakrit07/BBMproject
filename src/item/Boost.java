@@ -29,6 +29,7 @@ public class Boost extends Item{
 			}
 			if (collosion) {
 				hero.increaseSpeed();
+				hero.setCountboost(hero.getCountboost()+1);
 				item.setVisible(false);
 				kept = true;				
 			}
@@ -43,5 +44,11 @@ public class Boost extends Item{
 	@Override
 	public boolean isKept() {
 		return kept;
+	}
+
+	@Override
+	public void setKept(boolean k) {
+		// TODO Auto-generated method stub
+		this.kept = k;
 	}
 }

@@ -9,7 +9,6 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-import menu.MainMenu;
 import scenemanager.SceneManager;
 import sharedObject.AllScene;
 import javafx.animation.AnimationTimer;
@@ -29,6 +28,7 @@ import envi.Wall;
 import input.KeyInput;
 import item.Item;
 import sharedObject.Hitbox;
+import sharedObject.ImageRef;
 
 public class Stage1 implements AllScene {
 	private Scene scene;
@@ -50,8 +50,11 @@ public class Stage1 implements AllScene {
 		scene = new Scene(root, 1080, 840);
 		s1 = new Canvas(1080, 840);
 		gc = s1.getGraphicsContext2D();
-		gc.setFill(Color.BLACK);
-		gc.fillRect(0, 0, 1080, 720);
+		gc.setFill(Color.SADDLEBROWN);
+		gc.fillRect(0, 0, 1080, 840);
+		
+		gc.drawImage(ImageRef.getItemboard().get(3),0,720,1080,120);
+		
 		root.getChildren().add(s1);
 		s1.requestFocus();
 		System.out.println("Create BG");
@@ -64,7 +67,7 @@ public class Stage1 implements AllScene {
 //---------------------------------------------- Create Border---------------------------------------------------
 		Hitbox bd1 = new Hitbox(0, 0, 1080, 30);
 		bd1.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("bordertop.png").toString())));
-		Hitbox bd2 = new Hitbox(0, 30, 30, 810);
+		Hitbox bd2 = new Hitbox(0, 30, 30, 690);
 		bd2.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("borderleft.png").toString())));
 		Hitbox bd3 = new Hitbox(1050, 30, 30, 690);
 		bd3.setFill(new ImagePattern(new Image(ClassLoader.getSystemResource("borderright.png").toString())));
@@ -80,7 +83,6 @@ public class Stage1 implements AllScene {
 		p1.getlhitbox().addAll(lbd);
 		p2.getlhitbox().addAll(lbd);
 		root.getChildren().addAll(lbd);
-
 // ---------------------------------------------------add Hero-----------------------------------------------------
 		root.getChildren().add(p1.getHerobox());
 		root.getChildren().add(p2.getHerobox());
@@ -152,7 +154,7 @@ public class Stage1 implements AllScene {
 		scene.setOnKeyReleased((KeyEvent event) -> {
 			KeyInput.setKeyPressed(event.getCode(), false);
 		});
-//--------------------------------------------------------------------------------------------------
+//------------------------------------------------AnimationTimer------------------------------------------------
 		animation = new AnimationTimer() {
 			final long startNanoTime = System.nanoTime();
 
@@ -167,10 +169,13 @@ public class Stage1 implements AllScene {
 					if (litem.get(i).isKept()) litem.remove(i);
 				}
 				update();
+				updateItem();
 			}
 		};
 	}
-
+	
+//-----------------------------------------------------------------------------------------------------------------
+	
 	public void AnimationStart() {
 		new Thread(() -> {
 			Canvas cs = new Canvas(1080, 960);
@@ -267,6 +272,17 @@ public class Stage1 implements AllScene {
 
 	}
 	public void updateItem() {
+		gc.clearRect(0, 720, 1080, 120);
+		gc.drawImage(ImageRef.getItemboard().get(3),0,720,1080,120);
+		gc.setFill(Color.WHITE);
+		gc.setFont(new Font(45));
+		gc.fillText(""+p1.getBombrange(), 230, 800);
+		gc.fillText(""+p1.getCountBomb(), 325, 800);
+		gc.fillText(""+p1.getCountboost(), 420, 800);
+		gc.fillText(""+p2.getBombrange(), 735, 800);
+		gc.fillText(""+p2.getCountBomb(), 835, 800);
+		gc.fillText(""+p2.getCountboost(), 930, 800);
+		s1.requestFocus();
 	}
 
 }

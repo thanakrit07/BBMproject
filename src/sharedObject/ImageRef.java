@@ -9,9 +9,11 @@ import javafx.scene.paint.ImagePattern;
 public class ImageRef {
 	private static List<ImagePattern> WhiteBomber = new ArrayList<ImagePattern>();
 	private static List<ImagePattern> RedBomber = new ArrayList<ImagePattern>();
-	private static List<ImagePattern> bomb1 =  new ArrayList<ImagePattern>();
+	private static List<ImagePattern> bomb1 = new ArrayList<ImagePattern>();
 	private static List<ImagePattern> item = new ArrayList<ImagePattern>();
-	public ImageRef(){
+	private static List<Image> itemboard = new ArrayList<Image>();
+	private static Image gamescreen;
+	public ImageRef() {
 		ImagePattern wu1 = new ImagePattern(new Image(ClassLoader.getSystemResource("U_1.png").toString()));
 		ImagePattern wu2 = new ImagePattern(new Image(ClassLoader.getSystemResource("U_2.png").toString()));
 		ImagePattern wu3 = new ImagePattern(new Image(ClassLoader.getSystemResource("U_3.png").toString()));
@@ -27,7 +29,7 @@ public class ImageRef {
 		ImagePattern wl1 = new ImagePattern(new Image(ClassLoader.getSystemResource("L_1.png").toString()));
 		ImagePattern wl2 = new ImagePattern(new Image(ClassLoader.getSystemResource("L_2.png").toString()));
 		ImagePattern wl3 = new ImagePattern(new Image(ClassLoader.getSystemResource("L_3.png").toString()));
-		ImagePattern wl4 = new ImagePattern(new Image(ClassLoader.getSystemResource("L_4.png").toString()));	
+		ImagePattern wl4 = new ImagePattern(new Image(ClassLoader.getSystemResource("L_4.png").toString()));
 		WhiteBomber.add(wu1);
 		WhiteBomber.add(wu2);
 		WhiteBomber.add(wu3);
@@ -44,7 +46,7 @@ public class ImageRef {
 		WhiteBomber.add(wl2);
 		WhiteBomber.add(wl3);
 		WhiteBomber.add(wl4);
-//--------------------------------------------RedBomber---------------------------------------------
+		// --------------------------------------------RedBomber---------------------------------------------
 		ImagePattern ru1 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedU_1.png").toString()));
 		ImagePattern ru2 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedU_2.png").toString()));
 		ImagePattern ru3 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedU_3.png").toString()));
@@ -60,7 +62,7 @@ public class ImageRef {
 		ImagePattern rl1 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedL_1.png").toString()));
 		ImagePattern rl2 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedL_2.png").toString()));
 		ImagePattern rl3 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedL_3.png").toString()));
-		ImagePattern rl4 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedL_4.png").toString()));	
+		ImagePattern rl4 = new ImagePattern(new Image(ClassLoader.getSystemResource("RedL_4.png").toString()));
 		RedBomber.add(ru1);
 		RedBomber.add(ru2);
 		RedBomber.add(ru3);
@@ -77,8 +79,8 @@ public class ImageRef {
 		RedBomber.add(rl2);
 		RedBomber.add(rl3);
 		RedBomber.add(rl4);
-		
-//------------------------------------------Bomb-----------------------------------------------------------------------
+
+		// ------------------------------------------Bomb-----------------------------------------------------------------------
 		ImagePattern b1 = new ImagePattern(new Image(ClassLoader.getSystemResource("bomb1_1.png").toString()));
 		ImagePattern b2 = new ImagePattern(new Image(ClassLoader.getSystemResource("bomb1_2.png").toString()));
 		ImagePattern b3 = new ImagePattern(new Image(ClassLoader.getSystemResource("bomb1_3.png").toString()));
@@ -89,18 +91,18 @@ public class ImageRef {
 		ImagePattern effh = new ImagePattern(new Image(ClassLoader.getSystemResource("H_bodyeffbomb.png").toString()));
 		ImagePattern effv = new ImagePattern(new Image(ClassLoader.getSystemResource("V_bodyeffbomb.png").toString()));
 		ImagePattern effm = new ImagePattern(new Image(ClassLoader.getSystemResource("mideffbomb.png").toString()));
-		bomb1.add(b1);//index0
-		bomb1.add(b2);//index1
-		bomb1.add(b3);//index2
-		bomb1.add(effu);//index3
-		bomb1.add(effr);//index4
-		bomb1.add(effd);//index5
-		bomb1.add(effl);//index6
-		bomb1.add(effh);//index7
-		bomb1.add(effv);//index8
-		bomb1.add(effm);//index9
+		bomb1.add(b1);// index0
+		bomb1.add(b2);// index1
+		bomb1.add(b3);// index2
+		bomb1.add(effu);// index3
+		bomb1.add(effr);// index4
+		bomb1.add(effd);// index5
+		bomb1.add(effl);// index6
+		bomb1.add(effh);// index7
+		bomb1.add(effv);// index8
+		bomb1.add(effm);// index9
 
-//----------------------------------------Item-----------------------------------------------
+		// --------------------------------------------Item-----------------------------------------------------------------
 		ImagePattern item1 = new ImagePattern(new Image(ClassLoader.getSystemResource("boost.png").toString()));
 		ImagePattern item2 = new ImagePattern(new Image(ClassLoader.getSystemResource("Deboost.png").toString()));
 		ImagePattern item3 = new ImagePattern(new Image(ClassLoader.getSystemResource("upgradebomb.png").toString()));
@@ -112,19 +114,40 @@ public class ImageRef {
 		item.add(item3);
 		item.add(item4);
 		item.add(item5);
-		item.add(item6);		
+		item.add(item6);
+		//-----------------------------------------Itemboard--------------------------------------------------------------
+		Image ib1 = new Image(ClassLoader.getSystemResource("p1item.png").toString());
+		Image ib2 = new Image(ClassLoader.getSystemResource("p2item.png").toString());
+		Image ib3 = new Image(ClassLoader.getSystemResource("listitem.png").toString());
+		Image ib4 = new Image(ClassLoader.getSystemResource("board.png").toString());
+		itemboard.add(ib1);
+		itemboard.add(ib2);
+		itemboard.add(ib3);
+		itemboard.add(ib4);
+		//-------gamescreen------
+		gamescreen = new Image(ClassLoader.getSystemResource("gamescreen.png").toString());
 	}
-	public static List<ImagePattern> getWhiteBomber(){	
+
+	public static List<ImagePattern> getWhiteBomber() {
 		return WhiteBomber;
 	}
-	public static List<ImagePattern> getRedBomber(){
+
+	public static List<ImagePattern> getRedBomber() {
 		return RedBomber;
 	}
-	public static List<ImagePattern> getBomb1(){
+
+	public static List<ImagePattern> getBomb1() {
 		return bomb1;
 	}
-	public static List<ImagePattern> getItem(){
+
+	public static List<ImagePattern> getItem() {
 		return item;
 	}
-}
 
+	public static List<Image> getItemboard() {
+		return itemboard;
+	}
+	public static Image getGamescreen() {
+		return gamescreen;
+	}
+}

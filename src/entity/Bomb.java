@@ -8,6 +8,7 @@ import java.util.List;
 
 import Map.Stage1;
 import envi.Brick;
+import item.Item;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
@@ -157,6 +158,12 @@ public class Bomb implements Gameobject{
 						}
 						if (rec.CollosionWith(p2.getHerobox())) {
 							Player2.setDead();
+						}
+						for (Item it:Stage1.litem) {
+							if (rec.CollosionWith(it.getHitbox())) {
+								it.getHitbox().setVisible(false);
+								it.setKept(true);
+							}
 						}
 					}	
 				}				

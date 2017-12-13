@@ -33,4 +33,10 @@ public class Stackbomb extends Item{
 	public boolean isKept() {
 		return kept;
 	}
+
+	@Override
+	public void setKept(boolean k) {
+		// TODO Auto-generated method stub
+		this.kept = k;
+	}
 }
