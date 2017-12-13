@@ -266,7 +266,5 @@ public class Stage1 implements AllScene {
 		return this.scene;
 
 	}
-	public void updateItem() {
-	}
 
 }
