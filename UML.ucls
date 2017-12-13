@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="entity.Bomb" project="BBMproject" file="/BBMproject/src/entity/Bomb.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="160" y="415"/>    
+    <position height="-1" width="-1" x="156" y="381"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="envi.Envi" project="BBMproject" file="/BBMproject/src/envi/Envi.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1008" y="322"/>    
+    <position height="-1" width="-1" x="1042" y="289"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="envi.Brick" project="BBMproject" file="/BBMproject/src/envi/Brick.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1187" y="424"/>    
+    <position height="-1" width="-1" x="1221" y="391"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -138,7 +138,7 @@
   </class>  
   <class id="16" language="java" name="envi.Wall" project="BBMproject" file="/BBMproject/src/envi/Wall.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1013" y="502"/>    
+    <position height="-1" width="-1" x="1048" y="469"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -156,7 +156,7 @@
   </class>  
   <class id="18" language="java" name="item.Boost" project="BBMproject" file="/BBMproject/src/item/Boost.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="674" y="800"/>    
+    <position height="-1" width="-1" x="674" y="655"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -165,7 +165,7 @@
   </class>  
   <class id="19" language="java" name="item.Stackbomb" project="BBMproject" file="/BBMproject/src/item/Stackbomb.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="849" y="798"/>    
+    <position height="-1" width="-1" x="954" y="978"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -174,7 +174,7 @@
   </class>  
   <class id="20" language="java" name="item.Upgradebomb" project="BBMproject" 
     file="/BBMproject/src/item/Upgradebomb.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1045" y="709"/>    
+    <position height="-1" width="-1" x="1216" y="662"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -190,62 +190,101 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <realization id="22">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <realization id="23">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <generalization id="24">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
+  <class id="22" language="java" name="item.Deboost" project="BBMproject" file="/BBMproject/src/item/Deboost.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="770" y="948"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="item.Debomb" project="BBMproject" file="/BBMproject/src/item/Debomb.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1138" y="1041"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="item.Degradebomb" project="BBMproject" 
+    file="/BBMproject/src/item/Degradebomb.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1213" y="853"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
   <generalization id="25">    
-    <end type="SOURCE" refId="19"/>    
+    <end type="SOURCE" refId="22"/>    
     <end type="TARGET" refId="17"/>  
   </generalization>  
   <realization id="26">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <realization id="27">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <generalization id="28">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <generalization id="29">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <generalization id="30">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <realization id="31">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <realization id="32">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <realization id="33">    
     <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="9"/>  
   </realization>  
-  <generalization id="34">    
+  <generalization id="27">    
     <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="12"/>  
   </generalization>  
-  <generalization id="35">    
+  <generalization id="28">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <realization id="29">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="30">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <generalization id="31">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <generalization id="32">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <generalization id="33">    
     <end type="SOURCE" refId="20"/>    
     <end type="TARGET" refId="17"/>  
   </generalization>  
+  <realization id="34">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <generalization id="35">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="36">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <generalization id="37">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <realization id="38">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="39">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <generalization id="40">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <realization id="41">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

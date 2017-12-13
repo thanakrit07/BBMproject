@@ -19,7 +19,7 @@ public class Upgradebomb extends Item{
 	@Override
 	public void IsKeptBy(Hero hero) {
 		// TODO Auto-generated method stub
-		if(!kept&&item.CollosionWith(hero.getHerobox())) {
+		if(!kept) {
 			hero.increaseBombrange();
 			item.setVisible(false);
 			kept = true;

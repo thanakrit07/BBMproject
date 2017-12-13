@@ -16,7 +16,7 @@ public class Degradebomb extends Item{
 	@Override
 	public void IsKeptBy(Hero hero) {
 		// TODO Auto-generated method stub
-		if(!kept&&item.CollosionWith(hero.getHerobox())) {
+		if(!kept) {
 			hero.decreaseBombrage();
 			item.setVisible(false);
 			kept = true;
