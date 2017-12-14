@@ -25,6 +25,7 @@ public class Bomb implements Gameobject{
 	private boolean down = true;
 	private boolean left = true;
 	private boolean right = true;
+	public boolean iskick = false;
 	
 	public Bomb(double x,double y,int bombrange) {
 		this.x = x;
@@ -32,8 +33,10 @@ public class Bomb implements Gameobject{
 		this.exploded = false;
 		this.bombrange=bombrange;
 		bomb =new Hitbox(x,y,60,60);
+
 		bomb.setFill(ImageRef.getBomb1Image().get(0));
-		Stage1.lbomb.add(bomb);
+		Stage1.lbomb.add(this);
+
 		
 	}
 	
@@ -55,7 +58,7 @@ public class Bomb implements Gameobject{
 				e.printStackTrace();
 			}
 			this.bomb.setVisible(false);
-			Stage1.lbomb.remove(bomb);
+			Stage1.lbomb.remove(this);
 			p1.getlhitbox().remove(bomb);
 			p2.getlhitbox().remove(bomb);
 			this.bomb=null;
@@ -206,12 +209,7 @@ public class Bomb implements Gameobject{
 			
 		});thread.start();
 	}
-	public void pushByHero(Hero hero) {
-		while(true) {
-			bomb.setLayoutX(bomb.getLayoutX()+1);
-			bomb.setLayoutX(bomb.getLayoutX()+1);
-		}
-	}
+
 	public Hitbox getHitbox() {
 		return this.bomb;
 	}
