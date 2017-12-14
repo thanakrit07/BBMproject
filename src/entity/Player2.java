@@ -107,10 +107,14 @@ public class Player2 extends Hero {
 			}
 		}
 
-		for (int i=0;i<Stage1.lbomb.size();i++) {
-			if (!Stage1.lbomb.get(i).getHitbox().CollosionWith(bounds)&&!this.lhb.contains(Stage1.lbomb.get(i).getHitbox())) {
-				this.lhb.add(Stage1.lbomb.get(i).getHitbox());				
-			}
+		try {
+			for (int i=0;i<Stage1.lbomb.size();i++) {
+				if (!Stage1.lbomb.get(i).getHitbox().CollosionWith(bounds)&&!this.lhb.contains(Stage1.lbomb.get(i).getHitbox())) {
+					this.lhb.add(Stage1.lbomb.get(i).getHitbox());				
+				}
+			}			
+		}catch (IndexOutOfBoundsException e) {
+			System.out.println(e.toString());
 		}
 
 	}
