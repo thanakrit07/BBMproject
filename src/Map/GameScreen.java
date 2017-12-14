@@ -9,6 +9,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import sharedObject.AllScene;
 import sharedObject.ImageRef;
 import scenemanager.SceneManager;
@@ -30,24 +32,32 @@ public class GameScreen implements AllScene {
 		scene = new Scene(root, width, height);
 		Canvas bg = new Canvas(width, height);
 		GraphicsContext gc = bg.getGraphicsContext2D();
-		gc.drawImage(ImageRef.getGamescreenImage(), 0, 0,width, height);
-		
-//		gc.setFill(Color.BLACK);
-//		gc.fillRect(0, 0, width, height);
+		gc.drawImage(ImageRef.getLoadScreenImage().get(0), 0, 0,width, height);
 		root.getChildren().add(bg);
-		
-		// addInput();
-		
-		//Select Stage
-		
+		new Thread(()->{
+			gc.drawImage(ImageRef.getLoadScreenImage().get(1), 765, 755);
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			gc.drawImage(ImageRef.getLoadScreenImage().get(0), 0, 0,width, height);
+			addEventHandler();
+			gc.setFill(Color.BLACK);
+			gc.setFont(new Font("ArcadeClassic",50));
+			gc.fillText("Press  Enter  To  START", 320, 780);
+		}).start();
+	}
+	public void addEventHandler() {
 		// add stage
 		lscene = new ArrayList<AllScene>();
 		Stage1 s1 = new Stage1();
 		lscene.add(s1);
-		
+		//add event
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
 			public void handle(KeyEvent event) {
-				if(event.getCode().equals(KeyCode.DIGIT1)) {
+				if(event.getCode().equals(KeyCode.ENTER)) {
 					
 					SceneManager.gotoSceneOf(s1.getScene());
 					s1.AnimationStart();
@@ -57,10 +67,7 @@ public class GameScreen implements AllScene {
 				}
 			}
 		});
-
 	}
-
-	@Override
 	public Scene getScene() {
 		// TODO Auto-generated method stub
 		return this.scene;
