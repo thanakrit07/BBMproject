@@ -25,7 +25,6 @@ public class Bomb implements Gameobject{
 	private boolean down = true;
 	private boolean left = true;
 	private boolean right = true;
-	public boolean iskick = false;
 	
 	public Bomb(double x,double y,int bombrange) {
 		this.x = x;
@@ -64,8 +63,7 @@ public class Bomb implements Gameobject{
 			this.bomb=null;
 			
 			this.exploded = true;
-			
-			ImageRef.getBombSound().play();
+			ImageRef.getSound().get(0).play();
 			//draw effected bomb
 			int indexj =(int)(this.x-30)/60 ;
 			int indexi = (int)(this.y-30)/60 ;
@@ -159,14 +157,14 @@ public class Bomb implements Gameobject{
 					for(Hitbox rec: lrec) {
 						rec.setVisible(true);
 						root.getChildren().add(rec);
-						if (rec.CollosionWith(p1.getHerobox())) {
+						if (rec.CollisionWith(p1.getHitbox())) {
 							Player1.setDead();
 						}
-						if (rec.CollosionWith(p2.getHerobox())) {
+						if (rec.CollisionWith(p2.getHitbox())) {
 							Player2.setDead();
 						}
 						for (Item it:Stage1.litem) {
-							if (rec.CollosionWith(it.getHitbox())) {
+							if (rec.CollisionWith(it.getHitbox())) {
 								it.getHitbox().setVisible(false);
 								it.setKept(true);
 							}
@@ -189,17 +187,17 @@ public class Bomb implements Gameobject{
 					List<Brick> lbrick = Stage1.lbrick;
 					for(Hitbox rec: lrec) {
 						for (int i=lbrick.size()-1;i>=0;i--) {
-							if (rec.CollosionWith(lbrick.get(i).getHitbox())) {
+							if (rec.CollisionWith(lbrick.get(i).getHitbox())) {
 								p1.getlhitbox().remove(lbrick.get(i).getHitbox());
 								p2.getlhitbox().remove(lbrick.get(i).getHitbox());
 								if (Stage1.isGameRunning)lbrick.get(i).destroyed(root);
 								lbrick.remove(i);
 							}
 						}
-						if (rec.CollosionWith(p1.getHerobox())) {
+						if (rec.CollisionWith(p1.getHitbox())) {
 							Player1.setDead();
 						}
-						if (rec.CollosionWith(p2.getHerobox())) {
+						if (rec.CollisionWith(p2.getHitbox())) {
 							Player2.setDead();
 						}
 						rec.setVisible(false);

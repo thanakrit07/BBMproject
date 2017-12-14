@@ -9,7 +9,7 @@ public class Hitbox extends Rectangle{
 	}
 	// check collosion
 
-	public boolean CollosionWith(Rectangle other) {
+	public boolean CollisionWith(Rectangle other) {
 		boolean collosion = false;
 		Shape intersect = Shape.intersect(this,other);
 		double checkW = intersect.getBoundsInLocal().getWidth();

@@ -1,9 +1,4 @@
-import Map.GameScreen;
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import scenemanager.SceneManager;
 import sharedObject.ImageRef;
@@ -17,10 +12,9 @@ public class Main extends Application {
 		SceneManager sm = new SceneManager(stage);				
 		SceneManager.gotoMainMenu();
 
-	SceneManager.gotoMainMenu();		
-	}
-	public void stop(Stage stage) {
-
+	SceneManager.gotoMainMenu();
+	ImageRef.getSound().get(1).setVolume(0.3);
+	ImageRef.getSound().get(1).play();
 	}
 
 	public static void main(String[] args) {

@@ -6,6 +6,7 @@ import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.text.Font;
 
 public class ImageRef {
 	private static List<ImagePattern> WhiteBomber = new ArrayList<ImagePattern>();
@@ -15,7 +16,9 @@ public class ImageRef {
 	private static List<Image> itemboard = new ArrayList<Image>();
 	private static List<Image> start = new ArrayList<Image>();
 	private static List<Image> lsc = new ArrayList<Image>();
-	private static AudioClip bombsound;
+	private static List<AudioClip> sound = new ArrayList<AudioClip>();
+	private static List<Font> font = new ArrayList<Font>();
+
 	public ImageRef() {
 		ImagePattern wu1 = new ImagePattern(new Image(ClassLoader.getSystemResource("U_1.png").toString()));
 		ImagePattern wu2 = new ImagePattern(new Image(ClassLoader.getSystemResource("U_2.png").toString()));
@@ -118,7 +121,7 @@ public class ImageRef {
 		item.add(item4);
 		item.add(item5);
 		item.add(item6);
-		//-----------------------------------------Itemboard--------------------------------------------------------------
+		// -----------------------------------------Itemboard--------------------------------------------------------------
 		Image ib1 = new Image(ClassLoader.getSystemResource("p1item.png").toString());
 		Image ib2 = new Image(ClassLoader.getSystemResource("p2item.png").toString());
 		Image ib3 = new Image(ClassLoader.getSystemResource("listitem.png").toString());
@@ -127,18 +130,26 @@ public class ImageRef {
 		itemboard.add(ib2);
 		itemboard.add(ib3);
 		itemboard.add(ib4);
-		//----------------------------------Start-----------------------------------------------------------------------------
+		// ----------------------------------Start-----------------------------------------------------------------------------
 		Image st1 = new Image(ClassLoader.getSystemResource("start1.png").toString());
 		Image st2 = new Image(ClassLoader.getSystemResource("start2.png").toString());
 		start.add(st1);
 		start.add(st2);
-		//---------------------------------loadingscreen-------------------------------------------------------------------------
+		// ---------------------------------loadingscreen-------------------------------------------------------------------------
 		Image sc1 = new Image(ClassLoader.getSystemResource("loadscreen.png").toString());
 		Image sc2 = new Image(ClassLoader.getSystemResource("loading.png").toString());
 		lsc.add(sc1);
 		lsc.add(sc2);
-		//--------------------------------bombsound-------------------------------------------------------------------------------
-		bombsound = new AudioClip(ClassLoader.getSystemResource("bombsound.wav").toString());
+		// -----------------------------------Allsound-------------------------------------------------------------------------------
+		AudioClip bombsound = new AudioClip(ClassLoader.getSystemResource("bombsound.wav").toString());
+		AudioClip bgsound = new AudioClip(ClassLoader.getSystemResource("bgsound.mp3").toString());
+		sound.add(bombsound);
+		sound.add(bgsound);
+		// -----------------------------------Font---------------------------------------------------------------------------------
+		Font font1 = Font.loadFont((ClassLoader.getSystemResource("fontprogmeth.TTF").toString()), 50);
+		Font font2 = Font.loadFont((ClassLoader.getSystemResource("fontprogmeth.TTF").toString()), 80);
+		font.add(font1);
+		font.add(font2);
 	}
 
 	public static List<ImagePattern> getWhiteBomberImage() {
@@ -160,13 +171,19 @@ public class ImageRef {
 	public static List<Image> getItemboardImage() {
 		return itemboard;
 	}
+
 	public static List<Image> getStartImage() {
 		return start;
 	}
+
 	public static List<Image> getLoadScreenImage() {
 		return lsc;
 	}
-	public static AudioClip getBombSound() {
-		return bombsound;
+
+	public static List<AudioClip> getSound() {
+		return sound;
+	}
+	public static List<Font> getFont() {
+		return font;
 	}
 }

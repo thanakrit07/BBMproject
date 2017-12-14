@@ -103,7 +103,7 @@ public class Player1 extends Hero {
 		}
 		try {
 			for (int i=0;i<Stage1.lbomb.size();i++) {
-				if (!Stage1.lbomb.get(i).getHitbox().CollosionWith(bounds)&&!this.lhb.contains(Stage1.lbomb.get(i).getHitbox())) {
+				if (!Stage1.lbomb.get(i).getHitbox().CollisionWith(bounds)&&!this.lhb.contains(Stage1.lbomb.get(i).getHitbox())) {
 					this.lhb.add(Stage1.lbomb.get(i).getHitbox());
 				}
 			}			
@@ -114,10 +114,6 @@ public class Player1 extends Hero {
 
 	public static void setDead() {
 		alive = false;
-	}
-
-	public Hitbox getHitbox() {
-		return this.bounds;
 	}
 
 	@Override

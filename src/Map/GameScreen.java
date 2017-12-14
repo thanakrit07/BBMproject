@@ -6,7 +6,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
@@ -17,8 +16,6 @@ import scenemanager.SceneManager;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.ImageIcon;
 
 import Map.Stage1;
 
@@ -45,7 +42,7 @@ public class GameScreen implements AllScene {
 			gc.drawImage(ImageRef.getLoadScreenImage().get(0), 0, 0,width, height);
 			addEventHandler();
 			gc.setFill(Color.BLACK);
-			gc.setFont(new Font("ArcadeClassic",50));
+			gc.setFont(ImageRef.getFont().get(0));
 			gc.fillText("Press  Enter  To  START", 320, 780);
 		}).start();
 	}
@@ -58,7 +55,6 @@ public class GameScreen implements AllScene {
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
 			public void handle(KeyEvent event) {
 				if(event.getCode().equals(KeyCode.ENTER)) {
-					
 					SceneManager.gotoSceneOf(s1.getScene());
 					s1.AnimationStart();
 				}

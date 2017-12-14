@@ -14,8 +14,6 @@ public abstract class Hero implements Gameobject {
 	private int direction;
 	protected int bombrange;
 	protected int countboost;
-	public boolean kick = true;
-	protected List<Bomb> bombList = new ArrayList<Bomb>();
 	protected List<Hitbox> lhb = new ArrayList<Hitbox>();
 	protected Hitbox bounds;
 
@@ -30,13 +28,13 @@ public abstract class Hero implements Gameobject {
 	protected void moveX() {
 		if (getDirection() == 1) {
 			bounds.setLayoutX(bounds.getLayoutX() + speed);
-			if (collosion()) {
+			if (Collision()) {
 				bounds.setLayoutX(bounds.getLayoutX() - speed);
 			}
 
 		} else if (getDirection() == 3) {
 			bounds.setLayoutX(bounds.getLayoutX() - speed);
-			if (collosion()) {
+			if (Collision()) {
 				bounds.setLayoutX(bounds.getLayoutX() + speed);
 
 			}
@@ -47,21 +45,21 @@ public abstract class Hero implements Gameobject {
 
 		if (getDirection() == 0) {
 			bounds.setLayoutY(bounds.getLayoutY() - speed);
-			if (collosion()) {
+			if (Collision()) {
 				bounds.setLayoutY(bounds.getLayoutY() + speed);
 			}
 		} else if (getDirection() == 2) {
 			bounds.setLayoutY(bounds.getLayoutY() + speed);
-			if (collosion()) {
+			if (Collision()) {
 				bounds.setLayoutY(bounds.getLayoutY() - speed);
 			}
 		}
 	}
 
-	protected boolean collosion() {
+	protected boolean Collision() {
 		boolean hit = false;
 		for (Hitbox h : lhb) {
-			if (h.CollosionWith(bounds)) {
+			if (h.CollisionWith(bounds)) {
 				hit = true;
 				break;
 			}
@@ -138,16 +136,8 @@ public abstract class Hero implements Gameobject {
 		return this.lhb;
 	}
 
-	public Hitbox getHerobox() {
+	public Hitbox getHitbox() {
 		return bounds;
-	}
-
-	public List<Bomb> getbomblist() {
-		return this.bombList;
-	}
-
-	protected void clearBomb() {
-		this.countBomb--;
 	}
 
 	public abstract boolean isAlive();
@@ -166,14 +156,6 @@ public abstract class Hero implements Gameobject {
 
 	public int getCountBomb() {
 		return countBomb;
-	}
-	
-	public boolean getKick() {
-		return this.kick;
-	}
-	
-	public void setKick(boolean k) {
-		this.kick=k;
 	}
 
 	public int getDirection() {
