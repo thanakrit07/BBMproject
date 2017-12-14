@@ -53,7 +53,7 @@ public class Stage1 implements AllScene {
 		gc.setFill(Color.SADDLEBROWN);
 		gc.fillRect(0, 0, 1080, 840);
 		
-		gc.drawImage(ImageRef.getItemboard().get(3),0,720,1080,120);
+		gc.drawImage(ImageRef.getItemboardImage().get(3),0,720,1080,120);
 		
 		root.getChildren().add(s1);
 		s1.requestFocus();
@@ -273,7 +273,7 @@ public class Stage1 implements AllScene {
 	}
 	public void updateItem() {
 		gc.clearRect(0, 720, 1080, 120);
-		gc.drawImage(ImageRef.getItemboard().get(3),0,720,1080,120);
+		gc.drawImage(ImageRef.getItemboardImage().get(3),0,720,1080,120);
 		gc.setFill(Color.WHITE);
 		gc.setFont(new Font(45));
 		gc.fillText(""+p1.getBombrange(), 230, 800);

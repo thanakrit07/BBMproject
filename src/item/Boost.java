@@ -11,7 +11,7 @@ public class Boost extends Item{
 	public Boost(double x,double y) {
 		super(x,y);
 		item = new Hitbox(x,y,60,60);
-		item.setFill(ImageRef.getItem().get(0));
+		item.setFill(ImageRef.getItemImage().get(0));
 	}
 	
 	@Override

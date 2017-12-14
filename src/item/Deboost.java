@@ -12,7 +12,7 @@ public class Deboost extends Item {
 	public Deboost(double x, double y) {
 		super(x, y);
 		item = new Hitbox(x, y, 60, 60);
-		item.setFill(ImageRef.getItem().get(1));
+		item.setFill(ImageRef.getItemImage().get(1));
 	}
 
 	@Override

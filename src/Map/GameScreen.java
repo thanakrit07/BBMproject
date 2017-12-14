@@ -6,6 +6,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import sharedObject.AllScene;
@@ -14,6 +15,8 @@ import scenemanager.SceneManager;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.ImageIcon;
 
 import Map.Stage1;
 
@@ -27,7 +30,8 @@ public class GameScreen implements AllScene {
 		scene = new Scene(root, width, height);
 		Canvas bg = new Canvas(width, height);
 		GraphicsContext gc = bg.getGraphicsContext2D();
-		gc.drawImage(ImageRef.getGamescreen(), 0, 0,width, height);
+		gc.drawImage(ImageRef.getGamescreenImage(), 0, 0,width, height);
+		
 //		gc.setFill(Color.BLACK);
 //		gc.fillRect(0, 0, width, height);
 		root.getChildren().add(bg);

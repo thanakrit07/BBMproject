@@ -10,7 +10,7 @@ public class Upgradebomb extends Item{
 	public Upgradebomb(double x, double y) {
 		super(x, y);
 		item = new Hitbox(x,y,60,60);
-		item.setFill(ImageRef.getItem().get(2));
+		item.setFill(ImageRef.getItemImage().get(2));
 	}
 
 	@Override
