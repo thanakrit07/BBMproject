@@ -4,7 +4,6 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
 import sharedObject.Hitbox;
 import sharedObject.ImageRef;
 import Map.Stage1;
