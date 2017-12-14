@@ -11,7 +11,7 @@ public class Stackbomb extends Item{
 	public Stackbomb(double x, double y) {
 		super(x, y);
 		item = new Hitbox(x,y,60,60);
-		item.setFill(ImageRef.getItem().get(4));
+		item.setFill(ImageRef.getItemImage().get(4));
 	}
 
 	public void IsKeptBy(Hero hero) {

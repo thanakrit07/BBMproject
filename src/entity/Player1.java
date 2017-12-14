@@ -23,7 +23,7 @@ public class Player1 extends Hero {
 
 		bounds = new Hitbox(x, y, 60, 60);
 		bounds.setVisible(alive);
-		bounds.setFill(ImageRef.getWhiteBomber().get(1 + 3));
+		bounds.setFill(ImageRef.getWhiteBomberImage().get(1 + 3));
 		animationwalk = new AnimationTimer() {
 			final long startNanoTime = System.nanoTime();
 
@@ -41,13 +41,13 @@ public class Player1 extends Hero {
 					ck = 12;
 
 				if (t <= 0.15) {
-					bounds.setFill(ImageRef.getWhiteBomber().get(0 + ck));
+					bounds.setFill(ImageRef.getWhiteBomberImage().get(0 + ck));
 				} else if (t > 0.15 && t <= 0.30) {
-					bounds.setFill(ImageRef.getWhiteBomber().get(1 + ck));
+					bounds.setFill(ImageRef.getWhiteBomberImage().get(1 + ck));
 				} else if (t > 0.30 && t <= 0.45) {
-					bounds.setFill(ImageRef.getWhiteBomber().get(2 + ck));
+					bounds.setFill(ImageRef.getWhiteBomberImage().get(2 + ck));
 				} else if (t > 0.45 && t <= 0.60) {
-					bounds.setFill(ImageRef.getWhiteBomber().get(3 + ck));
+					bounds.setFill(ImageRef.getWhiteBomberImage().get(3 + ck));
 				}
 			}
 		};
@@ -101,10 +101,14 @@ public class Player1 extends Hero {
 				KeyInput.setkeyPressed.add(KeyCode.SPACE);
 			}
 		}
-		for (int i=0;i<Stage1.lbomb.size();i++) {
-			if (!Stage1.lbomb.get(i).getHitbox().CollosionWith(bounds)&&!this.lhb.contains(Stage1.lbomb.get(i).getHitbox())) {
-				this.lhb.add(Stage1.lbomb.get(i).getHitbox());
-			}
+		try {
+			for (int i=0;i<Stage1.lbomb.size();i++) {
+				if (!Stage1.lbomb.get(i).getHitbox().CollosionWith(bounds)&&!this.lhb.contains(Stage1.lbomb.get(i).getHitbox())) {
+					this.lhb.add(Stage1.lbomb.get(i).getHitbox());
+				}
+			}			
+		}catch (IndexOutOfBoundsException e) {
+			System.out.println(e.toString());
 		}
 	}
 

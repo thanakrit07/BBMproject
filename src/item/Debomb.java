@@ -10,7 +10,7 @@ public class Debomb extends Item{
 	public Debomb(double x, double y) {
 		super(x, y);
 		item = new Hitbox(x,y,60,60);
-		item.setFill(ImageRef.getItem().get(5));
+		item.setFill(ImageRef.getItemImage().get(5));
 	}
 
 	public void IsKeptBy(Hero hero) {

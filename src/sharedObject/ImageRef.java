@@ -12,6 +12,7 @@ public class ImageRef {
 	private static List<ImagePattern> bomb1 = new ArrayList<ImagePattern>();
 	private static List<ImagePattern> item = new ArrayList<ImagePattern>();
 	private static List<Image> itemboard = new ArrayList<Image>();
+	private static List<Image> start = new ArrayList<Image>();
 	private static Image gamescreen;
 	public ImageRef() {
 		ImagePattern wu1 = new ImagePattern(new Image(ClassLoader.getSystemResource("U_1.png").toString()));
@@ -124,30 +125,39 @@ public class ImageRef {
 		itemboard.add(ib2);
 		itemboard.add(ib3);
 		itemboard.add(ib4);
-		//-------gamescreen------
+		//----------------------------------Start-----------------------------------------------------------------------------
+		Image st1 = new Image(ClassLoader.getSystemResource("start1.png").toString());
+		Image st2 = new Image(ClassLoader.getSystemResource("start2.png").toString());
+		start.add(st1);
+		start.add(st2);
+		//-----------------------------------gamescreen------------------------------------------------------------------------------
 		gamescreen = new Image(ClassLoader.getSystemResource("gamescreen.png").toString());
+		
 	}
 
-	public static List<ImagePattern> getWhiteBomber() {
+	public static List<ImagePattern> getWhiteBomberImage() {
 		return WhiteBomber;
 	}
 
-	public static List<ImagePattern> getRedBomber() {
+	public static List<ImagePattern> getRedBomberImage() {
 		return RedBomber;
 	}
 
-	public static List<ImagePattern> getBomb1() {
+	public static List<ImagePattern> getBomb1Image() {
 		return bomb1;
 	}
 
-	public static List<ImagePattern> getItem() {
+	public static List<ImagePattern> getItemImage() {
 		return item;
 	}
 
-	public static List<Image> getItemboard() {
+	public static List<Image> getItemboardImage() {
 		return itemboard;
 	}
-	public static Image getGamescreen() {
+	public static List<Image> getStartImage() {
+		return start;
+	}
+	public static Image getGamescreenImage() {
 		return gamescreen;
 	}
 }

@@ -10,7 +10,7 @@ public class Degradebomb extends Item{
 	public Degradebomb(double x, double y) {
 		super(x, y);
 		item = new Hitbox(x,y,60,60);
-		item.setFill(ImageRef.getItem().get(3));
+		item.setFill(ImageRef.getItemImage().get(3));
 	}
 
 	@Override

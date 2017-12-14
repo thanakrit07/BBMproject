@@ -27,7 +27,7 @@ public class Player2 extends Hero {
 		bounds = new Hitbox(x, y, 60, 60);
 		bounds.setFill(Color.AQUA);
 		bounds.setVisible(alive);
-		bounds.setFill(ImageRef.getRedBomber().get(1 + 12));
+		bounds.setFill(ImageRef.getRedBomberImage().get(1 + 12));
 
 		animationwalk = new AnimationTimer() {
 			final long startNanoTime = System.nanoTime();
@@ -46,13 +46,13 @@ public class Player2 extends Hero {
 					ck = 12;
 
 				if (t > 0 && t <= 0.15) {
-					bounds.setFill(ImageRef.getRedBomber().get(0 + ck));
+					bounds.setFill(ImageRef.getRedBomberImage().get(0 + ck));
 				} else if (t > 0.15 && t <= 0.30) {
-					bounds.setFill(ImageRef.getRedBomber().get(1 + ck));
+					bounds.setFill(ImageRef.getRedBomberImage().get(1 + ck));
 				} else if (t > 0.30 && t <= 0.45) {
-					bounds.setFill(ImageRef.getRedBomber().get(2 + ck));
+					bounds.setFill(ImageRef.getRedBomberImage().get(2 + ck));
 				} else if (t > 0.45 && t <= 0.60) {
-					bounds.setFill(ImageRef.getRedBomber().get(3 + ck));
+					bounds.setFill(ImageRef.getRedBomberImage().get(3 + ck));
 				}
 			}
 		};
@@ -106,6 +106,7 @@ public class Player2 extends Hero {
 				KeyInput.setkeyPressed.add(KeyCode.ENTER);
 			}
 		}
+
 		try {
 			for (int i=0;i<Stage1.lbomb.size();i++) {
 				if (!Stage1.lbomb.get(i).getHitbox().CollosionWith(bounds)&&!this.lhb.contains(Stage1.lbomb.get(i).getHitbox())) {

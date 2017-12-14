@@ -33,8 +33,10 @@ public class Bomb implements Gameobject{
 		this.exploded = false;
 		this.bombrange=bombrange;
 		bomb =new Hitbox(x,y,60,60);
-		bomb.setFill(ImageRef.getBomb1().get(0));
+
+		bomb.setFill(ImageRef.getBomb1Image().get(0));
 		Stage1.lbomb.add(this);
+
 		
 	}
 	
@@ -47,9 +49,9 @@ public class Bomb implements Gameobject{
 			this.bomb.setVisible(true);
 			try {
 				Thread.sleep(780);
-				bomb.setFill(ImageRef.getBomb1().get(1));
+				bomb.setFill(ImageRef.getBomb1Image().get(1));
 				Thread.sleep(780);
-				bomb.setFill(ImageRef.getBomb1().get(2));
+				bomb.setFill(ImageRef.getBomb1Image().get(2));
 				Thread.sleep(780);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -68,7 +70,7 @@ public class Bomb implements Gameobject{
 			int indexi = (int)(this.y-30)/60 ;
 			lrec = new ArrayList<Hitbox>();
 			Hitbox c = new Hitbox(x,y,60.0,60.0);
-			c.setFill(ImageRef.getBomb1().get(9));
+			c.setFill(ImageRef.getBomb1Image().get(9));
 			lrec.add(c);
 			int[][] field = Stage1.field;
 			for (int i=1; i <= bombrange;i++) {
@@ -77,10 +79,10 @@ public class Bomb implements Gameobject{
 					Hitbox u;
 					if(i==bombrange) {
 						u = new Hitbox(x+6,y-(i*60)+5,48.0,55.0);
-						u.setFill(ImageRef.getBomb1().get(3));
+						u.setFill(ImageRef.getBomb1Image().get(3));
 					}else {
 						u = new Hitbox(x+6,y-(i*60),48.0,60.0);
-						u.setFill(ImageRef.getBomb1().get(8));
+						u.setFill(ImageRef.getBomb1Image().get(8));
 					}
 					lrec.add(u);
 					if (field[indexi-i][indexj]==2) {
@@ -95,10 +97,10 @@ public class Bomb implements Gameobject{
 					Hitbox d;
 					if(i==bombrange) {
 						d = new Hitbox(x+6,y+(i*60),48.0,55.0);
-						d.setFill(ImageRef.getBomb1().get(5));
+						d.setFill(ImageRef.getBomb1Image().get(5));
 					}else {
 						d = new Hitbox(x+6,y+(i*60),48.0,60.0);
-						d.setFill(ImageRef.getBomb1().get(8));
+						d.setFill(ImageRef.getBomb1Image().get(8));
 					}
 					lrec.add(d);
 					if (field[indexi+i][indexj]==2) {
@@ -113,10 +115,10 @@ public class Bomb implements Gameobject{
 					Hitbox l;
 					if(i==bombrange) {
 						l = new Hitbox(x-(i*60)+5,y+6,55.0,48.0);
-						l.setFill(ImageRef.getBomb1().get(6));
+						l.setFill(ImageRef.getBomb1Image().get(6));
 					}else {
 						l = new Hitbox(x-(i*60),y+6,60.0,48.0);
-						l.setFill(ImageRef.getBomb1().get(7));
+						l.setFill(ImageRef.getBomb1Image().get(7));
 					}
 					lrec.add(l);
 					if (field[indexi][indexj-i]==2) {
@@ -131,10 +133,10 @@ public class Bomb implements Gameobject{
 					Hitbox r;
 					if(i==bombrange) {
 						r = new Hitbox(x+(i*60),y+6,55.0,48.0);						
-						r.setFill(ImageRef.getBomb1().get(4));
+						r.setFill(ImageRef.getBomb1Image().get(4));
 					}else {
 						r = new Hitbox(x+(i*60),y+6,60.0,48.0);
-						r.setFill(ImageRef.getBomb1().get(7));
+						r.setFill(ImageRef.getBomb1Image().get(7));
 					}
 					lrec.add(r);
 					if (field[indexi][indexj+i]==2) {
@@ -201,7 +203,7 @@ public class Bomb implements Gameobject{
 						}
 						rec.setVisible(false);
 					}					
-				}		
+				}
 			});
 			thread.interrupt();
 			
