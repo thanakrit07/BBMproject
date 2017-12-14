@@ -63,8 +63,7 @@ public class Bomb implements Gameobject{
 			this.bomb=null;
 			
 			this.exploded = true;
-			
-			ImageRef.getBombSound().play();
+			ImageRef.getSound().get(0).play();
 			//draw effected bomb
 			int indexj =(int)(this.x-30)/60 ;
 			int indexi = (int)(this.y-30)/60 ;

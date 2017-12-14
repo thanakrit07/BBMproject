@@ -42,7 +42,7 @@ public class GameScreen implements AllScene {
 			gc.drawImage(ImageRef.getLoadScreenImage().get(0), 0, 0,width, height);
 			addEventHandler();
 			gc.setFill(Color.BLACK);
-			gc.setFont(new Font("ArcadeClassic",50));
+			gc.setFont(ImageRef.getFont().get(0));
 			gc.fillText("Press  Enter  To  START", 320, 780);
 		}).start();
 	}
@@ -55,7 +55,6 @@ public class GameScreen implements AllScene {
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
 			public void handle(KeyEvent event) {
 				if(event.getCode().equals(KeyCode.ENTER)) {
-					
 					SceneManager.gotoSceneOf(s1.getScene());
 					s1.AnimationStart();
 				}

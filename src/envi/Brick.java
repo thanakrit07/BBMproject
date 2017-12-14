@@ -26,13 +26,13 @@ public class Brick extends Envi {
 	public void destroyed(Group root) {
 		this.hitbox.setVisible(false);
 		int it = ((int) Math.floor(Math.random() * 202)) % 20;
-		if (it == 1 || it == 7 || it == 10) {
+		if (it == 1 || it == 19 || it == 10) {
 			System.out.println("Stackbomb");
 			Item item = new Stackbomb(hitbox.getBoundsInParent().getMinX(), hitbox.getBoundsInParent().getMinY());
 			item.getHitbox().setVisible(true);
 			root.getChildren().add(item.getHitbox());
 			Stage1.litem.add(item);
-		} else if (it == 2 || it == 8 || it == 11) {
+		} else if (it == 7 || it == 15) {
 			System.out.println("Upgradebomb");
 			Item item = new Upgradebomb(hitbox.getBoundsInParent().getMinX(), hitbox.getBoundsInParent().getMinY());
 			item.getHitbox().setVisible(true);
