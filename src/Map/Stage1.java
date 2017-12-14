@@ -20,6 +20,7 @@ import javafx.scene.canvas.Canvas;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.Bomb;
 import entity.Player1;
 import entity.Player2;
 import envi.Brick;
@@ -39,6 +40,7 @@ public class Stage1 implements AllScene {
 	private static GraphicsContext gc;
 	public static List<Brick> lbrick = new ArrayList<Brick>();
 	public static List<Item> litem = new ArrayList<Item>();
+	public static List<Hitbox> lbomb = new ArrayList<Hitbox>();
 	private Player1 p1;
 	private Player2 p2;
 	public static int[][] field;

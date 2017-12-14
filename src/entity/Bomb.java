@@ -11,8 +11,6 @@ import envi.Brick;
 import item.Item;
 import javafx.application.Platform;
 import javafx.scene.Group;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 
 public class Bomb implements Gameobject{
 	private boolean exploded;
@@ -35,6 +33,7 @@ public class Bomb implements Gameobject{
 		this.bombrange=bombrange;
 		bomb =new Hitbox(x,y,60,60);
 		bomb.setFill(ImageRef.getBomb1().get(0));
+		Stage1.lbomb.add(bomb);
 		
 	}
 	
@@ -56,6 +55,9 @@ public class Bomb implements Gameobject{
 				e.printStackTrace();
 			}
 			this.bomb.setVisible(false);
+			Stage1.lbomb.remove(bomb);
+			p1.getlhitbox().remove(bomb);
+			p2.getlhitbox().remove(bomb);
 			this.bomb=null;
 			
 			this.exploded = true;
