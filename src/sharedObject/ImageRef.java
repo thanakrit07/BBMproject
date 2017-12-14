@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.image.Image;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.ImagePattern;
 
 public class ImageRef {
@@ -13,7 +14,8 @@ public class ImageRef {
 	private static List<ImagePattern> item = new ArrayList<ImagePattern>();
 	private static List<Image> itemboard = new ArrayList<Image>();
 	private static List<Image> start = new ArrayList<Image>();
-	private static Image gamescreen;
+	private static List<Image> lsc = new ArrayList<Image>();
+	private static AudioClip bombsound;
 	public ImageRef() {
 		ImagePattern wu1 = new ImagePattern(new Image(ClassLoader.getSystemResource("U_1.png").toString()));
 		ImagePattern wu2 = new ImagePattern(new Image(ClassLoader.getSystemResource("U_2.png").toString()));
@@ -130,9 +132,13 @@ public class ImageRef {
 		Image st2 = new Image(ClassLoader.getSystemResource("start2.png").toString());
 		start.add(st1);
 		start.add(st2);
-		//-----------------------------------gamescreen------------------------------------------------------------------------------
-		gamescreen = new Image(ClassLoader.getSystemResource("gamescreen.png").toString());
-		
+		//---------------------------------loadingscreen-------------------------------------------------------------------------
+		Image sc1 = new Image(ClassLoader.getSystemResource("loadscreen.png").toString());
+		Image sc2 = new Image(ClassLoader.getSystemResource("loading.png").toString());
+		lsc.add(sc1);
+		lsc.add(sc2);
+		//--------------------------------bombsound-------------------------------------------------------------------------------
+		bombsound = new AudioClip(ClassLoader.getSystemResource("bombsound.wav").toString());
 	}
 
 	public static List<ImagePattern> getWhiteBomberImage() {
@@ -157,7 +163,10 @@ public class ImageRef {
 	public static List<Image> getStartImage() {
 		return start;
 	}
-	public static Image getGamescreenImage() {
-		return gamescreen;
+	public static List<Image> getLoadScreenImage() {
+		return lsc;
+	}
+	public static AudioClip getBombSound() {
+		return bombsound;
 	}
 }

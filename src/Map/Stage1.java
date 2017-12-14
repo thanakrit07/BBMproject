@@ -142,8 +142,8 @@ public class Stage1 implements AllScene {
 		System.out.println("Create Wall");
 //----------------------------------------------------addEventHandler-----------------------------------------
 		scene.setOnKeyPressed((KeyEvent event) -> {
-			if(event.getCode().equals(KeyCode.M)) {
-				SceneManager.gotoSceneOf((new MainMenu()).getScene());
+			if(event.getCode().equals(KeyCode.N)) {
+				SceneManager.gotoSceneOf((new GameScreen(SceneManager.SCENE_WIDTH,SceneManager.SCENE_HEIGHT)).getScene());
 			}else if(event.getCode().equals(KeyCode.ESCAPE)){
 				Platform.exit();
 			}else {
@@ -243,17 +243,18 @@ public class Stage1 implements AllScene {
 			c.setOpacity(0.8);
 			gc.setTextAlign(TextAlignment.CENTER);
 			gc.setFill(Color.WHITE);
-			gc.setFont(new Font("Monoscpace", 40));
-			gc.fillText("Go to Main Menu Press M\nExit Press Esc", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT * 3 / 4);
-			gc.setFont(new Font("Monospace", 80));
-			gc.fillText("GAME OVER", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 4);
+			gc.setFont(new Font("ArcadeClassic",40));
+			gc.fillText("New  Game  Press  N\nExit  Press  Esc", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT * 3 / 4);
+			gc.setFont(new Font("ArcadeClassic", 80));
+			gc.fillText("GAME  OVER", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 4);
 			root.getChildren().add(c);
+			gc.setFont(new Font("ArcadeClassic", 60));
 			if (!p1.isAlive() && p2.isAlive()) {
-				gc.fillText("Player2 is the winner!!", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 2);
+				gc.fillText("Player2  is  the  winner !", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 2);
 			} else if (p1.isAlive() && !p2.isAlive()) {
-				gc.fillText("Player1 is the winner!!", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 2);
+				gc.fillText("Player1  is  the  winner !", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 2);
 			} else if (!p1.isAlive() && !p2.isAlive()) {
-				gc.fillText("You both dead :(", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 2);
+				gc.fillText("You  both  dead  :(", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 2);
 			}
 		}
 	}
