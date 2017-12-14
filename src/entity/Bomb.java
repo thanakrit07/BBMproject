@@ -207,7 +207,7 @@ public class Bomb implements Gameobject{
 			
 		});thread.start();
 	}
-
+	
 	public Hitbox getHitbox() {
 		return this.bomb;
 	}

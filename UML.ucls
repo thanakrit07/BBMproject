@@ -84,7 +84,7 @@
   </interface>  
   <class id="10" language="java" name="entity.Hero" project="BBMproject" file="/BBMproject/src/entity/Hero.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="464" y="585"/>    
+    <position height="-1" width="-1" x="458" y="643"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="entity.Player2" project="BBMproject" file="/BBMproject/src/entity/Player2.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="463" y="1062"/>    
+    <position height="-1" width="-1" x="456" y="1141"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
