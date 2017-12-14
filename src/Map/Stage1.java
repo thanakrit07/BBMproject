@@ -6,6 +6,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Shape;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import scenemanager.SceneManager;
@@ -19,6 +20,7 @@ import javafx.scene.canvas.Canvas;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.Bomb;
 import entity.Player1;
 import entity.Player2;
 import envi.Brick;
@@ -38,7 +40,7 @@ public class Stage1 implements AllScene {
 	private static GraphicsContext gc;
 	public static List<Brick> lbrick = new ArrayList<Brick>();
 	public static List<Item> litem = new ArrayList<Item>();
-	public static List<Hitbox> lbomb = new ArrayList<Hitbox>();
+	public static List<Bomb> lbomb = new ArrayList<Bomb>();
 	private Player1 p1;
 	private Player2 p2;
 	public static int[][] field;
@@ -170,6 +172,7 @@ public class Stage1 implements AllScene {
 				}
 				update();
 				updateItem();
+//				UpdateKickBomb();
 			}
 		};
 	}

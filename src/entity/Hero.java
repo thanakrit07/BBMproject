@@ -11,9 +11,10 @@ import sharedObject.Hitbox;
 public abstract class Hero implements Gameobject {
 
 	protected double speed;
-	protected int direction;
+	private int direction;
 	protected int bombrange;
 	protected int countboost;
+	public boolean kick = true;
 	protected List<Bomb> bombList = new ArrayList<Bomb>();
 	protected List<Hitbox> lhb = new ArrayList<Hitbox>();
 	protected Hitbox bounds;
@@ -27,13 +28,13 @@ public abstract class Hero implements Gameobject {
 	}
 
 	protected void moveX() {
-		if (direction == 1) {
+		if (getDirection() == 1) {
 			bounds.setLayoutX(bounds.getLayoutX() + speed);
 			if (collosion()) {
 				bounds.setLayoutX(bounds.getLayoutX() - speed);
 			}
 
-		} else if (direction == 3) {
+		} else if (getDirection() == 3) {
 			bounds.setLayoutX(bounds.getLayoutX() - speed);
 			if (collosion()) {
 				bounds.setLayoutX(bounds.getLayoutX() + speed);
@@ -44,12 +45,12 @@ public abstract class Hero implements Gameobject {
 
 	protected void moveY() {
 
-		if (direction == 0) {
+		if (getDirection() == 0) {
 			bounds.setLayoutY(bounds.getLayoutY() - speed);
 			if (collosion()) {
 				bounds.setLayoutY(bounds.getLayoutY() + speed);
 			}
-		} else if (direction == 2) {
+		} else if (getDirection() == 2) {
 			bounds.setLayoutY(bounds.getLayoutY() + speed);
 			if (collosion()) {
 				bounds.setLayoutY(bounds.getLayoutY() - speed);
@@ -69,21 +70,21 @@ public abstract class Hero implements Gameobject {
 	}
 
 	protected void DropBomb(Group root, Player1 p1, Player2 p2) {
-		if (direction == 0) {
+		if (getDirection() == 0) {
 			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
 					Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
 			bomb.startBomb(root, p1, p2);
-		} else if (direction == 1) {
+		} else if (getDirection() == 1) {
 			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
 					Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
 			bomb.startBomb(root, p1, p2);
 
-		} else if (direction == 2) {
+		} else if (getDirection() == 2) {
 			Bomb bomb = new Bomb(Math.floor(bounds.getBoundsInParent().getMinX() / 60) * 60 + 30,
 					Math.floor(bounds.getBoundsInParent().getMinY() / 60) * 60 + 30, this.bombrange);
 			bomb.startBomb(root, p1, p2);
 
-		} else if (direction == 3) {
+		} else if (getDirection() == 3) {
 			Bomb bomb = new Bomb(Math.ceil(bounds.getBoundsInParent().getMinX() / 60) * 60 - 30,
 					Math.ceil(bounds.getBoundsInParent().getMinY() / 60) * 60 - 30, this.bombrange);
 			bomb.startBomb(root, p1, p2);
@@ -165,5 +166,21 @@ public abstract class Hero implements Gameobject {
 
 	public int getCountBomb() {
 		return countBomb;
+	}
+	
+	public boolean getKick() {
+		return this.kick;
+	}
+	
+	public void setKick(boolean k) {
+		this.kick=k;
+	}
+
+	public int getDirection() {
+		return direction;
+	}
+
+	public void setDirection(int direction) {
+		this.direction = direction;
 	}
 }

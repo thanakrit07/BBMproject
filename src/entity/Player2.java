@@ -16,10 +16,11 @@ public class Player2 extends Hero {
 
 	public Player2(double x, double y) {
 		super(x, y);
-		this.direction = 3;
+		this.setDirection(3);
 		this.bombrange = 1;
 		this.countBomb = 1;
 		this.countboost = 1;
+		this.kick=false;
 		speed = 3;
 		alive = true;
 
@@ -35,13 +36,13 @@ public class Player2 extends Hero {
 			public void handle(long currentNanoTime) {
 				double t = ((currentNanoTime - startNanoTime) / 1000000000.0) % 0.60;
 				int ck = 0;
-				if (direction == 0)
+				if (getDirection() == 0)
 					ck = 0;
-				else if (direction == 1)
+				else if (getDirection() == 1)
 					ck = 4;
-				else if (direction == 2)
+				else if (getDirection() == 2)
 					ck = 8;
-				else if (direction == 3)
+				else if (getDirection() == 3)
 					ck = 12;
 
 				if (t > 0 && t <= 0.15) {
@@ -61,22 +62,22 @@ public class Player2 extends Hero {
 		// TODO Auto-generated method stub
 		if (KeyInput.getKeyPressed(KeyCode.UP)) {
 			animationwalk.start();
-			this.direction = 0;
+			this.setDirection(0);
 			moveY();
 		}
 		if (KeyInput.getKeyPressed(KeyCode.RIGHT)) {
 			animationwalk.start();
-			this.direction = 1;
+			this.setDirection(1);
 			moveX();
 		}
 		if (KeyInput.getKeyPressed(KeyCode.DOWN)) {
 			animationwalk.start();
-			this.direction = 2;
+			this.setDirection(2);
 			moveY();
 		}
 		if (KeyInput.getKeyPressed(KeyCode.LEFT)) {
 			animationwalk.start();
-			this.direction = 3;
+			this.setDirection(3);
 			moveX();
 		}
 		if (KeyInput.keyPressed.isEmpty())
@@ -106,8 +107,8 @@ public class Player2 extends Hero {
 			}
 		}
 		for (int i=0;i<Stage1.lbomb.size();i++) {
-			if (!Stage1.lbomb.get(i).CollosionWith(bounds)&&!this.lhb.contains(Stage1.lbomb.get(i))) {
-				this.lhb.add(Stage1.lbomb.get(i));
+			if (!Stage1.lbomb.get(i).getHitbox().CollosionWith(bounds)&&!this.lhb.contains(Stage1.lbomb.get(i).getHitbox())) {
+				this.lhb.add(Stage1.lbomb.get(i).getHitbox());				
 			}
 		}
 
