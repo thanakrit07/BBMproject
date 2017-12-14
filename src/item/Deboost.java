@@ -1,8 +1,6 @@
 package item;
 
 import entity.Hero;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Shape;
 import sharedObject.Hitbox;
 import sharedObject.ImageRef;

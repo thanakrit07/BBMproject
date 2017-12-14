@@ -3,7 +3,6 @@ package entity;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.ImagePattern;
 import sharedObject.Hitbox;
 import sharedObject.ImageRef;
 import Map.Stage1;

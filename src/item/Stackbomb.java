@@ -1,12 +1,9 @@
 package item;
 
 import entity.Hero;
-import object.Gameobject;
 import sharedObject.Hitbox;
 import sharedObject.ImageRef;
 import item.Item;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 
 public class Stackbomb extends Item{
 	private Hitbox item;

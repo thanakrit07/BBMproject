@@ -15,9 +15,6 @@ import javafx.scene.text.TextAlignment;
 import scenemanager.SceneManager;
 import sharedObject.AllScene;
 
-import com.sun.javafx.tk.FontLoader;
-import com.sun.javafx.tk.Toolkit;
-
 public class MainMenu implements AllScene {
 	private Scene scene;
 	private Group root;

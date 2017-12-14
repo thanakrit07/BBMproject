@@ -5,10 +5,9 @@ import javafx.scene.Group;
 
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
 import sharedObject.Hitbox;
 import sharedObject.ImageRef;
-
+import Map.Stage1;
 import input.KeyInput;
 
 public class Player2 extends Hero {
@@ -106,6 +105,12 @@ public class Player2 extends Hero {
 				KeyInput.setkeyPressed.add(KeyCode.ENTER);
 			}
 		}
+		for (int i=0;i<Stage1.lbomb.size();i++) {
+			if (!Stage1.lbomb.get(i).CollosionWith(bounds)&&!this.lhb.contains(Stage1.lbomb.get(i))) {
+				this.lhb.add(Stage1.lbomb.get(i));
+			}
+		}
+
 	}
 
 	public static void setDead() {
