@@ -67,4 +67,10 @@ public class Brick extends Envi {
 			System.out.println("None" + "");
 
 	}
+
+	@Override
+	public Hitbox getHitbox() {
+		// TODO Auto-generated method stub
+		return this.hitbox;
+	}
 }

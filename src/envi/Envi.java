@@ -10,7 +10,5 @@ public abstract class Envi implements Gameobject{
 		this.y = y;
 	}
 
-	public Hitbox getHitbox() {
-		return hitbox;
-	}
+	public abstract Hitbox getHitbox();
 }
