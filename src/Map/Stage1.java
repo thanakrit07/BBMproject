@@ -243,7 +243,7 @@ public class Stage1 implements AllScene {
 			} else if (p1.isAlive() && !p2.isAlive()) {
 				gc.fillText("Player1  is  the  winner !", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 2);
 			} else if (!p1.isAlive() && !p2.isAlive()) {
-				gc.fillText("You  both  dead  :(", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 2);
+				gc.fillText("You  both  dead  !", SceneManager.SCENE_WIDTH / 2, SceneManager.SCENE_HEIGHT / 2);
 			}
 		}
 	}
