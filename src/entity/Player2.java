@@ -20,12 +20,10 @@ public class Player2 extends Hero {
 		this.bombrange = 1;
 		this.countBomb = 1;
 		this.countboost = 1;
-		this.kick=false;
 		speed = 3;
 		alive = true;
 
 		bounds = new Hitbox(x, y, 60, 60);
-		bounds.setFill(Color.AQUA);
 		bounds.setVisible(alive);
 		bounds.setFill(ImageRef.getRedBomberImage().get(1 + 12));
 
@@ -109,7 +107,7 @@ public class Player2 extends Hero {
 
 		try {
 			for (int i=0;i<Stage1.lbomb.size();i++) {
-				if (!Stage1.lbomb.get(i).getHitbox().CollosionWith(bounds)&&!this.lhb.contains(Stage1.lbomb.get(i).getHitbox())) {
+				if (!Stage1.lbomb.get(i).getHitbox().CollisionWith(bounds)&&!this.lhb.contains(Stage1.lbomb.get(i).getHitbox())) {
 					this.lhb.add(Stage1.lbomb.get(i).getHitbox());				
 				}
 			}			
@@ -127,12 +125,6 @@ public class Player2 extends Hero {
 	public boolean isAlive() {
 		// TODO Auto-generated method stub
 		return alive;
-	}
-
-	@Override
-	public Hitbox getHitbox() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

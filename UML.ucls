@@ -39,7 +39,7 @@
   </class>  
   <interface id="5" language="java" name="sharedObject.AllScene" project="BBMproject" 
     file="/BBMproject/src/sharedObject/AllScene.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1467" y="129"/>    
+    <position height="-1" width="-1" x="1204" y="-105"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </interface>  
   <class id="6" language="java" name="Map.GameScreen" project="BBMproject" file="/BBMproject/src/Map/GameScreen.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1259" y="216"/>    
+    <position height="-1" width="-1" x="996" y="-11"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="Map.Stage1" project="BBMproject" file="/BBMproject/src/Map/Stage1.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1694" y="302"/>    
+    <position height="-1" width="-1" x="1431" y="68"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="Map.MainMenu" project="BBMproject" file="/BBMproject/src/Map/MainMenu.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1472" y="334"/>    
+    <position height="-1" width="-1" x="1209" y="100"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </interface>  
   <class id="10" language="java" name="entity.Hero" project="BBMproject" file="/BBMproject/src/entity/Hero.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="458" y="643"/>    
+    <position height="-1" width="-1" x="458" y="635"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="envi.Envi" project="BBMproject" file="/BBMproject/src/envi/Envi.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1042" y="289"/>    
+    <position height="-1" width="-1" x="1042" y="265"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="envi.Brick" project="BBMproject" file="/BBMproject/src/envi/Brick.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1221" y="391"/>    
+    <position height="-1" width="-1" x="1226" y="380"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -138,7 +138,7 @@
   </class>  
   <class id="16" language="java" name="envi.Wall" project="BBMproject" file="/BBMproject/src/envi/Wall.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1048" y="469"/>    
+    <position height="-1" width="-1" x="1041" y="448"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -174,7 +174,7 @@
   </class>  
   <class id="20" language="java" name="item.Upgradebomb" project="BBMproject" 
     file="/BBMproject/src/item/Upgradebomb.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1216" y="662"/>    
+    <position height="-1" width="-1" x="1323" y="681"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -210,7 +210,7 @@
   </class>  
   <class id="24" language="java" name="item.Degradebomb" project="BBMproject" 
     file="/BBMproject/src/item/Degradebomb.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1213" y="853"/>    
+    <position height="-1" width="-1" x="1340" y="913"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

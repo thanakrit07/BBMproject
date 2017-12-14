@@ -86,8 +86,8 @@ public class Stage1 implements AllScene {
 		p2.getlhitbox().addAll(lbd);
 		root.getChildren().addAll(lbd);
 // ---------------------------------------------------add Hero-----------------------------------------------------
-		root.getChildren().add(p1.getHerobox());
-		root.getChildren().add(p2.getHerobox());
+		root.getChildren().add(p1.getHitbox());
+		root.getChildren().add(p2.getHitbox());
 		System.out.println("Create Hero");
 		
 // --------------------------------------------------Create Wall---------------------------------------------------
@@ -102,12 +102,7 @@ public class Stage1 implements AllScene {
 				{ 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2 },
 				{ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 },
 				{ 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 0 },
-				{ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 },
-//				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1, 2 },
-//				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 2, 2, 2 },
-//				{ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 2, 1, 2, 1, 2, 1, 0 },
-//				{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 2, 2, 0, 0 } 
-				};
+				{ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0 }};
 		for (int i=0;i<11;i++) {
 			for (int j=0;j<17;j++) {
 				if (field[i][j]==2) {
@@ -165,14 +160,8 @@ public class Stage1 implements AllScene {
 				p1.updateBomb(root, p1, p2);
 				p2.update();
 				p2.updateBomb(root, p1, p2);
-				for (int i=litem.size()-1;i>=0;i--) {
-					if (litem.get(i).getHitbox().CollosionWith(p1.getHerobox())) litem.get(i).IsKeptBy(p1);
-					else if (litem.get(i).getHitbox().CollosionWith(p2.getHerobox())) litem.get(i).IsKeptBy(p2);
-					if (litem.get(i).isKept()) litem.remove(i);
-				}
 				update();
 				updateItem();
-//				UpdateKickBomb();
 			}
 		};
 	}
@@ -232,7 +221,7 @@ public class Stage1 implements AllScene {
 		
 	}
 
-	public void update() {
+	private void update() {
 		if (!p1.isAlive() || !p2.isAlive()) {
 			isGameRunning=false;
 			animation.stop();
@@ -274,7 +263,12 @@ public class Stage1 implements AllScene {
 		return this.scene;
 
 	}
-	public void updateItem() {
+	private void updateItem() {
+		for (int i=litem.size()-1;i>=0;i--) {
+			if (litem.get(i).getHitbox().CollisionWith(p1.getHitbox())) litem.get(i).IsKeptBy(p1);
+			else if (litem.get(i).getHitbox().CollisionWith(p2.getHitbox())) litem.get(i).IsKeptBy(p2);
+			if (litem.get(i).isKept()) litem.remove(i);
+		}
 		gc.clearRect(0, 720, 1080, 120);
 		gc.drawImage(ImageRef.getItemboardImage().get(3),0,720,1080,120);
 		gc.setFill(Color.WHITE);
@@ -285,7 +279,6 @@ public class Stage1 implements AllScene {
 		gc.fillText(""+p2.getBombrange(), 735, 800);
 		gc.fillText(""+p2.getCountBomb(), 835, 800);
 		gc.fillText(""+p2.getCountboost(), 930, 800);
-		s1.requestFocus();
 	}
 
 }

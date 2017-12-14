@@ -19,7 +19,7 @@ public class Deboost extends Item {
 	public void IsKeptBy(Hero hero) {
 		if (!kept) {
 			boolean collosion = false;
-			Shape intersect = Shape.intersect(item, hero.getHerobox());
+			Shape intersect = Shape.intersect(item, hero.getHitbox());
 			double checkW = intersect.getBoundsInLocal().getWidth();
 			double checkH = intersect.getBoundsInLocal().getHeight();
 			if (checkW == 60 && checkH == 60) {
